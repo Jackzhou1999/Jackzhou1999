@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="变量 如果要给变量赋一个含有空格的字符串值，必须用单引号来界定字符串的首和尾 如果要用到变量，使用$;如果要操作变量，不使用$，这条规则的一 个例外就是使用printenv显示某个变量的值;引用一个变量值时需要使 用美元符，而引用变量来对其进行赋值时则不要使用美元符$ 子shell无法使用export命令改变父shell中全局环境变量的值,在子进程中删除了一个全局环境变量,这只对子进程有效,该全局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux脚本编程">
+<meta property="og:url" content="http://yoursite.com/2019/07/30/Linux脚本编程/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="变量 如果要给变量赋一个含有空格的字符串值，必须用单引号来界定字符串的首和尾 如果要用到变量，使用$;如果要操作变量，不使用$，这条规则的一 个例外就是使用printenv显示某个变量的值;引用一个变量值时需要使 用美元符，而引用变量来对其进行赋值时则不要使用美元符$ 子shell无法使用export命令改变父shell中全局环境变量的值,在子进程中删除了一个全局环境变量,这只对子进程有效,该全局">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/30/Linux脚本编程/%E5%8F%8C%E6%8B%AC%E5%8F%B7%E5%91%BD%E4%BB%A4%E7%AC%A6%E5%8F%B7.png">
+<meta property="og:updated_time" content="2019-08-05T02:03:38.874Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux脚本编程">
+<meta name="twitter:description" content="变量 如果要给变量赋一个含有空格的字符串值，必须用单引号来界定字符串的首和尾 如果要用到变量，使用$;如果要操作变量，不使用$，这条规则的一 个例外就是使用printenv显示某个变量的值;引用一个变量值时需要使 用美元符，而引用变量来对其进行赋值时则不要使用美元符$ 子shell无法使用export命令改变父shell中全局环境变量的值,在子进程中删除了一个全局环境变量,这只对子进程有效,该全局">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/30/Linux脚本编程/">
+
+
+
+
+
+  <title>Linux脚本编程 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/Linux脚本编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux脚本编程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-30T13:04:56+08:00">
+                2019-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a><strong>变量</strong></h2><ol>
+<li>如果要给变量赋一个含有空格的字符串值，必须用单引号来界定字符串的首和尾</li>
+<li>如果要用到变量，使用$;如果要操作变量，不使用$，这条规则的一 个例外就是使用printenv显示某个变量的值;引用一个变量值时需要使 用美元符，而引用变量来对其进行赋值时则不要使用美元符$</li>
+<li>子shell无法使用export命令改变父shell中全局环境变量的值,在子进程中删除了一个全局环境变量,这只对子进程有效,该全局环境变量在父进程中依然可用</li>
+<li>子shell可以继承父shell导出过的变量。 举例来说，如果父shell是登录shell，在/etc/profile、/etc/profile.d/*.sh和$HOME/.bashrc文件中设置并导出了变量，用于执行脚本的子shell就能够继承这些变量。要记住，由父shell设置但并未导出的变量都是局部变量，子shell无法继承局部变量。</li>
+<li>存储个人用户永久性bash shell变量的地方是$HOME/.bashrc文件</li>
+<li>要给某个环境变量设置多个值，可以把值放在括号里，值与值之间用空格分隔<br>🌰:mytest=(one two three four five)⚠️ :环境变量数组的索引值都是从零开始</li>
+<li>用户变量可以是任何由字母、数字或下划线组成的文本字符串，长度不超过20个。用户变量 区分大小写,使用等号将值赋给用户变量。在变量、等号和值之间不能出现空格</li>
+</ol>
+<hr>
+<h2 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a><strong>零碎知识点</strong></h2><ol>
+<li>在创建shell脚本文件时，必须在文件的第一行指定要使用的shell。其格式为: #!/bin/bash</li>
+<li>命令替换(从命令输出中提取信息，并将其赋给变量):法一、反引号字符;法二、$()格式</li>
+<li>重定向输入和输出:输出重定向将命令的输出发送到一个文件中。bash shell用大于号(&gt;)来完成这项功能,如果输出文件已经存在了，重定向操作符会用新的文件数据覆盖已有文件,在这种情况下，可以用双大于号(&gt;&gt;)来追加数据;输入重定向将文件的内容重定向到命令，而非将命令的输出重定向到文件</li>
+<li>管道(|):将命令输出重定向到另一个命令。这个过程叫作管道连接(piping)</li>
+<li>在bash中，在将一个数学运算结果赋给某个变量时，可以用美元符和方括号($[ operation ])或( $((operation)) )将数学表达式围起来</li>
+<li>bash shell数学运算符只支持整数运算。若要进行任何实际的数学计算，这是一个巨大的限制<br>🌰:var3=$(echo “scale=4; $var1 / $var2” | bc)<br>bc命令能识别输入重定向，允许你将一个文件重定向到bc命令来处理;使用内联输入重定向，它允许直接在命令行中重定向数据。在shell脚本中可以将输出赋给一个变量🌰<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">variable=$(bc &lt;&lt; EOF</span><br><span class="line">options</span><br><span class="line">statements</span><br><span class="line">expressions</span><br><span class="line">EOF )</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var5=$(bc &lt;&lt; EOF</span><br><span class="line">    scale = 4</span><br><span class="line">    a1 = ( $var1 * $var2)</span><br><span class="line">    b1 = ($var3 * $var4)</span><br><span class="line">    a1 + b1</span><br><span class="line">    EOF</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>变量$?来保存上个已执行命令的退出状态码 一个成功结束的命令的退出状态码是0。如果一个命令结束时有错误，退出状态 码就是一个正数值 。exit命令允许你在脚本结束时指定一 个退出状态码 </li>
+<li>文件名中没有加入路径,这要求文件和脚本位于同一个目录中,如果不是的话,需要使用全路径名(不管是绝对路径还是相对路径)来 引用文件位置</li>
+</ol>
+<hr>
+<h2 id="结构化命令"><a href="#结构化命令" class="headerlink" title="结构化命令"></a><strong>结构化命令</strong></h2><h3 id="一、IF-THEN"><a href="#一、IF-THEN" class="headerlink" title="一、IF THEN"></a><strong><em>一、IF THEN</em></strong></h3><h4 id="总的If-then结构"><a href="#总的If-then结构" class="headerlink" title="总的If then结构"></a>总的<strong>If then</strong>结构</h4><p>一、<strong>if-then</strong>语句 (if-then语句不能测试命令退出状态码之外的条件)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if command </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if command; then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>Bash shell的if语句会运行if后面的那个命令。如果该命令的退出状态码是0 (该命令成功运行)，位于then部分的命令就会被执行。如果该命令的退出状态码是其他值，then 部分的命令就不会被执行，bash shell会继续执行脚本中的下一个命令。fi语句用来表示if-then 语句到此结束。<br>二、<strong>if-then-else</strong>语句 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if command </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">else </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>三、<strong>嵌套if</strong>语句</p>
+<figure class="highlight plain"><figcaption><span>command1 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">elif command2 </span><br><span class="line">then </span><br><span class="line">    more commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>elif语句行提供了另一个要测试的命令，这类似于原始的if语句行。如果elif后命令的退 出状态码是0，则bash执行第二个then语句部分的命令。⚠️bash shell会依次执行if语句， 只有第一个返回退出状态码0的语句中的then部分会被执行</p>
+<h4 id="If-和-then-之间的判断语句"><a href="#If-和-then-之间的判断语句" class="headerlink" title="If 和 then 之间的判断语句"></a><strong>If 和 then 之间的判断语句</strong></h4><h5 id="一、test命令"><a href="#一、test命令" class="headerlink" title="一、test命令"></a>一、<strong>test命令</strong></h5><p>test命令可以判断三类条件:<br>    * 数值比较<br>    * 字符串比较<br>    * 文件比较<br>基本格式1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if test condition </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p><code>test condition</code>  test命令提供了在if-then语句中测试不同条件的途径 ,如果test命令中列出的条件成立,test命令就会退出并返回退出状态码0<br>基本格式2（无需在if-then 语句中声明test 命令）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if [ condition ] </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>方括号定义了测试条件。注意，第一个方括号之后和第二个方括号之前必须加上一个空格，否则就会报错。</p>
+<h6 id="1-数值比较"><a href="#1-数值比较" class="headerlink" title="1.数值比较"></a>1.数值比较</h6><p><img src="/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png" alt></p>
+<h6 id="2-字符串比较"><a href="#2-字符串比较" class="headerlink" title="2.字符串比较"></a>2.字符串比较</h6><p><img src="/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png" alt></p>
+<ol>
+<li>⚠️大于号和小于号必须转义，否则shell会把它们当作重定向符号，把字符串值当作文件名; </li>
+<li>⚠️大于和小于顺序和sort命令所采用的不同:比较测试中使用的是标准的ASCII顺序，根据每个字符的ASCII数值来决定排序结果。sort 命令使用的是系统的本地化语言设置中定义的排序顺序。对于英语，本地化设置指定了在排序顺 序中小写字母出现在大写字母前<br>MOTHER FUCKER:test命令和测试表达式使用标准的数学比较符号来表示字符串比较，而用文本代码来表 示数值比较。<h6 id="3-文件比较"><a href="#3-文件比较" class="headerlink" title="3.文件比较"></a>3.文件比较</h6><img src="/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png" alt><br>⚠️if [ -d “$file” ]<br>在Linux中,目录名和文件名中包含空格当然是合法的。要适应这种情况,应该将$file变量用双引号圈起来。如果不这么做，遇到含有空格的目录名或文件名时就会有错误产生。<br>⚠️理解-G比较会检查文件的默认组，如果它匹配了用户的默认组，则测试成功。<h5 id="二、复合条件测试"><a href="#二、复合条件测试" class="headerlink" title="二、复合条件测试"></a>二、<strong>复合条件测试</strong></h5>if-then语句允许使用布尔逻辑来组合测试</li>
+</ol>
+<ul>
+<li>[ condition1 ] &amp;&amp; [ condition2 ]</li>
+<li>[ condition1 ] || [ condition2 ]<h5 id="三、使用双括号"><a href="#三、使用双括号" class="headerlink" title="三、使用双括号"></a>三、<strong>使用双括号</strong></h5>双括号命令允许在比较过程中使用高级数学表达式<br>双括号命令的格式为<code>(( expression ))</code>其中expression可以是任意的数学赋值或比较表达式<br>⚠️不需要将双括号中表达式里的大于号转义<br><img src="/2019/07/30/Linux脚本编程/%E5%8F%8C%E6%8B%AC%E5%8F%B7%E5%91%BD%E4%BB%A4%E7%AC%A6%E5%8F%B7.png" alt><br>🌰:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">val1=10</span><br><span class="line">if (( $val1 ** 2 &gt; 90 )) then</span><br><span class="line">    (( val2 = $val1 ** 2 ))#赋值语句居然可以这样😏</span><br><span class="line">    echo &quot;The square of $val1 is $val2&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="四、使用双方括号"><a href="#四、使用双方括号" class="headerlink" title="四、使用双方括号"></a>四、<strong>使用双方括号</strong></h5><p>双方括号命令提供了针对字符串比较的高级特性。<br>双方括号里的expression使用了test命令中采用的标准字符串比较。但它提供了test命令未提供的另一个特性——模式匹配</p>
+<h3 id="二、CASE语句"><a href="#二、CASE语句" class="headerlink" title="二、CASE语句"></a><strong><em>二、CASE语句</em></strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">case variable in</span><br><span class="line">pattern1 | pattern2) commands1;;</span><br><span class="line">pattern3) commands2;;</span><br><span class="line">*) default commands;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<p>可以通过竖线操作符在一行中分隔出多个模式模式。星号会捕获所有与已知模式不匹配的值</p>
+<h3 id="三、FOR循环"><a href="#三、FOR循环" class="headerlink" title="三、FOR循环"></a><strong><em>三、FOR循环</em></strong></h3><p>for命令的基本格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for var in list</span><br><span class="line">do</span><br><span class="line">    commands</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-读取列表中的值"><a href="#1-读取列表中的值" class="headerlink" title="1. 读取列表中的值"></a><strong>1. 读取列表中的值</strong></h4><p>🌰:<code>for test in Alabama Alaska Arizona Arkansas California Colorado</code><br>而且在for循环结束后test变量依然可以使用，$test变量的值会在shell脚本的剩余部分一直保持有效。它会一直保持最后一次迭代的值</p>
+<h4 id="2-读取列表中的复杂值"><a href="#2-读取列表中的复杂值" class="headerlink" title="2. 读取列表中的复杂值"></a><strong>2. 读取列表中的复杂值</strong></h4><p>🌰:<code>for test in I don&#39;t know if this&#39;ll work #会出错</code><br><code>for test in I don\&#39;t know if &quot;this&#39;ll&quot; work #正确</code><br>    * 使用转义字符(反斜线)来将单引号转义;<br>    * 使用双引号来定义用到单引号的值。<br>for循环假定每个值都是用空格分割的，如果在单独的数据值中有空格，就必须用双引号将这些值圈起来</p>
+<h4 id="3-从变量读取列表"><a href="#3-从变量读取列表" class="headerlink" title="3. 从变量读取列表"></a><strong>3. 从变量读取列表</strong></h4><p>🌰:<code>for state in $list</code></p>
+<h4 id="4-从命令读取值"><a href="#4-从命令读取值" class="headerlink" title="4. 从命令读取值"></a><strong>4. 从命令读取值</strong></h4><p>生成列表中所需值的另外一个途径就是使用命令的输出。可以用命令替换来执行任何能产生输出的命令，然后在for命令中使用该命令的输出<br>🌰:<code>for var in $(order)</code></p>
+<h4 id="5-字段分隔符IFS"><a href="#5-字段分隔符IFS" class="headerlink" title="5. 字段分隔符IFS"></a><strong>5. 字段分隔符IFS</strong></h4><p>环境变量IFS，叫作内部字段分隔符(internal field separator)。<br>IFS环境变量定义了bash shell用作字段分隔符的一系列字符。默认情况下，bash shell会将下列字符当作字段分隔符:<br>    * 空格<br>    * 制表符<br>    * 换行符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IFS.OLD=$IFS</span><br><span class="line">IFS=$&apos;\n&apos;</span><br><span class="line">&lt;在代码中使用新的IFS值&gt; </span><br><span class="line">IFS=$IFS.OLD</span><br></pre></td></tr></table></figure>
+
+<p>如果要指定多个IFS字符，只要将它们在赋值行串起来就行。<br>🌰:IFS=$’\n’:;”<br>这个赋值会将换行符、冒号、分号和双引号作为字段分隔符。</p>
+<h4 id="6-用通配符读取目录"><a href="#6-用通配符读取目录" class="headerlink" title="6. 用通配符读取目录"></a><strong>6. 用通配符读取目录</strong></h4><p><code>for file in /home/rich/test/*</code><br>for命令的c语言格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (( variable assignment ; condition ; iteration process ))</span><br><span class="line">do </span><br><span class="line">    ···</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>变量可以定义多个，条件只能有一个</p>
+<h3 id="四、WHILE命令"><a href="#四、WHILE命令" class="headerlink" title="四、WHILE命令"></a><strong><em>四、WHILE命令</em></strong></h3><p>只要测试条件成立，while命令就会不停地循环执行定义好的命令<br>while命令的格式是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while test command </span><br><span class="line">do</span><br><span class="line">    other commands</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>test command:任何普通的bash shell命令，或者用test命令进行条件测试,但退出状态码必须随着循环中运行的命令而改变。如果退出状态码不发生变化， while循环就将一直不停地进行下去</p>
+<h4 id="1-使用多个测试命令"><a href="#1-使用多个测试命令" class="headerlink" title="1. 使用多个测试命令"></a><strong>1. 使用多个测试命令</strong></h4><p>while命令允许你在while语句行定义多个测试命令。只有最后一个测试命令的退出状态码会被用来决定什么时候结束循环<br>需要⚠️的是在每次迭代中所有的测试命令都会被执行,包括测试命令失败的最后一次迭代。<br>另一处要留意的是该如何指定多个测试命令。注意,每个测试命令都出现在单独的一行上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while echo $var1</span><br><span class="line">      [ $var1 -ge 0 ]</span><br><span class="line">do</span><br><span class="line">    echo &quot;This is inside the loop&quot;</span><br><span class="line">    var1=$[ $var1 - 1 ]</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、UNTIL命令"><a href="#五、UNTIL命令" class="headerlink" title="五、UNTIL命令"></a><strong><em>五、UNTIL命令</em></strong></h3><p>until命令和while命令工作的方式完全相反。until命令要求你指定一个通常返回非零退出状态码的测试命令。只有测试命令的退出状态码不为0，bash shell才会执行循环中列出的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">until test command</span><br><span class="line">do</span><br><span class="line">    other commands </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h3 id="六、控制循环"><a href="#六、控制循环" class="headerlink" title="六、控制循环"></a><strong><em>六、控制循环</em></strong></h3><ul>
+<li><strong>break命令</strong></li>
+</ul>
+<ol>
+<li>跳出单个循环:在shell执行break命令时，它会尝试跳出当前正在执行的循环</li>
+<li>跳出内部循环:在处理多个循环时，break命令会自动终止你所在的最内层的循环</li>
+<li>跳出外部循环:有时你在内部循环，但需要停止外部循环。break命令接受单个命令行参数值:<br><code>break n</code> 其中n指定了要跳出的循环层级。默认情况下，n为1，表明跳出的是当前的循环。如果你将n设为2，break命令就会停止下一级的外部循环</li>
+</ol>
+<ul>
+<li><strong>continue命令</strong></li>
+</ul>
+<ol>
+<li>continue命令可以提前中止某次循环中的命令，但并不会完全终止整个循环。可以在循环 内部设置shell不执行命令的条件</li>
+<li>和break命令一样，continue命令也允许通过命令行参数指定要继续执行哪一级循环: continue n<br>其中n定义了要继续的循环层级。</li>
+</ol>
+<ul>
+<li><strong>处理循环输出</strong><br>对循环的输出使用管道或进行重定向可以通过在done命令之后添加一个处理命令来实现(将循环内的标准输出重定向到指定文件；或通过管道将输出进行处理）<br>要想把数据从文件中送入while命令，只需在while命令尾部使用一个重定向符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">input=&quot;users.csv&quot;</span><br><span class="line">while IFS=&apos;,&apos; read -r userid name</span><br><span class="line">do</span><br><span class="line">  echo &quot;adding $userid&quot;</span><br><span class="line">  useradd -c &quot;$name&quot; -m $userid</span><br><span class="line">done &lt; &quot;$input&quot;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>$input变量指向数据文件，并且该变量被作为while命令的重定向数据,作为输入</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/29/Linux命令/" rel="next" title="Linux命令">
+                <i class="fa fa-chevron-left"></i> Linux命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/04/Linux脚本编程2/" rel="prev" title="Linux脚本编程2">
+                Linux脚本编程2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/头像.png" alt="Qionglin Zhou">
+            
+              <p class="site-author-name" itemprop="name">Qionglin Zhou</p>
+              <p class="site-description motion-element" itemprop="description">Let's do amazing!!!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零碎知识点"><span class="nav-number">2.</span> <span class="nav-text">零碎知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构化命令"><span class="nav-number">3.</span> <span class="nav-text">结构化命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、IF-THEN"><span class="nav-number">3.1.</span> <span class="nav-text">一、IF THEN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总的If-then结构"><span class="nav-number">3.1.1.</span> <span class="nav-text">总的If then结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#If-和-then-之间的判断语句"><span class="nav-number">3.1.2.</span> <span class="nav-text">If 和 then 之间的判断语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、test命令"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">一、test命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-数值比较"><span class="nav-number">3.1.2.1.1.</span> <span class="nav-text">1.数值比较</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-字符串比较"><span class="nav-number">3.1.2.1.2.</span> <span class="nav-text">2.字符串比较</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-文件比较"><span class="nav-number">3.1.2.1.3.</span> <span class="nav-text">3.文件比较</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、复合条件测试"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">二、复合条件测试</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、使用双括号"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">三、使用双括号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四、使用双方括号"><span class="nav-number">3.1.2.4.</span> <span class="nav-text">四、使用双方括号</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、CASE语句"><span class="nav-number">3.2.</span> <span class="nav-text">二、CASE语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、FOR循环"><span class="nav-number">3.3.</span> <span class="nav-text">三、FOR循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-读取列表中的值"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. 读取列表中的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-读取列表中的复杂值"><span class="nav-number">3.3.2.</span> <span class="nav-text">2. 读取列表中的复杂值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-从变量读取列表"><span class="nav-number">3.3.3.</span> <span class="nav-text">3. 从变量读取列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-从命令读取值"><span class="nav-number">3.3.4.</span> <span class="nav-text">4. 从命令读取值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-字段分隔符IFS"><span class="nav-number">3.3.5.</span> <span class="nav-text">5. 字段分隔符IFS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-用通配符读取目录"><span class="nav-number">3.3.6.</span> <span class="nav-text">6. 用通配符读取目录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、WHILE命令"><span class="nav-number">3.4.</span> <span class="nav-text">四、WHILE命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-使用多个测试命令"><span class="nav-number">3.4.1.</span> <span class="nav-text">1. 使用多个测试命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、UNTIL命令"><span class="nav-number">3.5.</span> <span class="nav-text">五、UNTIL命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、控制循环"><span class="nav-number">3.6.</span> <span class="nav-text">六、控制循环</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qionglin Zhou</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

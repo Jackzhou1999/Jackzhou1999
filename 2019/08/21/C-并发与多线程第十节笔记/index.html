@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++,并发与多线程,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="知识点:std::async,future,package_task,promisestd::async、std::future创建后台任务并返回值 解析:希望线程返回一个结果std::async是一个函数模版,用来创建一个异步任务,启动异步任务后(创建一个线程并执行线程入口函数),返回值是一个std::future对象,std::future是类模版线程的返回结果通过future对象的get()">
+<meta name="keywords" content="C++,并发与多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++并发与多线程第十节笔记">
+<meta property="og:url" content="http://yoursite.com/2019/08/21/C-并发与多线程第十节笔记/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="知识点:std::async,future,package_task,promisestd::async、std::future创建后台任务并返回值 解析:希望线程返回一个结果std::async是一个函数模版,用来创建一个异步任务,启动异步任务后(创建一个线程并执行线程入口函数),返回值是一个std::future对象,std::future是类模版线程的返回结果通过future对象的get()">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-16T15:57:32.860Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++并发与多线程第十节笔记">
+<meta name="twitter:description" content="知识点:std::async,future,package_task,promisestd::async、std::future创建后台任务并返回值 解析:希望线程返回一个结果std::async是一个函数模版,用来创建一个异步任务,启动异步任务后(创建一个线程并执行线程入口函数),返回值是一个std::future对象,std::future是类模版线程的返回结果通过future对象的get()">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/21/C-并发与多线程第十节笔记/">
+
+
+
+
+
+  <title>C++并发与多线程第十节笔记 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/C-并发与多线程第十节笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++并发与多线程第十节笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T09:13:12+08:00">
+                2019-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="知识点-std-async-future-package-task-promise"><a href="#知识点-std-async-future-package-task-promise" class="headerlink" title="知识点:std::async,future,package_task,promise"></a>知识点:std::async,future,package_task,promise</h2><h3 id="std-async、std-future创建后台任务并返回值"><a href="#std-async、std-future创建后台任务并返回值" class="headerlink" title="std::async、std::future创建后台任务并返回值"></a>std::async、std::future创建后台任务并返回值</h3><ol>
+<li>解析:<br>希望线程返回一个结果<br>std::async是一个函数模版,用来创建一个异步任务,启动异步任务后(创建一个线程并执行线程入口函数),返回值是一个std::future对象,std::future是类模版<br>线程的返回结果通过future对象的get()成员函数取得<br>std::future提供一种访问异步操作结果的机制,在线程执行完毕后可获得结果<br>注意:future对象不可拷贝,只能移动move拷贝</li>
+<li>代码:<br>future<int> result = async(A, var);马上创建线程并执行<br>result.get():卡在该代码处等待线程执行完毕,并获取返回值,⚠️只能调用一次<br>result.wait():等待线程返回,本身并不返回结果<br>如果既不get()也不wait()主线程会在主线程return语句执行前等待子线程执行完毕后主线程才完毕<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Test myobj;</span><br><span class="line">future&lt;int&gt; result = async(&amp;Test::A,ref(myobj),var);</span><br></pre></td></tr></table></figure>
+
+</int></li>
+</ol>
+<p>线程入口函数为类的成员函数,第三个参数是成员函数的参数</p>
+<ol start="3">
+<li>std::async的参数<br>一.<code>std::launch::deffer:future&lt;int&gt; result = async(launch::deferred,A, var)</code>:表示线程入口函数延迟到调用get()或wait()函数才执行而且并不创建子线程只是在主线程中执行线程入口函数,如果不调用get(),线程根本不创建<br>二.<code>std::launch::async:future&lt;int&gt; result = async(launch::async,A, var)</code>:默认参数,创建子线程并开始运行</li>
+</ol>
+<h3 id="std-packaged-task"><a href="#std-packaged-task" class="headerlink" title="std::packaged_task"></a>std::packaged_task</h3><p>希望打包任务,包装可调用对象<br>是一个类模版,模版参数是各种可调用对象<br><code>packaged_task&lt;int(int)&gt; mypt(A);</code>其中int A(int a)<br>packaged_task对象可直接调用相当于函数调用,如下:<br><code>mypt(9)</code><br>然后通过future对象获取返回值:<br><code>future&lt;int&gt; result=mypt.get_future();</code><br><code>cout&lt;&lt;result.get();</code><br>代码实例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    list&lt;packaged_task&lt;int(int)&gt; &gt; task_list;</span><br><span class="line">    packaged_task&lt;int(int)&gt; mypt(A);</span><br><span class="line">    task_list.push_back(move(mypt));</span><br><span class="line">    packaged_task&lt;int(int)&gt; mypt2;</span><br><span class="line">    auto iter = task_list.begin();</span><br><span class="line">    mypt2 = move(*iter);</span><br><span class="line">    task_list.erase(iter);</span><br><span class="line">    int a=9;</span><br><span class="line">    thread th1(ref(mypt2),a);</span><br><span class="line">    th1.join();</span><br><span class="line">    future&lt;int&gt; result=mypt2.get_future();</span><br><span class="line">    cout&lt;&lt;result.get();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="std-promise"><a href="#std-promise" class="headerlink" title="std::promise"></a>std::promise</h3><p>类模版,在某个线程中赋值,在另一个线程中获取结果<br>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void B(promise&lt;int&gt;&amp;promi,int var)&#123;</span><br><span class="line">    cout&lt;&lt;&quot;开始执行A() &quot;&lt;&lt;this_thread::get_id()&lt;&lt;endl;</span><br><span class="line">    int a = ++var;</span><br><span class="line">    chrono::milliseconds dura(5000);</span><br><span class="line">    this_thread::sleep_for(dura);</span><br><span class="line">    promi.set_value(a);//注意</span><br><span class="line">    cout&lt;&lt;&quot;结束执行A()&quot;&lt;&lt;endl;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line">void C(future&lt;int&gt;&amp; a)&#123;</span><br><span class="line">    cout&lt;&lt;&quot;In thread C&quot;&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;a.get()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc,const char *args[])&#123;</span><br><span class="line">    cout&lt;&lt;this_thread::get_id()&lt;&lt;endl;</span><br><span class="line">    promise&lt;int&gt; test;</span><br><span class="line">    thread th1(B,ref(test),249);</span><br><span class="line">    th1.join();</span><br><span class="line">    future&lt;int&gt; ful = test.get_future();</span><br><span class="line">    thread use_ful(C,ref(ful));</span><br><span class="line">    use_ful.join();</span><br><span class="line">    //cout&lt;&lt;ful.get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/并发与多线程/" rel="tag"># 并发与多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/15/并发与多进程之unique-lock/" rel="next" title="并发与多进程之unique_lock">
+                <i class="fa fa-chevron-left"></i> 并发与多进程之unique_lock
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/26/C-继承/" rel="prev" title="C++继承">
+                C++继承 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/头像.png" alt="Qionglin Zhou">
+            
+              <p class="site-author-name" itemprop="name">Qionglin Zhou</p>
+              <p class="site-description motion-element" itemprop="description">Let's do amazing!!!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点-std-async-future-package-task-promise"><span class="nav-number">1.</span> <span class="nav-text">知识点:std::async,future,package_task,promise</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#std-async、std-future创建后台任务并返回值"><span class="nav-number">1.1.</span> <span class="nav-text">std::async、std::future创建后台任务并返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-packaged-task"><span class="nav-number">1.2.</span> <span class="nav-text">std::packaged_task</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-promise"><span class="nav-number">1.3.</span> <span class="nav-text">std::promise</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qionglin Zhou</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
