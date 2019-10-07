@@ -272,190 +272,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/sed和gawk/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/07/sed和gawk/" itemprop="url">sed和gawk</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T14:31:41+08:00">
-                2019-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="sed-编辑器"><a href="#sed-编辑器" class="headerlink" title="sed 编辑器"></a><strong><em>sed 编辑器</em></strong></h2><p>sed编辑器被称作流编辑器,sed编辑器可以根据命令来处理数据流中的数据，这些命令要么从命令行中输入，要么存储在一个命令文本文件中<br>sed编辑器会执行下列操作:<br>(1) 一次从输入中读取一行数据。<br>(2) 根据所提供的编辑器命令匹配数据。<br>(3) 按照命令修改流中的数据。<br>(4) 将新的数据输出到STDOUT。<br>sed命令的格式如下:<br><code>sed options script file</code><br><img src="/2019/08/07/sed和gawk/sed%E5%91%BD%E4%BB%A4%E9%80%89%E9%A1%B9.png" alt><br>sed编辑器并不会修改文本文件的数据。它只会将修改后的数据发送到STDOUT</p>
-<p>###1. 在命令行使用多个编辑器命令<br>使用-e选项<br><code>sed -e &#39;s/brown/green/; s/dog/cat/&#39; data1.txt</code><br>⚠️:命令之间必须用分号隔开，并且在命令末尾和分号之间不能有空格。</p>
-<p>###2. 从文件中读取编辑器命令<br>用-f选项来指定文件来读取命令<br>不用在每条命令后面放一个分号。sed编辑器知道每行都是一条单独的命令</p>
-<p>###3. 命令</p>
-<p>####一、s命令<br>功能：替换功能,但默认情况下它只替换每行中出现的第一处<br>格式：<code>s/string/string/</code><br>1.替换标记：让替换命令能够替换一行中不同地方出现的文本<br>格式：<code>s/pattern/replacement/flags</code><br>有4种可用的替换标记flags:</p>
-<ul>
-<li>数字，表明新文本将替换第几处模式匹配的地方; </li>
-<li>g，表明新文本将会替换所有匹配的文本;</li>
-<li>p，配合-n选项一起使用，只输出被替换命令修改过的行</li>
-<li>w file，将替换的结果写到文件中，只将哪些可以匹配的被处理过的行写入文件，其显示和p配合-n选项一样</li>
-</ul>
-<p>2.字符串分隔符<br>不一定一定要使用s/string_a/string_b/，也可以s!string_a!string_b!</p>
-<p>####二、d命令<br>功能:删除行<br>1.删除特定行<br>sed ‘nd’ filename<br>sed ‘n1,n2d’ filename<br>sed ‘n1,$d’ filename<br>sed ‘/pattern/d’ filename</p>
-<p>####三、i命令 and a命令<br>插入(insert)命令(i)会在指定行前增加一个新行<br>附加(append)命令(a)会在指定行后增加一个新行<br>格式：</p>
-<figure class="highlight plain"><figcaption><span>'[address]command\</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new line&apos; filename</span><br></pre></td></tr></table></figure>
-
-<p>⚠️:必须在sed命令中单独指定新行<br>such as </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;ni\</span><br><span class="line">new line&apos; filename</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;$i\</span><br><span class="line">new line1\</span><br><span class="line">new line2&apos; filename</span><br></pre></td></tr></table></figure>
-
-<p>####四、c命令<br>修改(change)命令允许修改数据流中整行文本的内容<br>格式和i and s命令一样<br>such as </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;/pattern/c\</span><br><span class="line">the change line&apos; filenname</span><br></pre></td></tr></table></figure>
-
-<p>#####五、y命令<br>转换(transform)命令(y)是唯一可以处理单个字符的sed编辑器命令<br>格式:<br><code>[address]y/inchars/outchars/</code><br>换命令会对inchars和outchars值进行一对一的映射。inchars中的第一个字符会被转<br>换为outchars中的第一个字符，第二个字符会被转换成outchars中的第二个字符。这个映射过程会一直持续到处理完指定字符。<br>⚠️ ：<br>1.inchar和outchar必须等长<br>2.转换命令是一个全局命令，也就是说，它会文本行中找到的所有指定字符自动进行转换，而不会考虑它们出现的位置。</p>
-<p>####六、p and = and l命令</p>
-<ul>
-<li>p命令用来打印文本行;</li>
-<li>等号(=)命令用来打印行号; </li>
-<li>l(小写的L)命令用来列出行。</li>
-</ul>
-<ol>
-<li>p命令<br>例子:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sed -n &apos;/3/&#123;</span><br><span class="line">&gt; p</span><br><span class="line">&gt; s/line/test/p</span><br><span class="line">&gt; &#125;&apos; data6.txt</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>2.=命令<br>等号命令会打印行在数据流中的当前行号。行号由数据流中的换行符决定<br>例子:<br>让sed编辑器只显示包含匹配文本模式的行的行号和文本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sed -n &apos;/pattern/&#123; </span><br><span class="line">&gt; =</span><br><span class="line">&gt; p</span><br><span class="line">&gt; &#125;&apos; data6.txt</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>l命令<br>打印特殊字符<br>####七、w命令<br>用来向文件写入行<br>格式:<br><code>[address]w filename</code><br>####八、r命令<br>功能:将一个独立文件中的数据插入到数据流中,sed编辑器会将文件中的文本插入到指定地址后。<br>格式:<br><code>[address]r filename</code><br>地址区间，只能指定单独一个行号或文本模式地址<br>例子：利用另一个文件中的数据来替换文件中的占位字符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;/LIST/&#123;</span><br><span class="line">r data11.txt</span><br><span class="line">d</span><br><span class="line">&#125;&apos; notice.std</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>解析：data11内容替换notice.std中的list占位符,并删除占位符</p>
-<p>####九、q命令<br>退出{}</p>
-<p>###5. 使用地址<br>如果只想将命令作用于特定行或某些行，则必须用行寻址<br>两种形式的行寻址</p>
-<p>####1.以数字形式表示行区间<br>sed ‘n1,n2s/string1/string2/‘ filename<br>sed ‘ns/string1/string2/‘ filename(其中n为数字)<br>sed ‘n,$/string1/string2/‘ filename</p>
-<p>####2.用文本模式来过滤出行<br>格式:/pattren/command<br>such as <code>sed &#39;/pattern_string/s/string1/string2/&#39; filename</code><br>必须用正斜线将要指定的pattern封起来。sed编辑器会将该命令作用到包含指定文本模式的行上</p>
-<p>####3.两种方法组合<br>例子:<code>/pattern/,$!d</code></p>
-<p>####4.命令组合<br>格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">address &#123;</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    command3 </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>such as:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sed &apos;2&#123;</span><br><span class="line">&gt; s/fox/elephant/</span><br><span class="line">&gt; s/dog/cat/</span><br><span class="line">&gt; &#125;&apos; data1.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="gawk-程序"><a href="#gawk-程序" class="headerlink" title="gawk 程序"></a><strong><em>gawk 程序</em></strong></h2><p> 定义变量来保存数据;<br> 使用算术和字符串操作符来处理数据;<br> 使用结构化编程概念(比如if-then语句和循环)来为数据处理增加处理逻辑;<br> 通过提取数据文件中的数据元素，将其重新排列或格式化，生成格式化报告。<br>gawk程序的基本格式如下:<br><code>gawk options program file</code></p>
-<p>###1. 从命令行读取程序脚本<br>gawk程序脚本用一对花括号来定义。你必须将脚本命令放到两个花括号({})中。<br>由于gawk命令行假定脚本是单个文本字符串，你还必须将脚本放到单引号中。<br>like this <code>gawk &#39;{print &quot;Hello World!&quot;}&#39;</code><br>gawk程序会从STDIN接收数据,gawk程序会针对数据流中的每行文本执行程序脚本<br>要终止这个gawk程序,Ctrl+D组合键会在bash中产生一个EOF字符。这个组合键能够终止该gawk程序并返回到命令行界面提示符下</p>
-<p>###2. 使用数据字段变量<br>gawk会自动给一行中的每个数据元素分配一个变量,每个数据字段都是通过字段分隔符划分的。gawk在读取一行文本时，会用预定 义的字段分隔符划分每个数据字段。gawk中默认的字段分隔符是任意的空白字符(例如空格或制表符)</p>
-<ul>
-<li>$0代表整个文本行;</li>
-<li>$1代表文本行中的第1个数据字段;</li>
-<li>$2代表文本行中的第2个数据字段;</li>
-<li>$n代表文本行中的第n个数据字段。<br>注意使用-F来指定IFS<br>###3. 在程序脚本中使用多个命令<br>在命令行上的程序脚本中使用多条命令，只要在命令之间放个分号即可<br>###4. 从文件中读取程序<br>使用-f选项<br>可以在程序文件中指定多条命令。要这么做的话，只要一条命令放一行即可<br>可以在文件中定义了一个叫作FS的特殊变量。这是定义字段分隔符的另一种方法，这样你就不用依靠脚本用户在命令行选项中定义字段分隔符了<br>###5. 在处理数据前运行脚本<br>默认情况下，gawk会从输入中读取一行文本，然后针对该行的数据执行程序脚本。有时可能需要在处理数据前运行脚本，比如为报告创建标题。BEGIN 关键字就是用来做这个的。它会强制gawk在读取数据前执行BEGIN关键字后指定的程序脚本<br><code>gawk &#39;BEGIN {print &quot;The data3 File Contents:&quot;} {print $0}&#39; data3.txt</code><br>###6. 在处理数据后运行脚本<br>END关键字允许你指定一个程序脚本，gawk会在读完数据后执行它<br><code>gawk &#39;BEGIN {print &quot;The data3 File Contents:&quot;}{print $0} END{print &quot;End of File&quot;}&#39; data3.txt</code></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/git学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1930,6 +1746,148 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/Linux知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/29/Linux知识点/" itemprop="url">Linux知识点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T15:55:41+08:00">
+                2019-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/categories/" itemprop="url" rel="index">
+                    <span itemprop="name">categories</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.Linux经常采用隐藏文件来保存配置信息,在Linux上,隐藏文件通常是文件名以点号开始的文件。<br>2.标准通配符:问号(?)代表一个字符,星号(*)代表零个或多个字符,[]中括号表示一个字符位置并给出多个可能的选择,感叹号(!)将不需要的内容排除在外<br>3.符号链接&amp;&amp;硬链接:符号链接就是一个实实在在的文件,与所指向的文件是两个完全不同的文件；硬链接会创建独立的虚拟文件，其中包含了原始文件的信息及位置。但是它们从根本上而言不是同一个文件。引用硬链接文件等同于引用了源文件。<br>4.将进程列表置入后台模式:在后台模式中运行命令可以在处理命令的同时让出CLI，以供他用,要想将命令置入后台模式，可以在命令末尾加上字符&amp;。在CLI中运用子shell的创造性方法之一就是将进程列表置入后台模式。你既可以在子shell中 进行繁重的处理工作，同时也不会让子shell的I/O受制于终端。<br>5.协程可以同时做两件事。它在后台生成一个子shell，并在这个子shell中执行命令。<br>6.外部命令，有时候也被称为文件系统命令，是存在于bash shell之外的程序。它们并不是shell 程序的一部分。外部命令程序通常位于/bin、/usr/bin、/sbin或/usr/sbin中.当外部命令执行时,会创建出一个子进程。这种操作被称为衍生(forking),发送信号(signaling)使得进程间可以通过信号进行通信<br>7.内建命令和外部命令的区别在于前者不需要使用子进程来执行。它们已经和shell编译成了一 体，作为shell工具的组成部分存在。不需要借助外部程序文件来运行。<br>8.命令历史记录被保存在隐藏文件.bash_history中，它位于用户的主目录中。这里要注意的是， bash命令的历史记录是先存放在内存中，当shell退出时才被写入到历史文件中。<br>可以在退出shell会话之前强制将命令历史记录写入.bash_history文件。要实现强制写入，需 要使用history命令的-a选项<br>9.子shell无法使用export命令改变父shell中全局环境变量的值<br>10.环境变量持久化:对全局环境变量来说(Linux系统中所有用户都需要使用的变量),可能更倾向于将新的或修改过的变量设置放在/etc/profile文件中，但这不是什么好主意。如果你升级了所用的发行版,这个文件也会跟着更新，那你所有定制过的变量设置可就都没有了。最好是在/etc/profile.d目录中创建一个以.sh结尾的文件。把所有新的或修改过的全局环境变 量设置放在这个文件中。<br>11.BASH_ENV环境变量:当shell启动一个非交互式shell进程时,它会检查这个环境变量来查看要执行的启动文件,如果有指定的文件，shell会执行该文件里的命令，这通常包括shell脚本变量设置。<br>12.用户权限是通过创建用户时分配的用户ID(User ID，通常缩写为UID)来跟踪的。UID是数值，每个用户都有唯一的UID，但在登录系统时用的不是UID，而是登录名。登录名是用户用来登录系统的最长八字符的字符串(字符可以是数字或字母)，同时会关联一个对应的密码。<br>13.Linux系统会为各种各样的功能创建不同的用户账户，而这些账户并不是真的用户。这些账户叫作系统账户，是系统上运行的各种服务进程访问资源用的特殊账户。所有运行在后台的服务都需要用一个系统用户账户登录到Linux系统上。<br>14.当一个用户在/etc/passwd文件中指定某个组作为默认组时,用户账户不会作为该组成员再出现在/etc/group文件中。<br>15.umask值只是个掩码,它会屏蔽掉不想授予该安全级别的权限要把umask值从对象的全权限值中减掉。对文件来说，全权限的值是666(所有用户都有读和写的权限);而对目录来说，则是777(所有用户都有读、写、执行权限)。所以文件一开始的权限是666，减去umask值022之后，剩下的文件权限就成了644。<br>16.只有root用户能够改变文件的属主。任何属主都可以改变文件的属组，但前提是属主必须是原属组和目标属组的成员<br>17.共享文件:<br><img src="/2019/07/29/Linux知识点/suid.jpg" alt><br>SGID位对文件共享非常重要,启用SGID位后,你可以强制在一个共享目录下创建的新文件<br>chomd suid:4 + sgid:2 +粘着位:1 =7<br>记得要umask 002，默认022组成员没有w权限<br>18.日志文件系统不再使用之前先将数据直接写入存储设备再更新索引节点表的做法，而是先将文件的更改写入到临时文件(称作日志，journal)中。在数据成功写到存储设备和索引节点表之后，再删除对应的日志条目<br><img src="/2019/07/29/Linux知识点/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F1.jpg" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1982,7 +1940,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
