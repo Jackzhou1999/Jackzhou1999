@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[微机原理第三章数据传输指令]]></title>
+    <title><![CDATA[微机原理第三章之数据传输指令]]></title>
     <url>%2F2019%2F10%2F14%2F%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%AC%E4%B8%89%E7%AB%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%8C%87%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>微机原理</category>
+      </categories>
+      <tags>
+        <tag>微机原理</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[关于hexo博客换主题踩坑记录]]></title>
