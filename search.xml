@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Scrapy爬虫框架学习笔记]]></title>
+    <url>%2F2020%2F02%2F23%2F%E7%88%AC%E8%99%AB%2F</url>
+    <content type="text"><![CDATA[环境配置 安装虚拟环境,进入 pip install scrapy pip install mysqlclient 在命令行中启动环境方法work envname 创建项目和爬虫 scrapy startproject projectname注意命令4在哪里执行project在那创建 cd projectname scrapy genspyder [爬虫名] 爬虫域名⚠️爬虫名不能和项目名相同 项目目录结构 item.py:用来存放爬虫爬取下来数据的模型 middlewares.py:用来存放各种中间件的文件 pipelines.py:用来将items的模型存储到本地磁盘中 settings.py:爬虫配置信息 scrapy.cfy:项目配置文件 爬虫笔记xpath学习url: https://cuiqingcai.com/5545.html]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[MacOS中Python虚拟环境搭建]]></title>
+    <url>%2F2020%2F02%2F23%2F%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[pip install virtualenvwrapper vim ~/.bash_profile 文件内编辑12345export WORKON_HOME=/Users/zhouqionglin/Desktop/workspace/python_envexport VIRTUALENVWRAPPER_PYTHON= /Users/zhouqionglin/anaconda3/bin/python3source /Users/zhouqionglin/anaconda3/bin/virtualenvwrapper.shPATH=&quot;/Library/Frameworks/python.framework/Versions/3.6/bin:$&#123;PATH&#125;&quot;export PATH 其中:WORKON_HOME为环境目录,VIRTUALENVWRAPPER_PYTHON为python安装位置,sh文件位置查询方法为运行pip3 uninstall virtualenvwrapper后会显示sh文件路径,但是命令会询问是否删除,千万不要删除 source ~/.bash_profile mkvirtualenv envname 使用 workon envname 退出 deactivate envnama 删除 rmvirtualenv envname 查询 workon]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[机器学习课程笔记]]></title>
+    <url>%2F2020%2F02%2F18%2F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B01%2F</url>
+    <content type="text"><![CDATA[机器学习的定义从数据中积累经验以提升某种性能量度 机器学习问题应该要有潜在规律,有数据,有一定难度 机器学习的应用 机器对话 计算机视觉 语义分割 实例分割 聚类 离线学习在线工作 机器学习的组成部分输入输出你所定义的输入输出之间的关系,hypothesis(假设)定义性能测度,目标函数优化目标函数 课后作业 题目2、分类器评价指标: AUC 真实情况 预测结果 正例 反例 正例 TP(真正例) FN(假反例) 反例 FP(假正例) TN(真反例) ROC曲线绘制方法:确定阀值,得到点(FPR,TPR),取多个阀值,得到曲线 AUC:ROC曲线下的面积 机器学习与其他领域的关系一、机器学习与数据挖掘数据挖掘:强调从数据库中挖掘有用的信息 机器学习:强调学习过程,是实现数据挖掘的一种途径 二、机器学习与人工智能机器学习是人工智能的实现途径 三、机器学习与统计统计是机器学习的一种手段 机器学习=寻找一个函数,输入到输出的映射 机器学习任务 三大任务 回归(输入连续,输出连续,标量) 预测 分类 二分类 多分类 多分类可以转换为二分类问题 结构学习(高于分类)输出存在潜在的结构 语音识别:结构就是语音下采样点,下采样点不可互换位置 机器翻译 人脸检测:给出目标的位置和目标是谁,结构就是框 方法 线性模型 非线性模型 深度学习 svm,决策树,k-nn Scenario(情境) 监督学习 数据和标签一一对应 回归 分类 无监督学习 聚类,将有共同性质的东西聚到一起 弱监督学习学习过程中有标记样本,也有大量无标记样本 迁移学习 多标记学习,多实例学习,多实例多标签学习 一个实例输出多个标记 多个实例看成一个数据包,学习出一个标签 增强学习:实时,根据反馈做出改变,强调回报函数 感知器数据集的线性可分性性: 存在一个超平面 最终目的:每一个特征有一个权重,学习权重 Pocket 算法:针对存在噪声数据集无法线性可分情况 回归问题一、线性回归1. 高斯分布假设误差服从高斯分布,所以y也服从高斯分布 2. 最大似然估计和最小二乘法本质 3. θ的解析式求解过程 将M个N维样本组成矩阵X;X的每一行对应一个样本,共M个样本X的每一列对应样本的一个维度,共N维,还有额外的一维常数项,全为1. 目标函数 4. 线性回归的复杂度惩罚因子 将目标函数增加平方和损失: 将目标函数增加绝对值损失: 5. 从该问题理解机器学习中的数据使用超参数λ无法训练得到,只能通过手动调整,在用验证数据取验证正确率,取正确率高的所对应的超参数λ,通过交叉验证来充分使用数据 6. 扩展到奇异值分解SVD若A为非奇异矩阵,则线性方程组Ax=b的解为: 伪逆: 二、Logistic回归分类问题的首选算法 二项逻辑回归模型: 逻辑回归是对数线性模型的证明逻辑回归的本质是认为机率是一个线性模型事件的机率:事件发生的概率/事件不发生的概率 三、工具 梯度下降法 随机梯度下降 mini-batch梯度下降 极大似然估计]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[记录win10安装tensorflow-gpu]]></title>
+    <url>%2F2020%2F01%2F09%2Ftf2%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[win10 安装tensorflow-gpu对应版本CUDA 10.0 + cuDNN for cuda10.0 + python3.6.5 方法一: 使用pip安装步骤复杂,但是下载python的各种包和库的速度快 安装CUDA Tooklkit10.0 网址: https://developer.nvidia.com/cuda-toolkit-archive 下载cuDNN v7.6.5(登陆才能下载) 网址: https://developer.nvidia.com/rdp/cudnn-download 我的密码: ipad原始密码(z*l) 解压cuDNN包,将里面的内容(bin,include,lib),一一对应复制到cuda的文件夹中的(bin,include,lib) 我的cuda文件路径: C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0 安装python3.6.5,进行配置 网址: http://python.org/downloads/ 下载python3.6.5 安装步骤中注意勾选的事项 勾选Customize installation 勾选Add python 3.6 to path 更新pip, 指令:python -m pip install --upgrade pip pip 换国内源(快速下载tf2) 步骤: 1. 在C:\User\2053[我的win用户名]\目录下创建一个pip目录 2. 在pip目录内创建一个名为pip.ini文件,文件内容如下: [global] index-url = https://pypi.tuna.tsinghua.edu.cn/simple 在任意位置创建文件夹(该文件夹用于存储创建的环境),命名任意如(tf2dir),win+R快捷键启动cmd,cd到创建的文件夹,执行以下指令: python -m venv [envname] cd [envname]\Scripts activate.bat pip3 install tensorflow-gpu==2.0.0 pycharm的设置 File–&gt;settings–&gt;project:projectname–&gt;project interpreter 完成 方法二: 使用anaconda安装不需要手动下载cuda和cudnn,但是即使换源anaconda的速度也慢 anaconda换国内源 博客链接: https://blog.csdn.net/observador/article/details/83618540 在anaconda自带的命令行界面输入以下指令: 123conda create -n envname python=3.6.5conda activate envnameconda install -n envname --channel https://mirrors.ustc.edu.cn/anaconda/pkgs/main/ tensorflow-gpu 完成]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[微机原理第三章之数据传输指令]]></title>
     <url>%2F2019%2F10%2F14%2F%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E7%AC%AC%E4%B8%89%E7%AB%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%8C%87%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[]]></content>

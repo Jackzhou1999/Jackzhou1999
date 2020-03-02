@@ -304,6 +304,718 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/脚本实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/05/脚本实例/" itemprop="url">脚本实例</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T11:03:15+08:00">
+                2019-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="案例一、"><a href="#案例一、" class="headerlink" title="案例一、"></a>案例一、</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">    # read file and create INSERT statements for MySQL</span><br><span class="line">    outfile=&apos;members.sql&apos;</span><br><span class="line">    IFS=&apos;,&apos;</span><br><span class="line">    while read lname fname address city state zip</span><br><span class="line">    do</span><br><span class="line">       cat &gt;&gt; $outfile &lt;&lt; EOF</span><br><span class="line">INSERT INTO members (lname,fname,address,city,state,zip) VALUES (&apos;$lname&apos;, &apos;$fname&apos;, &apos;$address&apos;, &apos;$city&apos;, &apos;$state&apos;, &apos;$zip&apos;);</span><br><span class="line">EOF</span><br><span class="line">done &lt; $&#123;1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>理解知识点:</p>
+<ol>
+<li>cat &gt; $outfile 命令用于连接文件并打印到标准输出设备上(打开outfile文件并将标准输入重定向到outfile文件中）</li>
+<li>&lt;&lt;EOF 内容 EOF:将内容作为标准输出</li>
+</ol>
+<h2 id="案例二、"><a href="#案例二、" class="headerlink" title="案例二、"></a>案例二、</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#/bin/bash</span><br><span class="line"></span><br><span class="line">count=0</span><br><span class="line">echo $PATH</span><br><span class="line">for i in $(echo $PATH | sed &apos;s/:/ /g&apos;)</span><br><span class="line">do</span><br><span class="line">    count=$[ $count + 1 ]</span><br><span class="line">    echo $count &quot;In the directory:&quot; $i</span><br><span class="line">    files=$(ls $i)</span><br><span class="line">    count2=0</span><br><span class="line">    cd $i</span><br><span class="line">    for j in $files</span><br><span class="line">        do</span><br><span class="line"></span><br><span class="line">            if [ -f &quot;$j&quot; ];then</span><br><span class="line">                #echo &quot;-------&quot; $j</span><br><span class="line">                count2=$(($count2 + 1))</span><br><span class="line">            fi</span><br><span class="line">        done</span><br><span class="line">        echo &quot;there are $count2 file in the $i&quot;</span><br><span class="line">    cd -</span><br><span class="line">done</span><br><span class="line">echo $count</span><br></pre></td></tr></table></figure>
+
+<p>统计文件个数</p>
+<h2 id="案例三、"><a href="#案例三、" class="headerlink" title="案例三、"></a>案例三、</h2><p>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>“count.sh” 23L, 392C                                                                                                                        1,1          全部</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/将脚本的输出重定向到Linux系统的不同位置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/将脚本的输出重定向到Linux系统的不同位置/" itemprop="url">将脚本的输出重定向到Linux系统的不同位置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-04T15:49:47+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>标准文件描述符<br>Linux用文件描述符(file descriptor)来标识每个文件对象。文件描述符是一个非负整数，可以唯一标识会话中打开的文件。<br><img src="/2019/08/04/将脚本的输出重定向到Linux系统的不同位置/Linux%E7%9A%84%E6%A0%87%E5%87%86%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6.png" alt></li>
+<li>重定向错误</li>
+</ol>
+<ul>
+<li>只重定向错误<code>2&gt;</code></li>
+<li>重定向错误和数据<code>&amp;&gt;</code></li>
+</ul>
+<ol start="3">
+<li>在脚本中重定向输出</li>
+</ol>
+<ul>
+<li>临时重定向行输出</li>
+<li>永久重定向脚本中的所有命令</li>
+</ul>
+<p>1.临时重定向<br><code>echo &quot;This is an error&quot; &gt;&amp;2</code><br>2.永久重定向<br>用exec命令告诉shell在脚本执行期间重定向某个特定文件描述符<br><code>exec 1&gt;filename</code></p>
+<ol start="4">
+<li>在脚本中重定向输入<br>exec命令允许你将STDIN重定向到Linux系统上的文件中:<br><code>exec 0&lt; testfile</code><br>将STDIN重定向到文件后， 当read命令试图从STDIN读入数据时，它会到文件去取数据，而不是键盘</li>
+<li>创建自己的重定向<br>在shell 中最多可以有9个打开的文件描述符。其他6个从3~8的文件描述符均可用作输入或输出重定向<br><code>exec 3&gt;test13out</code>+<code>&gt;&amp;3</code><br>创建新文件来将输出追加到现有文件中</li>
+<li>永久重定向恢复<br>恢复已重定向的文件描述符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exec 3&gt;&amp;1</span><br><span class="line">exec 1&gt;test14out</span><br><span class="line">exec 1&gt;&amp;3</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>⚠️背记exec的第二个参数要加&amp;,第一个不用加</p>
+<ol start="7">
+<li>将文件描述符同时用于输入和输出<br>可以打开单个文件描述符来作为输入和输出。可以用同一个文件描述符对同一个文件进行读写<br><code>exec 3&lt;&gt; testfile</code><br>⚠️⚠️由于是对同一个文件进行数据读写，shell会维护一个内部指针，指明在文件中的当前位置。任何读或写都会从文件指针上次的位置开始。</li>
+<li>关闭文件描述符<br>要关闭文件描述符，将它重定向到特殊符号<code>&amp;-</code>;一旦关闭了文件描述符，就不能在脚本中向它写入任何数据，否则shell会生成错误消息<br><code>exec 3&gt;&amp;-</code></li>
+<li>列出打开的文件描述符<br>lsof命令会列出整个Linux系统打开的所有文件描述符<br>普通用户账户来运行它，必须通过全路径名来引用:<code>$ /usr/sbin/lsof</code><br>该命令会产生大量的输出。它会显示当前Linux系统上打开的每个文件的有关信息。这包括 后台运行的所有进程以及登录到系统的任何用户</li>
+</ol>
+<p>-p选项允许指定进程<br>-d选项允许指定要显示的文件描述符编号<br>-a选项用来对其他两个选项的结果执行布尔AND运算，</p>
+<ol start="10">
+<li>进程的当前PID，可以用特殊环境变量$$查看</li>
+<li>阻止命令输出<br>将STDERR重定向到一个叫作null文件的特殊文件。null文件跟它的名字很像，文件里什么都没有。shell输出到null文件的任何数据都不会保存,全部都被丢掉了</li>
+<li>空文件的技巧:也可以在输入重定向中将/dev/null作为输入文件。由于/dev/null文件不含有任何内容,通常用它来快速清除现有文件中的数据,而不用先删除文件再重新创建。<br><code>cat /dev/null &gt; filename</code><br>文件filename仍然存在系统上，但现在它是空文件。这是清除日志文件的一个常用方法,因为日志文件必须时刻准备等待应用程序操作</li>
+<li>创建临时文件<br>Linux使用/tmp目录来存放不需要永久保留的文件。大多数Linux发行版配置了系统在启动时自动删除/tmp目录的所有文件<br>mktemp命令可以在/tmp目录中创建一个唯一的临时 文件。shell会创建这个文件，但不用默认的umask值(参见第7章)。它会将文件的读和写权限分配给文件的属主,并将你设成文件的属主。一旦创建了文件,你就在脚本中有了完整的读写权限,但其他人没法访问它(当然,root用户除外)</li>
+<li>创建本地临时文件<br>默认情况下，mktemp会在本地目录中创建一个文件<br>用法:<code>mktemp testing.XXXXXX</code> #文件名模板+6个X<br>mktemp命令的输出正是它所创建的文件的名字,所以可以这样将文件名储存在变量中<code>tempfile=$(mktemp test19.XXXXXX)</code></li>
+<li>在/tmp目录创建临时文件</li>
+</ol>
+<p>-t选项会强制mktemp命令来在系统的临时目录来创建该文件，在用这个特性时，mktemp命令会返回用来创建临时文件的全路径，而不是只有文件名</p>
+<ol start="16">
+<li>创建临时目录</li>
+</ol>
+<p>-d选项告诉mktemp命令来创建一个临时目录而不是临时文件</p>
+<ol start="17">
+<li>记录信息<br>tee:将输出同时发送到显示器和日志文件<br>tee命令将从STDIN过来的数据同时发往两处。一处是 STDOUT，另一处是tee命令行所指定的文件名<br><code>tee filename</code>默认将覆盖filename，使用-a选项可以改成追加模式</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/Linux脚本编程2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/Linux脚本编程2/" itemprop="url">Linux脚本编程2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-04T13:04:56+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="处理用户输入"><a href="#处理用户输入" class="headerlink" title="处理用户输入"></a>处理用户输入</h1><ol>
+<li>位置参数:$0是程序名，$1是第 一个参数，$2是第二个参数，依次类推，直到第九个参数$9</li>
+<li>每个参数都是用空格分隔的</li>
+<li>如果脚本需要的命令行参数不止9个，你仍然可以处理，但是需要稍微修改一下变量名。在第9个变量之后，你必须在变量数字周围加上花括号，比如${10}</li>
+<li>$0参数获取shell在命令行启动的脚本名,but<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash test.sh ==&gt; $0=test.sh</span><br><span class="line">./test.sh    ==&gt; $0=./test.sh</span><br><span class="line">bash /home/Christine/test5.sh ==&gt; $0=/home/Christine/test5.sh</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>如果要编写一个根据脚本名来执行不同功能的脚本，就得做点额外工作。得把脚本的运行路径给剥离掉。另外,还要删除与脚本名混杂在一起的命令<br>将脚本名从路径中提取出:basename命令会返回不包含路径的脚本名<br>⚠️技巧:用-ne测试命令行参数数量。如果参数数量不对，会显示一条错误消息告知脚本的正确用法</p>
+<ol start="5">
+<li>特殊参数变量:</li>
+</ol>
+<ul>
+<li><p><code>$#</code>含有脚本运行时携带的命令行参数的个数</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;!#&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就代表了最后一个命令行参数变量,当命令行上没有任何参数时,$#的值为0,params变量的值也一样,但该变量会返回命令行用到的脚本名</p>
+</li>
+<li><p><code>$*</code>变量会将命令行上提供的所有参数当作一个单词保存。这个单词包含了命令行中出现的每一个参数值。基本上$*变量会将这些参数视为一个整体,而不是多个个体。</p>
+</li>
+<li><p><code>$@</code>变量会将命令行上提供的所有参数当作同一字符串中的多个独立的单词。这样就能够遍历所有的参数值，得到每个参数,这通常通过for命令完成</p>
+</li>
+</ul>
+<ol start="6">
+<li><p>移动变量:使用shift命令时,默认情况下它会将每个参数变量向左移动一个位置。所以,变量$3的值会移到$2中,变量$2的值会移到$1中,而变量$1的值则会被删除(注意,变量$0的值,也就是程序名,不会改变)<br>⚠️技巧:在不知道到底有多少参数时,可以只操作第一个参数,移动参数,然后继续操作第一个参数;使用shift命令的时候要小心。如果某个参数被移出,它的值就被丢弃了,无法再恢复。<br>🌰:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while [ -n &quot;$1&quot; ]</span><br><span class="line">    do</span><br><span class="line">       echo &quot;Parameter #$count = $1&quot;</span><br><span class="line">       count=$[ $count + 1 ]</span><br><span class="line">       shift</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>处理选项:用case语句来判断选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">while [ -n &quot;$1&quot; ]</span><br><span class="line">do</span><br><span class="line">   case &quot;$1&quot; in</span><br><span class="line">     -a) echo &quot;Found the -a option&quot; ;;</span><br><span class="line">     -b) echo &quot;Found the -b option&quot; ;;</span><br><span class="line">     -c) echo &quot;Found the -c option&quot; ;;</span><br><span class="line">      *) echo &quot;$1 is not an option&quot; ;;</span><br><span class="line">   esac</span><br><span class="line">shift </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分离参数和选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">while [ -n &quot;$1&quot; ]</span><br><span class="line">do</span><br><span class="line">       case &quot;$1&quot; in</span><br><span class="line">          -a) echo &quot;Found the -a option&quot; ;;</span><br><span class="line">          -b) echo &quot;Found the -b option&quot;;;</span><br><span class="line">          -c) echo &quot;Found the -c option&quot; ;;</span><br><span class="line">          --) shift #划重点</span><br><span class="line">              break ;;</span><br><span class="line">           *) echo &quot;$1 is not an option&quot;;;</span><br><span class="line">       esac</span><br><span class="line">shift</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>⚠️“–”号后面是参数,such as 输入 “$ ./test16.sh -c -a -b – test1 test2 test3”</p>
+<ol start="9">
+<li><p>处理带值的选项<br>处理的输入like this “$ ./testing.sh -a test1 -b -c -d test2”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">while [ -n &quot;$1&quot; ]</span><br><span class="line">do</span><br><span class="line">       case &quot;$1&quot; in</span><br><span class="line">          -a) echo &quot;Found the -a option&quot;;;</span><br><span class="line">          -b) param=&quot;$2&quot;</span><br><span class="line">              echo &quot;Found the -b option, with parameter value $param&quot;</span><br><span class="line">              shift ;;#划重点</span><br><span class="line">          -c) echo &quot;Found the -c option&quot;;;</span><br><span class="line">          --) shift</span><br><span class="line">              break ;;</span><br><span class="line">           *) echo &quot;$1 is not an option&quot;;;</span><br><span class="line">       esac</span><br><span class="line">shift#划重点</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>处理合并选项:getopt命令可以接受一系列任意形式的命令行选项和参数，并自动将它们转换成适当的格式<br>命令格式如下：<br><code>getopt optstring parameters</code><br>在optstring中列出要在脚本中用到的每个命令行选项字母。然后，在每个需要参数值的选项字母后加一个冒号。getopt命令会基于定义的optstring解析提供的参数。<br>such as “getopt ab:cd -a -b test1 -cd test2 test3”#其中选项b需要一个参数值，默认插入双破折线<code>--</code>来分隔行中的额外参数<br>如果指定了一个不在optstring中的选项，默认情况下，getopt命令会产生一条错误消息,如果想忽略这条错误消息，可以在命令后加-q选项。</p>
+</li>
+<li><p>在脚本中使用getopt<br>在脚本中加入<code>set -- $(getopt -q optstring &quot;$@&quot;)</code><br>such as:<br>set – $(getopt ab:cd: -a test1 -b test2 -c -d test4)<br>echo $@</p>
+</li>
+</ol>
+<p>-a -b test2 -c -d test4 – test1<br>getopt命令并不擅长处理带空格和引号的参数值。它会将空格当作参数分隔符，而不是根据双引号将二者当作一个参数</p>
+<ol start="12">
+<li>在脚本中使用getopts<br>与getopt不同，前者将命令行上选项和参数处理后只生成一个输出，而getopts命令能够和已有的shell参数变量配合默契<br>optstring值类似于getopt命令中的那个。有效的选项字母都会列在optstring中，如果选项字母要求有个参数值，就加一个冒号。<br>要去掉错误消息的话，可以在optstring之前加一个冒号。getopts命令将当前参数保存在命令行中定义的variable中。<br>getopts命令会用到两个环境变量。</li>
+</ol>
+<ul>
+<li>如果选项需要跟一个参数值，OPTARG环境变量就会保存这个值。</li>
+<li>OPTIND环境变量保存了参数列表中getopts正在处理的参数位置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">while getopts :ab:c opt</span><br><span class="line">do</span><br><span class="line">   case &quot;$opt&quot; in</span><br><span class="line">      a) echo &quot;Found the -a option&quot; ;;</span><br><span class="line">      b) echo &quot;Found the -b option, with value $OPTARG&quot;;;</span><br><span class="line">      c) echo &quot;Found the -c option&quot; ;;</span><br><span class="line">      *) echo &quot;Unknown option: $opt&quot;;;</span><br><span class="line">esac </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>getopts命令解析命令行选项时会移除开头的单破折线，所以在case定义中不用单破折线<br>getopts命令的几个好用的功能:<br>1.可以在参数值中包含空格($ ./test19.sh -b “test1 test2” -a)<br>2.将选项字母和参数值放在一起使用，而不用加空格。($ ./test19.sh -abtest1)<br>3.getopts还能够将命令行上 找到的所有未定义的选项统一输出成问号</p>
+<ol start="13">
+<li>从文件中读取数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">count=1</span><br><span class="line">cat test | while read line </span><br><span class="line">do</span><br><span class="line">   echo &quot;Line $count: $line&quot;</span><br><span class="line">   count=$[ $count + 1]</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>可以用read命令来读取Linux系统上文件里保存的数据。每次调用read命令,它都会从文件中读取一行文本。当文件中再没有内容时,read命令会退出并返回非零退出状态码。<br>将文件中的数据传给read命令。最常见的方法是对文件使用cat命令将结果通过管道直接传给含有read命令的while命令</p>
+<p><strong>总结</strong>：</p>
+<ol>
+<li><p>bash shell提供了三种方式来处理命令行选项。<br>第一种方式是将它们像命令行参数一样处理。可以利用位置参数变量来遍历选项，在每个选项出现在命令行上时处理它。<br>另一种处理命令行选项的方式是用getopt命令。该命令会将命令行选项和参数转换成可以 在脚本中处理的标准格式。getopt命令允许你指定将哪些字母识别成选项以及哪些选项需要额 外的参数值。getopt命令会处理标准的命令行参数并按正确顺序输出选项和参数。<br>处理命令行选项的最后一种方法是通过getopts命令(注意是复数)。getopts命令提供了 处理命令行参数的高级功能。它支持多值的参数，能够识别脚本未定义的选项。</p>
+</li>
+<li><p>3种不同的方法来从脚本用户处获得数据。<br>命令行参数允许用户运行脚本时直接从命令行输入数据。脚本通过位置参数来取回命令行参数并将它们赋给变量。<br>shift命令通过对位置参数进行轮转的方式来操作命令行参数。就算不知道有多少个参数， 这个命令也可以让你轻松遍历参数。<br>除了参数外，脚本用户还可以用命令行选项来给脚本传递信息。命令行选项是前面带有单破折线的单个字母。可以给不同的选项赋值，从而改变脚本的行为</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/Linux脚本编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/30/Linux脚本编程/" itemprop="url">Linux脚本编程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-30T13:04:56+08:00">
+                2019-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a><strong>变量</strong></h2><ol>
+<li>如果要给变量赋一个含有空格的字符串值，必须用单引号来界定字符串的首和尾</li>
+<li>如果要用到变量，使用$;如果要操作变量，不使用$，这条规则的一 个例外就是使用printenv显示某个变量的值;引用一个变量值时需要使 用美元符，而引用变量来对其进行赋值时则不要使用美元符$</li>
+<li>子shell无法使用export命令改变父shell中全局环境变量的值,在子进程中删除了一个全局环境变量,这只对子进程有效,该全局环境变量在父进程中依然可用</li>
+<li>子shell可以继承父shell导出过的变量。 举例来说，如果父shell是登录shell，在/etc/profile、/etc/profile.d/*.sh和$HOME/.bashrc文件中设置并导出了变量，用于执行脚本的子shell就能够继承这些变量。要记住，由父shell设置但并未导出的变量都是局部变量，子shell无法继承局部变量。</li>
+<li>存储个人用户永久性bash shell变量的地方是$HOME/.bashrc文件</li>
+<li>要给某个环境变量设置多个值，可以把值放在括号里，值与值之间用空格分隔<br>🌰:mytest=(one two three four five)⚠️ :环境变量数组的索引值都是从零开始</li>
+<li>用户变量可以是任何由字母、数字或下划线组成的文本字符串，长度不超过20个。用户变量 区分大小写,使用等号将值赋给用户变量。在变量、等号和值之间不能出现空格</li>
+</ol>
+<hr>
+<h2 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a><strong>零碎知识点</strong></h2><ol>
+<li>在创建shell脚本文件时，必须在文件的第一行指定要使用的shell。其格式为: #!/bin/bash</li>
+<li>命令替换(从命令输出中提取信息，并将其赋给变量):法一、反引号字符;法二、$()格式</li>
+<li>重定向输入和输出:输出重定向将命令的输出发送到一个文件中。bash shell用大于号(&gt;)来完成这项功能,如果输出文件已经存在了，重定向操作符会用新的文件数据覆盖已有文件,在这种情况下，可以用双大于号(&gt;&gt;)来追加数据;输入重定向将文件的内容重定向到命令，而非将命令的输出重定向到文件</li>
+<li>管道(|):将命令输出重定向到另一个命令。这个过程叫作管道连接(piping)</li>
+<li>在bash中，在将一个数学运算结果赋给某个变量时，可以用美元符和方括号($[ operation ])或( $((operation)) )将数学表达式围起来</li>
+<li>bash shell数学运算符只支持整数运算。若要进行任何实际的数学计算，这是一个巨大的限制<br>🌰:var3=$(echo “scale=4; $var1 / $var2” | bc)<br>bc命令能识别输入重定向，允许你将一个文件重定向到bc命令来处理;使用内联输入重定向，它允许直接在命令行中重定向数据。在shell脚本中可以将输出赋给一个变量🌰<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">variable=$(bc &lt;&lt; EOF</span><br><span class="line">options</span><br><span class="line">statements</span><br><span class="line">expressions</span><br><span class="line">EOF )</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var5=$(bc &lt;&lt; EOF</span><br><span class="line">    scale = 4</span><br><span class="line">    a1 = ( $var1 * $var2)</span><br><span class="line">    b1 = ($var3 * $var4)</span><br><span class="line">    a1 + b1</span><br><span class="line">    EOF</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>变量$?来保存上个已执行命令的退出状态码 一个成功结束的命令的退出状态码是0。如果一个命令结束时有错误，退出状态 码就是一个正数值 。exit命令允许你在脚本结束时指定一 个退出状态码 </li>
+<li>文件名中没有加入路径,这要求文件和脚本位于同一个目录中,如果不是的话,需要使用全路径名(不管是绝对路径还是相对路径)来 引用文件位置</li>
+</ol>
+<hr>
+<h2 id="结构化命令"><a href="#结构化命令" class="headerlink" title="结构化命令"></a><strong>结构化命令</strong></h2><h3 id="一、IF-THEN"><a href="#一、IF-THEN" class="headerlink" title="一、IF THEN"></a><strong><em>一、IF THEN</em></strong></h3><h4 id="总的If-then结构"><a href="#总的If-then结构" class="headerlink" title="总的If then结构"></a>总的<strong>If then</strong>结构</h4><p>一、<strong>if-then</strong>语句 (if-then语句不能测试命令退出状态码之外的条件)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if command </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if command; then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>Bash shell的if语句会运行if后面的那个命令。如果该命令的退出状态码是0 (该命令成功运行)，位于then部分的命令就会被执行。如果该命令的退出状态码是其他值，then 部分的命令就不会被执行，bash shell会继续执行脚本中的下一个命令。fi语句用来表示if-then 语句到此结束。<br>二、<strong>if-then-else</strong>语句 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if command </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">else </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>三、<strong>嵌套if</strong>语句</p>
+<figure class="highlight plain"><figcaption><span>command1 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">elif command2 </span><br><span class="line">then </span><br><span class="line">    more commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>elif语句行提供了另一个要测试的命令，这类似于原始的if语句行。如果elif后命令的退 出状态码是0，则bash执行第二个then语句部分的命令。⚠️bash shell会依次执行if语句， 只有第一个返回退出状态码0的语句中的then部分会被执行</p>
+<h4 id="If-和-then-之间的判断语句"><a href="#If-和-then-之间的判断语句" class="headerlink" title="If 和 then 之间的判断语句"></a><strong>If 和 then 之间的判断语句</strong></h4><h5 id="一、test命令"><a href="#一、test命令" class="headerlink" title="一、test命令"></a>一、<strong>test命令</strong></h5><p>test命令可以判断三类条件:<br>    * 数值比较<br>    * 字符串比较<br>    * 文件比较<br>基本格式1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if test condition </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p><code>test condition</code>  test命令提供了在if-then语句中测试不同条件的途径 ,如果test命令中列出的条件成立,test命令就会退出并返回退出状态码0<br>基本格式2（无需在if-then 语句中声明test 命令）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if [ condition ] </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>方括号定义了测试条件。注意，第一个方括号之后和第二个方括号之前必须加上一个空格，否则就会报错。</p>
+<h6 id="1-数值比较"><a href="#1-数值比较" class="headerlink" title="1.数值比较"></a>1.数值比较</h6><p><img src="/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png" alt></p>
+<h6 id="2-字符串比较"><a href="#2-字符串比较" class="headerlink" title="2.字符串比较"></a>2.字符串比较</h6><p><img src="/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png" alt></p>
+<ol>
+<li>⚠️大于号和小于号必须转义，否则shell会把它们当作重定向符号，把字符串值当作文件名; </li>
+<li>⚠️大于和小于顺序和sort命令所采用的不同:比较测试中使用的是标准的ASCII顺序，根据每个字符的ASCII数值来决定排序结果。sort 命令使用的是系统的本地化语言设置中定义的排序顺序。对于英语，本地化设置指定了在排序顺 序中小写字母出现在大写字母前<br>MOTHER FUCKER:test命令和测试表达式使用标准的数学比较符号来表示字符串比较，而用文本代码来表 示数值比较。<h6 id="3-文件比较"><a href="#3-文件比较" class="headerlink" title="3.文件比较"></a>3.文件比较</h6><img src="/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png" alt><br>⚠️if [ -d “$file” ]<br>在Linux中,目录名和文件名中包含空格当然是合法的。要适应这种情况,应该将$file变量用双引号圈起来。如果不这么做，遇到含有空格的目录名或文件名时就会有错误产生。<br>⚠️理解-G比较会检查文件的默认组，如果它匹配了用户的默认组，则测试成功。<h5 id="二、复合条件测试"><a href="#二、复合条件测试" class="headerlink" title="二、复合条件测试"></a>二、<strong>复合条件测试</strong></h5>if-then语句允许使用布尔逻辑来组合测试</li>
+</ol>
+<ul>
+<li>[ condition1 ] &amp;&amp; [ condition2 ]</li>
+<li>[ condition1 ] || [ condition2 ]<h5 id="三、使用双括号"><a href="#三、使用双括号" class="headerlink" title="三、使用双括号"></a>三、<strong>使用双括号</strong></h5>双括号命令允许在比较过程中使用高级数学表达式<br>双括号命令的格式为<code>(( expression ))</code>其中expression可以是任意的数学赋值或比较表达式<br>⚠️不需要将双括号中表达式里的大于号转义<br><img src="/2019/07/30/Linux脚本编程/%E5%8F%8C%E6%8B%AC%E5%8F%B7%E5%91%BD%E4%BB%A4%E7%AC%A6%E5%8F%B7.png" alt><br>🌰:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">val1=10</span><br><span class="line">if (( $val1 ** 2 &gt; 90 )) then</span><br><span class="line">    (( val2 = $val1 ** 2 ))#赋值语句居然可以这样😏</span><br><span class="line">    echo &quot;The square of $val1 is $val2&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="四、使用双方括号"><a href="#四、使用双方括号" class="headerlink" title="四、使用双方括号"></a>四、<strong>使用双方括号</strong></h5><p>双方括号命令提供了针对字符串比较的高级特性。<br>双方括号里的expression使用了test命令中采用的标准字符串比较。但它提供了test命令未提供的另一个特性——模式匹配</p>
+<h3 id="二、CASE语句"><a href="#二、CASE语句" class="headerlink" title="二、CASE语句"></a><strong><em>二、CASE语句</em></strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">case variable in</span><br><span class="line">pattern1 | pattern2) commands1;;</span><br><span class="line">pattern3) commands2;;</span><br><span class="line">*) default commands;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<p>可以通过竖线操作符在一行中分隔出多个模式模式。星号会捕获所有与已知模式不匹配的值</p>
+<h3 id="三、FOR循环"><a href="#三、FOR循环" class="headerlink" title="三、FOR循环"></a><strong><em>三、FOR循环</em></strong></h3><p>for命令的基本格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for var in list</span><br><span class="line">do</span><br><span class="line">    commands</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-读取列表中的值"><a href="#1-读取列表中的值" class="headerlink" title="1. 读取列表中的值"></a><strong>1. 读取列表中的值</strong></h4><p>🌰:<code>for test in Alabama Alaska Arizona Arkansas California Colorado</code><br>而且在for循环结束后test变量依然可以使用，$test变量的值会在shell脚本的剩余部分一直保持有效。它会一直保持最后一次迭代的值</p>
+<h4 id="2-读取列表中的复杂值"><a href="#2-读取列表中的复杂值" class="headerlink" title="2. 读取列表中的复杂值"></a><strong>2. 读取列表中的复杂值</strong></h4><p>🌰:<code>for test in I don&#39;t know if this&#39;ll work #会出错</code><br><code>for test in I don\&#39;t know if &quot;this&#39;ll&quot; work #正确</code><br>    * 使用转义字符(反斜线)来将单引号转义;<br>    * 使用双引号来定义用到单引号的值。<br>for循环假定每个值都是用空格分割的，如果在单独的数据值中有空格，就必须用双引号将这些值圈起来</p>
+<h4 id="3-从变量读取列表"><a href="#3-从变量读取列表" class="headerlink" title="3. 从变量读取列表"></a><strong>3. 从变量读取列表</strong></h4><p>🌰:<code>for state in $list</code></p>
+<h4 id="4-从命令读取值"><a href="#4-从命令读取值" class="headerlink" title="4. 从命令读取值"></a><strong>4. 从命令读取值</strong></h4><p>生成列表中所需值的另外一个途径就是使用命令的输出。可以用命令替换来执行任何能产生输出的命令，然后在for命令中使用该命令的输出<br>🌰:<code>for var in $(order)</code></p>
+<h4 id="5-字段分隔符IFS"><a href="#5-字段分隔符IFS" class="headerlink" title="5. 字段分隔符IFS"></a><strong>5. 字段分隔符IFS</strong></h4><p>环境变量IFS，叫作内部字段分隔符(internal field separator)。<br>IFS环境变量定义了bash shell用作字段分隔符的一系列字符。默认情况下，bash shell会将下列字符当作字段分隔符:<br>    * 空格<br>    * 制表符<br>    * 换行符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IFS.OLD=$IFS</span><br><span class="line">IFS=$&apos;\n&apos;</span><br><span class="line">&lt;在代码中使用新的IFS值&gt; </span><br><span class="line">IFS=$IFS.OLD</span><br></pre></td></tr></table></figure>
+
+<p>如果要指定多个IFS字符，只要将它们在赋值行串起来就行。<br>🌰:IFS=$’\n’:;”<br>这个赋值会将换行符、冒号、分号和双引号作为字段分隔符。</p>
+<h4 id="6-用通配符读取目录"><a href="#6-用通配符读取目录" class="headerlink" title="6. 用通配符读取目录"></a><strong>6. 用通配符读取目录</strong></h4><p><code>for file in /home/rich/test/*</code><br>for命令的c语言格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (( variable assignment ; condition ; iteration process ))</span><br><span class="line">do </span><br><span class="line">    ···</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>变量可以定义多个，条件只能有一个</p>
+<h3 id="四、WHILE命令"><a href="#四、WHILE命令" class="headerlink" title="四、WHILE命令"></a><strong><em>四、WHILE命令</em></strong></h3><p>只要测试条件成立，while命令就会不停地循环执行定义好的命令<br>while命令的格式是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while test command </span><br><span class="line">do</span><br><span class="line">    other commands</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>test command:任何普通的bash shell命令，或者用test命令进行条件测试,但退出状态码必须随着循环中运行的命令而改变。如果退出状态码不发生变化， while循环就将一直不停地进行下去</p>
+<h4 id="1-使用多个测试命令"><a href="#1-使用多个测试命令" class="headerlink" title="1. 使用多个测试命令"></a><strong>1. 使用多个测试命令</strong></h4><p>while命令允许你在while语句行定义多个测试命令。只有最后一个测试命令的退出状态码会被用来决定什么时候结束循环<br>需要⚠️的是在每次迭代中所有的测试命令都会被执行,包括测试命令失败的最后一次迭代。<br>另一处要留意的是该如何指定多个测试命令。注意,每个测试命令都出现在单独的一行上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while echo $var1</span><br><span class="line">      [ $var1 -ge 0 ]</span><br><span class="line">do</span><br><span class="line">    echo &quot;This is inside the loop&quot;</span><br><span class="line">    var1=$[ $var1 - 1 ]</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、UNTIL命令"><a href="#五、UNTIL命令" class="headerlink" title="五、UNTIL命令"></a><strong><em>五、UNTIL命令</em></strong></h3><p>until命令和while命令工作的方式完全相反。until命令要求你指定一个通常返回非零退出状态码的测试命令。只有测试命令的退出状态码不为0，bash shell才会执行循环中列出的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">until test command</span><br><span class="line">do</span><br><span class="line">    other commands </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h3 id="六、控制循环"><a href="#六、控制循环" class="headerlink" title="六、控制循环"></a><strong><em>六、控制循环</em></strong></h3><ul>
+<li><strong>break命令</strong></li>
+</ul>
+<ol>
+<li>跳出单个循环:在shell执行break命令时，它会尝试跳出当前正在执行的循环</li>
+<li>跳出内部循环:在处理多个循环时，break命令会自动终止你所在的最内层的循环</li>
+<li>跳出外部循环:有时你在内部循环，但需要停止外部循环。break命令接受单个命令行参数值:<br><code>break n</code> 其中n指定了要跳出的循环层级。默认情况下，n为1，表明跳出的是当前的循环。如果你将n设为2，break命令就会停止下一级的外部循环</li>
+</ol>
+<ul>
+<li><strong>continue命令</strong></li>
+</ul>
+<ol>
+<li>continue命令可以提前中止某次循环中的命令，但并不会完全终止整个循环。可以在循环 内部设置shell不执行命令的条件</li>
+<li>和break命令一样，continue命令也允许通过命令行参数指定要继续执行哪一级循环: continue n<br>其中n定义了要继续的循环层级。</li>
+</ol>
+<ul>
+<li><strong>处理循环输出</strong><br>对循环的输出使用管道或进行重定向可以通过在done命令之后添加一个处理命令来实现(将循环内的标准输出重定向到指定文件；或通过管道将输出进行处理）<br>要想把数据从文件中送入while命令，只需在while命令尾部使用一个重定向符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">input=&quot;users.csv&quot;</span><br><span class="line">while IFS=&apos;,&apos; read -r userid name</span><br><span class="line">do</span><br><span class="line">  echo &quot;adding $userid&quot;</span><br><span class="line">  useradd -c &quot;$name&quot; -m $userid</span><br><span class="line">done &lt; &quot;$input&quot;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>$input变量指向数据文件，并且该变量被作为while命令的重定向数据,作为输入</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/Linux命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -924,7 +1636,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
