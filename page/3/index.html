@@ -304,6 +304,409 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/C-友元/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/C-友元/" itemprop="url">C++友元</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T16:25:53+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-三种友元"><a href="#1-三种友元" class="headerlink" title="1. 三种友元"></a>1. 三种友元</h2><p>1.友元函数<br>2.友元类<br>3.友元成员函数</p>
+<h3 id="2-友元函数"><a href="#2-友元函数" class="headerlink" title="2. 友元函数"></a>2. 友元函数</h3><p>1.需要友元的场景:<br>类重载二元运算符(+,*)<br>2.注意点:</p>
+<ul>
+<li>不能使用成员运算符(.)来调用</li>
+<li>访问类的权限和成员函数相同,可以访问类私有数据</li>
+</ul>
+<p>2.创建友元函数</p>
+<ul>
+<li>原型放在类声明中在,在原型声明前加上friend关键字<br>🌰:<code>friend void function_name(var);</code></li>
+<li>编写定义时不要使用类限定符(::),定义时也不要使用friend</li>
+<li>在定义类尽情访问类私有数据</li>
+</ul>
+<p>3.常用的友元函数(重载&lt;&lt;运算符)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ostream&amp; operator&lt;&lt;(ostream&amp; os,const class_name &amp; obj)&#123;</span><br><span class="line">    os&lt;&lt;...;</span><br><span class="line">    return os;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一些细节:返回值是引用;ostream类的引用可以引用ofstream对象,向下继承</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/C-重载/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/C-重载/" itemprop="url">C++重载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T16:13:58+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>重载后的运算符必须有一个操作数是自定义的</p>
+</li>
+<li><p>不能重载下列运算符:<br><img src="/2019/08/13/C-重载/%E4%B8%8D%E8%83%BD%E9%87%8D%E8%BD%BD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6.png" alt></p>
+</li>
+<li><p>只能通过成员函数重载的运算符:</p>
+</li>
+</ol>
+<p>1.=:赋值运算符<br>2.():函数调用运算符<br>3.[]:中括号运算符<br>4.-&gt;:</p>
+<ol start="4">
+<li><p>重载运算符</p>
+</li>
+<li><p>作为非成员函数(包括友元函数)<br>最好是友元函数可以访问类的私有数据,两个操作数都作为参数传递</p>
+</li>
+<li><p>作为成员函数<br>一个操作数通过this指针隐式传递,另一个作为函数参数传递</p>
+</li>
+<li><p>⚠️二者选其一</p>
+</li>
+<li><p>中括号运算符重载<br>原型:<br><code>char &amp; operator[](int a)</code>:读写非const对象<br><code>const char &amp; operator[](int a) const</code>:读写const对象</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/C-并发与多线程2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/C-并发与多线程2/" itemprop="url">C++并发与多线程2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T07:41:12+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用detach-注意点"><a href="#使用detach-注意点" class="headerlink" title="使用detach()注意点:"></a>使用detach()注意点:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">void myprint(const int &amp;i,char * paybuf)&#123;</span><br><span class="line">    cout&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;paybuf&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int mvar = 1;</span><br><span class="line">    int &amp;mvary =mvar;</span><br><span class="line">    char mybuf[] = &quot;this is a test&quot;;</span><br><span class="line">    thread mytobj(myprint,mvar,mybuf);</span><br><span class="line">    mytobj.detach();</span><br><span class="line">    cout&lt;&lt;&quot;I love china&quot;&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">using namespace std;</span><br><span class="line">void myprint(const int &amp;i,const string &amp; paybuf)&#123;//试图使用隐式类型转换来构建一个string对象,而不用主线程中的变量</span><br><span class="line">    cout&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;paybuf&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int mvar = 1;</span><br><span class="line">    int &amp;mvary =mvar;</span><br><span class="line">    char mybuf[] = &quot;this is a test&quot;;</span><br><span class="line">    thread mytobj(myprint,mvar,mybuf);</span><br><span class="line">    mytobj.detach();</span><br><span class="line">    cout&lt;&lt;&quot;I love china&quot;&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/08/13/C-并发与多线程2/%E7%BB%93%E6%9E%9C.png" alt><br><img src="/2019/08/13/C-并发与多线程2/%E7%BB%93%E6%9E%9C2.png" alt><br>原因:主线程结束完毕后才构建临时对象string,而此时主线程中的变量已经失效被回收<br>解决方法:将<code>thread mytobj(myprint,mvar,mybuf);</code>改为<code>thread mytobj(myprint,mvar,string(mybuf));</code><br>在创建线程的同时创建临时对象的方法传递参数是可行的<br>验证如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class A&#123;</span><br><span class="line">public:</span><br><span class="line">    int m_j;</span><br><span class="line">    //类型转换构造函数</span><br><span class="line">    A(int a):m_j(a)&#123;cout&lt;&lt;&quot;构造函数执行&quot;&lt;&lt;this&lt;&lt;&quot; &quot;&lt;&lt;&quot; thread_id=&quot;&lt;&lt;std::this_thread::get_id()&lt;&lt;endl;&#125;;</span><br><span class="line">    A(const A&amp;a):m_j(a.m_j)&#123;cout&lt;&lt;&quot;拷贝构造函数执行&quot;&lt;&lt;this &lt;&lt;&quot; &quot;&lt;&lt;&quot; thread_id=&quot;&lt;&lt;std::this_thread::get_id()&lt;&lt;endl;&#125;;</span><br><span class="line">    ~A()&#123;cout&lt;&lt;&quot;析构函数执行&quot;&lt;&lt;this&lt;&lt;&quot; &quot;&lt;&lt;&quot; thread_id=&quot;&lt;&lt;std::this_thread::get_id()&lt;&lt;endl;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">void myprint(const int &amp;i,const string&amp; paybuf)&#123;</span><br><span class="line">    //cout&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt; paybuf&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">void myprint1(const int &amp;i,const A&amp; paybuf)&#123;</span><br><span class="line">    //cout&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt; &amp;paybuf&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">void myprint2(const A&amp; paybuf)&#123;</span><br><span class="line">    cout&lt;&lt; &quot;子线程myprint2参数地址是&quot;&lt;&lt;&amp;paybuf&lt;&lt;&quot; thread_id=&quot;&lt;&lt;std::this_thread::get_id()&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int mvar = 1;</span><br><span class="line">    //int mysecond=12;</span><br><span class="line">    cout&lt;&lt;&quot;主线程ID是&quot;&lt;&lt;this_thread::get_id()&lt;&lt;endl;</span><br><span class="line">    //char mybuf[] = &quot;this is a test&quot;;</span><br><span class="line">    //thread mytobj(myprint1,mvar,A(mysecond));//希望整形传递给A类型对象</span><br><span class="line">    //thread mytobj(myprint,mvar,mybuf);</span><br><span class="line">    thread mytobj(myprint2,mvar);</span><br><span class="line">    mytobj.detach();</span><br><span class="line">    //mytobj.join();</span><br><span class="line">    //cout&lt;&lt;&quot;I love china&quot;&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果:在子线程中构造对象,而此时主线程(detach)可能已经结束,构造函数的参数失效<br>使用显示构造后,主线程会构造出子线程所需的拷贝对象以供拷贝,并在main函数结束前结束拷贝构造函数使子线程得到一个独立的对象<br><img src="/2019/08/13/C-并发与多线程2/%E7%BA%BF%E7%A8%8Bid.png" alt><br>修改后结果:<br><img src="/2019/08/13/C-并发与多线程2/%E7%BA%BF%E7%A8%8Bid2.png" alt><br>使用detach总结:<br>1.若传递int这种简单类型参数,建议都是值传递,不要用引用,更不能使用指针<br>2.如果传递类对象,避免隐式类型转换,全部都在创建线程这一行就构建临时对象然后再函数参数里用引用来接<br>3,建议不使用detach</p>
+<h2 id="临时对象作为线程参数"><a href="#临时对象作为线程参数" class="headerlink" title="临时对象作为线程参数"></a>临时对象作为线程参数</h2><p>线程ID:获取方法:std::this_thread::get_id()<br>临时对象构造时机抓捕</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/C-并发与多线程1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1444,465 +1847,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/图形化桌面环境中的脚本/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/06/图形化桌面环境中的脚本/" itemprop="url">图形化桌面环境中的脚本</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T15:05:07+08:00">
-                2019-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>使用case in 语句</li>
-<li>select命令只需要一条命令就可以创建出菜单，然后获取输入的答案并自动处理。select 命令的格式如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select variable in list</span><br><span class="line">do</span><br><span class="line">    commands</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>list参数是由空格分隔的文本选项列表，这些列表构成了整个菜单。select命令会将每个列表项显示成一个带编号的选项，然后为选项显示一个由PS3环境变量定义的特殊提示符。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/Linux脚本函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/06/Linux脚本函数/" itemprop="url">Linux脚本函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T09:16:15+08:00">
-                2019-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>创建函数<br>格式一:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function name &#123; </span><br><span class="line">    commands</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>格式二:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name() &#123; </span><br><span class="line">    commands </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>使用函数<br>在行中指定函数名<br>⚠️1.函数在使用之前要定义，否则报错<br>2.函数名要唯一，出现重复的话使用最后定义的函数</li>
-<li>返回值<br>1.默认退出状态码<code>$?</code><br>⚠️:使用退出状态码无法确定函数内的指令是否全部执行成功<br>2.使用return命令<br>⚠️:1.函数一结束立即用$?获取返回值，如果在用$?变量提取函数返回值之前执行了其他命令，函数的返回值就会丢失<br>2.退出状态码必须是0~255<br>3.使用$()获取函数的输出<em>(very important)</em><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function dbl &#123;</span><br><span class="line">   read -p &quot;Enter a value: &quot; value</span><br><span class="line">   echo $[ $value * 2 ]</span><br><span class="line">&#125;</span><br><span class="line">result=$(dbl)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>注意只提取echo的stdout，read的提示信息不提取<br>这种方法可以返回字符串和浮点数</p>
-<ol start="4">
-<li>向函数传递参数<br>格式:<code>fuction_name val1 val2 val3</code><br>bash shell会将函数当作小型脚本来对待，函数可以使用标准的参数环境变量来表示命令行上传给函数的参数<br><code>$0</code>:函数名<br><code>$1-9</code>:<br><code>$#</code>:函数的参数数目<br>但是由于函数使用特殊参数环境变量作为自己的参数值，因此它无法直接获取脚本在命令行中的参数值<br>⚠️:函数中使用的$1和$2变量和脚本主体中的$1和$2变量并不相同,要在函数中使用这些值，必须在调用函数时手动将它们传过去。</li>
-<li>在函数中处理变量</li>
-</ol>
-<ul>
-<li>全局变量<br>默认情况下，你在脚本中定义的任何变量都是全局变量（fuck)。在函数外定义的变量可在函数内正常访问</li>
-<li>局部变量<br>在变量声明的前面加上local关键字，local关键字保证了变量只局限在该函数中</li>
-</ul>
-<ol start="6">
-<li>数组变量和函数</li>
-</ol>
-<ul>
-<li>将数组传给函数<br>如果你试图将该数组变量作为函数参数，函数只会取数组变量的第一个值。<br>要解决这个问题，必须将该数组变量的值分解成单个的值，然后将这些值作为函数参数使用。在函数内部，可以将所有的参数重新组合成一个新的变量<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#/bin/bash</span><br><span class="line">function test &#123;</span><br><span class="line">local new_arrayecho=(`echo $@`)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">array=(1 2 3 4 5)#注意数字之间为space</span><br><span class="line">test $&#123;array[*]&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>背记两种数组的复制方式<br>a=(1 2 3 4)<br>1.array=反单引号 echo ${a[<em>]} 反单引号<br>2.array=$( echo ${a[</em>]} )<br>背记两种计算方法<br>1.var=$((计算表达式))<br>2.var=$[计算表达式]#注意空格</p>
-<ul>
-<li>从函数传出数组<br>在函数中把数组拆开后返回<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function test&#123;</span><br><span class="line">local array=(1 2 3 4)</span><br><span class="line">echo $&#123;a[*]&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var=$(test)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="7">
-<li>函数递归<br>⚠️函数内的变量一定要是局部变量</li>
-<li>创建函数库</li>
-</ol>
-<ul>
-<li>第一步是创建一个包含脚本中所需函数的公用库文件</li>
-<li>下一步是在用到这些函数的脚本文件中包含库文件<br>注意作用域：脚本文件和函数库文件的作用域要相同<br>解决方法:可以用source命令来在shell脚本中运行库文件脚本。这样脚本就可以使用库中的函数了。<br>source filename# filename必须是可执行的脚本文件<br>或者<br>. filename# 注意“.”号后面还有一个空格</li>
-</ul>
-<ol start="9">
-<li>在命令行上使用函数</li>
-<li>在命令行上创建函数<br>方法一、当在命令行上定义函数时，你必须记得在每个命令后面加个分号，这样shell就能知道在哪里是命令的起止了<br>方法二、是采用多行方式来定义函数。在定义时，bash shell会使用次提示符来提示输入更 多命令。用这种方法，你不用在每条命令的末尾放一个分号，只要按下回车键就行。</li>
-<li>在.bashrc文件中定义函数<br>方法一、直接在文件内定义函数<br>方法二、使用source将函数库文件导入.bashrc,要确保库文件的路径名正确，以便bash shell能够找到该文件</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/控制脚本/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/05/控制脚本/" itemprop="url">控制脚本</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T12:46:59+08:00">
-                2019-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Linux信号"><a href="#Linux信号" class="headerlink" title="Linux信号"></a><strong><em>Linux信号</em></strong></h2><ol>
-<li>Linux信号<br><img src="/2019/08/05/控制脚本/Linux%E6%8E%A7%E5%88%B6%E4%BF%A1%E5%8F%B7.png" alt><br>![](Linux 控制信号2.png)</li>
-<li>生成信号</li>
-</ol>
-<ul>
-<li>中断进程Ctrl+C</li>
-<li>暂停进程Ctrl+Z<br>shell将shell中运行的每个进程称为作业， 并为每个作业分配唯一的作业号。它会给第一个作业分配作业号1，第二个作业号2，以此类推<br>可以用ps命令来查看已停止的作业,在S列中(进程状态)，ps命令将已停止作业的状态为显示为T。这说明命令要么被跟踪，要么被停止了</li>
-</ul>
-<ol start="3">
-<li>捕获信号<br>trap命令允许你来指定shell 脚本要监看并从shell中拦截的Linux信号。如果脚本收到了trap命令中列出的信号，该信号不再 由shell处理，而是交由本地处理<br>格式为:<code>trap commands signals</code><br>在trap命令行上，你只要列出想要shell执行的命令，以及一组用空格分开的待捕获的信号。你可以用数值或Linux信号名来指定信号。</li>
-<li>捕获脚本退出<br>在shell完成任务时 执行命令的一种简便方法<br><code>trap &quot;echo Goodbye...&quot; EXIT</code></li>
-<li>修改或移除捕获<br>要想在脚本中的不同位置进行不同的捕获处理，只需重新使用带有新选项的trap命令,修改了信号捕获之后，脚本处理信号的方式就会发生变化。但如果一个信号是在捕获被修改 前接收到的，那么脚本仍然会根据最初的trap命令进行处理。<br>也可以删除已设置好的捕获。只需要在trap命令与希望恢复默认行为的信号列表之间加上两个破折号就行了,like this<code>trap &quot;echo &#39; Sorry... Ctrl-C is trapped.&#39;&quot; SIGINT</code>+<code>trap --SIGINT</code><h2 id="以后台模式运行脚本"><a href="#以后台模式运行脚本" class="headerlink" title="以后台模式运行脚本"></a><strong><em>以后台模式运行脚本</em></strong></h2>在后台模式中， 进程运行时不会和终端会话上的STDIN、STDOUT以及STDERR关联</li>
-<li>后台运行脚本<br>在命令后加个&amp;符,⚠️最好是将后台运行的脚本的STDOUT和STDERR进行重定向输出<h2 id="在非控制台下运行脚本"><a href="#在非控制台下运行脚本" class="headerlink" title="在非控制台下运行脚本"></a><strong><em>在非控制台下运行脚本</em></strong></h2>nohup命令:让脚本一直以后台模式运行到结束，即使你退出了终端会话,nohup命令运行了另外一个命令来阻断所有发送给该进程的SIGHUP信号,这会在退出终端会话时阻止进程退出<br>格式为:<code>nohup ./test1.sh &amp;</code><br>由于nohup命令会解除终端与进程的关联，进程也就不再同STDOUT和STDERR联系在一起。<br>为了保存该命令产生的输出，nohup命令会自动将STDOUT和STDERR的消息重定向到一个名为 nohup.out的文件中。<h2 id="作业控制"><a href="#作业控制" class="headerlink" title="作业控制"></a><strong><em>作业控制</em></strong></h2>启动、停止、终止以及恢复作业的这些功能统称为作业控制<br>作业控制中的关键命令是jobs命令。jobs命令允许查看shell当前正在处理的作业。<br>要想查看作业的PID，可以在jobs命令中加入-l选项<br><img src="/2019/08/05/控制脚本/jobs%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0.png" alt></li>
-<li>重启停止的作业<br>bg命令加上作业号<h2 id="定时运行作业"><a href="#定时运行作业" class="headerlink" title="定时运行作业"></a><strong><em>定时运行作业</em></strong></h2>at命令允许指定Linux系统何时运行脚本。at命令会将作业提交到队列中，指定shell何时运行该作业。at的守护进程atd会以后台模式运行，检查作业队列来运行作业。大多数Linux发行版会在启动时运行此守护进程。<br>atd守护进程会检查系统上的一个特殊目录(通常位于/var/spool/at)来获取用at命令提交的作业。默认情况下，atd守护进程会每60秒检查一下这个目录。有作业时，atd守护进程会检查作业设置运行的时间。如果时间跟当前时间匹配，atd守护进程就会运行此作业。</li>
-<li>设置定时运行<br>命令格式:<code>at [-f filename] time</code></li>
-<li>获取输出<br>注意⚠️:Linux系统会将提交该作业的用户的电子邮件地址作为STDOUT和STDERR,so因此在使用at命令时，最好在脚本中对STDOUT和STDERR进行重定向,如果不想在at命令中使用邮件或重定向，最好加上-M选项来屏蔽作业产生的输出信息</li>
-<li>列出等待的作业<code>atq</code></li>
-<li>删除作业<code>atrm 作业号</code></li>
-<li>安排需要定期执行的脚本</li>
-</ol>
-<ul>
-<li><ol>
-<li>cron时间表<br><code>min hour dayofmonth month dayofweek command</code><br>such as <code>15 16 * * 1 command</code>#每周一4:15 PM运行的命令<br><code>00 12 * * * if [</code>date +%d -d tomorrow<code>= 01 ] ; then ; command</code> #设置一个在每个月的最后一天执行的命令<br>注意⚠️：</li>
-</ol>
-</li>
-</ul>
-<p>1.命令列表必须指定要运行的命令或脚本的全路径名<br>2.你必须有访问该命令和命令中指定的 输出文件的权限。</p>
-<ul>
-<li><ol start="2">
-<li>构建cron时间表<br><code>crontab -l</code></li>
-</ol>
-</li>
-<li><ol start="3">
-<li>预配置的cron脚本目录<code>/etc/cron.*ly</code></li>
-</ol>
-</li>
-<li><ol start="4">
-<li>anacron程序<br>这个功能常用于进行常规日志维护的脚本。如果系统在脚本应该运行的时间刚好关机， 日志文件就不会被整理，可能会变很大。通过anacron，至少可以保证系统每次启动时整理日 志文件</li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1950,7 +1899,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1961,7 +1910,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1972,7 +1921,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

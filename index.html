@@ -304,6 +304,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/mysql命令记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/03/mysql命令记录/" itemprop="url">我使用过的mysql命令记录(积累)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-03T21:00:00+08:00">
+                2020-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>登陆:<code>mysql -u root -p</code></p>
+</li>
+<li><p>创建table:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table Bdyjy(  </span><br><span class="line">id int unsigned primary key not null auto_increment,  </span><br><span class="line">title varchar(100),  </span><br><span class="line">link varchar(50),  </span><br><span class="line">hash_val varchar(50),  </span><br><span class="line">file_number int,  </span><br><span class="line">file_size varchar(10),  </span><br><span class="line">date varchar(20)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清空table:<code>truncate table Bdyjy;</code></p>
+</li>
+<li><p>显示数据库:<code>show databases</code></p>
+</li>
+<li><p>显示数据表所有内容: <code>select * from Bdyjy</code></p>
+</li>
+<li><p>修改数据表的字段类型,初始时定义的类型大小不够:<code>ALTER TABLE Bdyjy MODIFY link varchar(200);</code></p>
+</li>
+<li><p>显示数据表的字段信息:<code>desc Bdyjy</code></p>
+</li>
+<li><p>插入数据:</p>
+<pre><code class="insert"></code></pre>
+</li>
+</ol>
+<p>相对清晰的参考网站:<br><a href="https://www.cnblogs.com/mgw2168/p/9570131.html" target="_blank" rel="noopener">https://www.cnblogs.com/mgw2168/p/9570131.html</a><br><a href="https://www.runoob.com/mysql/mysql-tutorial.html" target="_blank" rel="noopener">https://www.runoob.com/mysql/mysql-tutorial.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/爬虫/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -346,6 +508,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -380,9 +564,9 @@
 <li><code>pip install scrapy</code></li>
 <li><code>pip install mysqlclient</code></li>
 </ol>
-<p>在命令行中启动环境方法<br><code>work envname</code></p>
+<p>在命令行中启动环境方法<br><code>workon envname</code></p>
 <h4 id="创建项目和爬虫"><a href="#创建项目和爬虫" class="headerlink" title="创建项目和爬虫"></a>创建项目和爬虫</h4><ol>
-<li><code>scrapy startproject projectname</code><br>注意命令4在哪里执行project在那创建</li>
+<li><code>scrapy startproject projectname</code><br>注意该命令在哪里执行project在那创建</li>
 <li><code>cd projectname</code></li>
 <li><code>scrapy genspyder [爬虫名] 爬虫域名</code><br>⚠️爬虫名不能和项目名相同</li>
 </ol>
@@ -393,7 +577,21 @@
 <li>settings.py:爬虫配置信息</li>
 <li>scrapy.cfy:项目配置文件</li>
 </ol>
-<h4 id="爬虫笔记"><a href="#爬虫笔记" class="headerlink" title="爬虫笔记"></a>爬虫笔记</h4><p>xpath学习url: <a href="https://cuiqingcai.com/5545.html" target="_blank" rel="noopener">https://cuiqingcai.com/5545.html</a></p>
+<h4 id="爬虫笔记"><a href="#爬虫笔记" class="headerlink" title="爬虫笔记"></a>爬虫笔记</h4><p>xpath学习url: <a href="https://cuiqingcai.com/5545.html" target="_blank" rel="noopener">https://cuiqingcai.com/5545.html</a>  </p>
+<h5 id="项目初始设置"><a href="#项目初始设置" class="headerlink" title="项目初始设置:"></a>项目初始设置:</h5><ol>
+<li><p>设置项目interpreter</p>
+</li>
+<li><p>创建main.py文件:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from scrapy.cmdline import execute</span><br><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">sys.path.append(os.path.dirname(os.path.abspath(__file__)))</span><br><span class="line">execute([&quot;scrapy&quot;, &quot;crawl&quot;, &quot;[qizha]&quot;])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在settings.py文件中设置机器人协议和请求头:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ROBOTSTXT_OBEY = False</span><br><span class="line"># Override the default request headers:</span><br><span class="line">DEFAULT_REQUEST_HEADERS = &#123;</span><br><span class="line">  &apos;Accept&apos;: &apos;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&apos;,</span><br><span class="line">  &apos;Accept-Language&apos;: &apos;en&apos;,</span><br><span class="line">  &apos;User-Agent&apos;:&apos;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.5 Safari/605.1.15&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在settings.py文件中设置数据库基本信息:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MYSQL_HOST = &apos;localhost&apos;</span><br><span class="line">MYSQL_DBNAME = &apos;Spiders&apos;</span><br><span class="line">MYSQL_USER = &apos;root&apos;</span><br><span class="line">MYSQL_PASSWORD = &apos;199938&apos;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 
           
         
@@ -473,7 +671,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-23T16:23:11+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-23T16:23:00+08:00">
                 2020-02-23
               </time>
             
@@ -483,6 +681,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/环境配置/" itemprop="url" rel="index">
+                    <span itemprop="name">环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -608,7 +828,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-18T09:28:42+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-18T09:28:00+08:00">
                 2020-02-18
               </time>
             
@@ -618,6 +838,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -747,11 +989,17 @@
 </li>
 </ol>
 <hr>
-<h2 id="感知器"><a href="#感知器" class="headerlink" title="感知器"></a>感知器</h2><p>数据集的线性可分性性: 存在一个超平面</p>
-<p>最终目的:每一个特征有一个权重,学习权重</p>
-<p><img src="/images/pasted-26.png" alt="upload successful"></p>
-<p><img src="/images/pasted-27.png" alt="upload successful"></p>
-<p>Pocket 算法:针对存在噪声数据集无法线性可分情况</p>
+<h2 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h2><p>数据集的线性可分性性: 存在一个超平面<br>最终目的:每一个特征有一个权重,学习权重<br>感知机算法是误分类驱动<br>Pocket 算法:针对存在噪声数据集无法线性可分情况  </p>
+<h3 id="一、感知机算法原始形式"><a href="#一、感知机算法原始形式" class="headerlink" title="一、感知机算法原始形式"></a>一、感知机算法原始形式</h3><p><img src="/images/pasted-41.png" alt="upload successful"></p>
+<h3 id="二、感知机模型训练方法"><a href="#二、感知机模型训练方法" class="headerlink" title="二、感知机模型训练方法"></a>二、感知机模型训练方法</h3><ol>
+<li><p>批量梯度下降</p>
+</li>
+<li><p>随机梯度下降</p>
+</li>
+</ol>
+<p><img src="/images/pasted-42.png" alt="upload successful"></p>
+<h3 id="三、算法的收敛性"><a href="#三、算法的收敛性" class="headerlink" title="三、算法的收敛性"></a>三、算法的收敛性</h3><p><img src="/images/pasted-43.png" alt="upload successful"></p>
+<h3 id="四、感知机算法的对偶形式"><a href="#四、感知机算法的对偶形式" class="headerlink" title="四、感知机算法的对偶形式"></a>四、感知机算法的对偶形式</h3><p><img src="/images/pasted-44.png" alt="upload successful"></p>
 <hr>
 <h2 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h2><h3 id="一、线性回归"><a href="#一、线性回归" class="headerlink" title="一、线性回归"></a>一、线性回归</h3><h4 id="1-高斯分布"><a href="#1-高斯分布" class="headerlink" title="1. 高斯分布"></a>1. 高斯分布</h4><p>假设误差服从高斯分布,所以y也服从高斯分布</p>
 <h4 id="2-最大似然估计和最小二乘法本质"><a href="#2-最大似然估计和最小二乘法本质" class="headerlink" title="2. 最大似然估计和最小二乘法本质"></a>2. 最大似然估计和最小二乘法本质</h4><p> <img src="/images/pasted-28.png" alt="upload successful"></p>
@@ -790,6 +1038,10 @@
 </ol>
 </li>
 <li>极大似然估计</li>
+</ol>
+<h3 id="四、思考"><a href="#四、思考" class="headerlink" title="四、思考"></a>四、思考</h3><ol>
+<li>为什么不用回归解决分类问题?<br>平方损失大于二分类损失</li>
+<li>什么是过拟合,如何避免过拟合</li>
 </ol>
 
           
@@ -870,7 +1122,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-09T14:34:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-09T14:34:00+08:00">
                 2020-01-09
               </time>
             
@@ -880,6 +1132,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/环境配置/" itemprop="url" rel="index">
+                    <span itemprop="name">环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -967,6 +1241,175 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
 <li><p>完成</p>
 </li>
 </ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/记录Mac安装tensorflow并配置pycharm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/18/记录Mac安装tensorflow并配置pycharm/" itemprop="url">记录Mac安装tensorflow并配置pycharm</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-18T00:53:00+08:00">
+                2019-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/环境配置/" itemprop="url" rel="index">
+                    <span itemprop="name">环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基于-VirtualEnv-的安装"><a href="#基于-VirtualEnv-的安装" class="headerlink" title="基于 VirtualEnv 的安装"></a>基于 VirtualEnv 的安装</h2><p>若使用anaconda安装会产生以下warning:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2019-10-17 23:48:15.796554: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn&apos;t compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>所以还是被迫基于 VirtualEnv 的安装</p>
+<ol>
+<li><p>首先</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo easy_install pip  # 如果还没有安装 pip</span><br><span class="line">$ sudo pip install --upgrade virtualenv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来, 建立一个全新的 virtualenv 环境. 为了将环境建在 ~/tensorflow 目录下, 执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ virtualenv --system-site-packages ~/tensorflow</span><br><span class="line">$ cd ~/tensorflow</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后, 激活 virtualenv:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ source bin/activate  # 如果使用 bash</span><br><span class="line">$ source bin/activate.csh  # 如果使用 csh</span><br><span class="line">(tensorflow)$  # 终端提示符应该发生变化</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 virtualenv 内, 安装 TensorFlow:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow)$ pip3 install https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0-py3-none-any.whl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在pycharm中新建项目</p>
+<p> 1.填写文件名</p>
+<p> 2.点击project interpreter</p>
+<p> 3.选择existing interpreter,点击<code>...</code>按键</p>
+<p> <img src="/images/pasted-18.png" alt="upload successful"></p>
+<p> 4.选择Virtualenv environment,点击<code>...</code>按键</p>
+<p> <img src="/images/pasted-19.png" alt="upload successful"><br> 5.找到Python在Virtualenv的路径</p>
+<p> 我的是/Users/zhouqionglin/tensorflow/bin/python3</p>
+<p> <img src="/images/pasted-20.png" alt="upload successful"><br> 6.👌 </p>
+</li>
+</ol>
 
           
         
@@ -1109,6 +1552,169 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
         
           
             <p><img src="/images/pasted-17.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/算法课5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/10/算法课5/" itemprop="url">算法课5</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T23:52:00+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="图的深度优先遍历算法"><a href="#图的深度优先遍历算法" class="headerlink" title="图的深度优先遍历算法"></a><strong>图的深度优先遍历算法</strong></h2><p>尚未实现</p>
+<h2 id="图的广度优先遍历算法"><a href="#图的广度优先遍历算法" class="headerlink" title="图的广度优先遍历算法"></a><strong>图的广度优先遍历算法</strong></h2><p>尚未实现</p>
+<h2 id="寻找图的关节点算法"><a href="#寻找图的关节点算法" class="headerlink" title="寻找图的关节点算法"></a><strong>寻找图的关节点算法</strong></h2><h3 id="算法目标"><a href="#算法目标" class="headerlink" title="算法目标:"></a>算法目标:</h3><p>目标:寻找图的关节点.</p>
+<p>some定义:</p>
+<ol>
+<li>关节点:存在顶点v,如果有不同与v的两个顶点u和w,在u和w间的任何路径都必定经过顶点v,则v为关节点(我的理解:删掉这个点,将产生图的不联通子图)</li>
+<li>树边:深度优先搜索树上的边.如果在探索边(v,w)时,w是第一次被访问,这(v,w)是树边</li>
+<li>回边:在迄今为止构建的深度优先搜索树中,w是v的<strong>祖先</strong>(不是父亲),并且当探索(v,w)时顶点w已被标上已访问</li>
+</ol>
+<h3 id="关节点的确定"><a href="#关节点的确定" class="headerlink" title="关节点的确定"></a>关节点的确定</h3><ul>
+<li><p>根是一个关节点当且仅当在dfs树中，它有两个或更多的儿子。</p>
+</li>
+<li><p>根以外的顶点v是一个关节点当且仅当v有一个儿子w，使得β[w]&gt;=α[v]。</p>
+</li>
+</ul>
+<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码:"></a>伪代码:</h3><p><img src="/images/pasted-11.png" alt="upload successful"></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现:"></a>代码实现:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int size=10;</span><br><span class="line"></span><br><span class="line">struct data&#123;</span><br><span class="line">    char var;</span><br><span class="line">    friend ostream&amp; operator&lt;&lt;(ostream&amp; os,data&amp; d)&#123;</span><br><span class="line">        os&lt;&lt;d.var;</span><br><span class="line">        return os;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct node&#123;</span><br><span class="line">    int a;</span><br><span class="line">    int b;</span><br><span class="line">    bool access;</span><br><span class="line">    bool is_artpoint;</span><br><span class="line">    data val;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">inline int minimun(int a,int b)&#123;</span><br><span class="line">    return a&gt;b?b:a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool judge_tree_edges(node* Nodes,int v,int w)&#123;</span><br><span class="line">    if (Nodes[w].access == false &amp;&amp; Nodes[v].access == true) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool judge_back_edges(node* Nodes,int v,int w)&#123;</span><br><span class="line">    if (Nodes[v].access &amp;&amp; Nodes[w].access) &#123;</span><br><span class="line">        if (Nodes[v].a-Nodes[w].a &gt; 1) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;else</span><br><span class="line">            return false;</span><br><span class="line">    &#125;else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void dfs(int v,int number,node* Nodes,bool graph[][size],int&amp; rootdegree)&#123;</span><br><span class="line">    Nodes[v].access = true;</span><br><span class="line">    Nodes[v].a = number;</span><br><span class="line">    Nodes[v].b = number++;</span><br><span class="line">    for (int w=0; w&lt;size; w++) &#123;</span><br><span class="line">        if(graph[v][w] == true)&#123;</span><br><span class="line">            if (judge_tree_edges(Nodes, v, w)) &#123;</span><br><span class="line">                dfs(w, number, Nodes, graph,rootdegree);</span><br><span class="line">                if (v == 0) &#123;</span><br><span class="line">                    rootdegree++;</span><br><span class="line">                    if (rootdegree == 2) &#123;</span><br><span class="line">                        Nodes[v].is_artpoint = true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    Nodes[v].b = minimun(Nodes[v].b, Nodes[w].b);</span><br><span class="line">                    if (Nodes[w].b &gt;= Nodes[v].a) &#123;</span><br><span class="line">                        Nodes[v].is_artpoint = true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;else if (judge_back_edges(Nodes, v, w))&#123;</span><br><span class="line">                Nodes[v].b = minimun(Nodes[v].b, Nodes[w].a);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ARTICPOINTS(bool graph[][size],data* vars)&#123;</span><br><span class="line">    node Nodes[size];</span><br><span class="line">    for (int i=0; i&lt;size; i++) &#123;</span><br><span class="line">        Nodes[i].access = false;</span><br><span class="line">        Nodes[i].val = vars[i];</span><br><span class="line">        Nodes[i].is_artpoint = false;</span><br><span class="line">    &#125;</span><br><span class="line">    int number = 1;</span><br><span class="line">    int v=0;</span><br><span class="line">    int rootdegree = 0;</span><br><span class="line">    dfs(v, number, Nodes, graph, rootdegree);</span><br><span class="line">    for (int i=0; i&lt;size; i++) &#123;</span><br><span class="line">        //cout&lt;&lt;Nodes[i].a&lt;&lt;&quot; &quot;&lt;&lt;Nodes[i].b&lt;&lt;endl;</span><br><span class="line">        if (Nodes[i].is_artpoint) &#123;</span><br><span class="line">            cout&lt;&lt;i&lt;&lt;&quot;:&quot;&lt;&lt;Nodes[i].val&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    bool graph[][size]&#123;</span><br><span class="line">        &#123;0,1,0,0,0,0,1,0,0,0&#125;,</span><br><span class="line">        &#123;1,0,1,0,0,1,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,1,0,1,1,0,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,0,1,0,1,0,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,0,1,1,0,0,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,1,0,0,0,0,1,0,0,0&#125;,</span><br><span class="line">        &#123;1,0,0,0,0,1,0,1,0,0&#125;,</span><br><span class="line">        &#123;0,0,0,0,0,0,1,0,1,1&#125;,</span><br><span class="line">        &#123;0,0,0,0,0,0,0,1,0,1&#125;,</span><br><span class="line">        &#123;0,0,0,0,0,0,0,1,1,0&#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    data d[size];</span><br><span class="line">    for (int i = 0; i&lt;size; i++) &#123;</span><br><span class="line">        d[i].var=&apos;a&apos;+i;</span><br><span class="line">    &#125;</span><br><span class="line">    ARTICPOINTS(graph, d);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例:"></a>实例:</h3><p><img src="/images/pasted-12.png" alt="upload successful"></p>
+<h3 id="一些规律"><a href="#一些规律" class="headerlink" title="一些规律"></a>一些规律</h3><p><img src="/images/pasted-14.png" alt="upload successful"><br>在深度优先搜索树中关节点是每个回环之间相连的一条边的两个端点</p>
+<p>代码结果:</p>
+<p><img src="/images/pasted-13.png" alt="upload successful"></p>
 
           
         
@@ -1341,6 +1947,28 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1447,472 +2075,11 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/算法课3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/17/算法课3/" itemprop="url">算法课3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T23:05:23+08:00">
-                2019-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h2><h3 id="MINMAX"><a href="#MINMAX" class="headerlink" title="MINMAX"></a>MINMAX</h3><p>寻找数组A中最大元素和最小元素<br><img src="/2019/09/17/算法课3/MINMAX.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">struct max_min&#123;</span><br><span class="line">    int max;</span><br><span class="line">    int min;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">inline int max(int a,int b)&#123;</span><br><span class="line">    return a&gt;b?a:b;</span><br><span class="line">&#125;</span><br><span class="line">inline int min(int a,int b)&#123;</span><br><span class="line">    return a&gt;b?b:a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">max_min __MINMAX__(int begin,int end,int* Array)&#123;</span><br><span class="line">    if (end - begin == 1) &#123;</span><br><span class="line">        return (Array[begin]&gt;Array[end])?max_min&#123;Array[begin],Array[end]&#125;:max_min&#123;Array[end],Array[begin]&#125;;</span><br><span class="line">    &#125;else if (end == begin)&#123;</span><br><span class="line">        return max_min&#123;Array[end],Array[begin]&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        int mid = (begin+end)/2;</span><br><span class="line">        auto tmp1 = __MINMAX__(begin, mid, Array);</span><br><span class="line">        auto tmp2 = __MINMAX__(mid+1, end, Array);</span><br><span class="line">        return max_min&#123;max(tmp1.max, tmp2.max),min(tmp1.min, tmp2.min)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">max_min MINMAX(int* Array,int size)&#123;</span><br><span class="line">    return __MINMAX__(0, size-1, Array);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int Array[]&#123;3,4,2,8,9,33,99,78,1,67,1111,98&#125;;</span><br><span class="line">    max_min result=MINMAX(Array, sizeof(Array)/sizeof(int));</span><br><span class="line">    std::cout&lt;&lt;result.max&lt;&lt;&quot; &quot;&lt;&lt;result.min&lt;&lt;std::endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="寻找中项和第K小元素"><a href="#寻找中项和第K小元素" class="headerlink" title="寻找中项和第K小元素"></a>寻找中项和第K小元素</h3><p><img src="/2019/09/17/算法课3/%E5%AF%BB%E6%89%BE%E4%B8%AD%E9%A1%B9%E5%92%8C%E7%AC%ACk%E5%B0%8F%E5%85%83%E7%B4%A0.png" alt><br>算法输入:n个元素的数组A[1…n]和整数k,k属于[1,n]<br>算法输出:A中的第k小元素<br>算法实现细节:A数组用vector实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int __findmid5__(vector&lt;int&gt;&amp;&amp; vec)&#123;</span><br><span class="line">    for (int count=0; count&lt;2; count++) &#123;</span><br><span class="line">        int min_id=count;</span><br><span class="line">        for (int i=count;i&lt;5;i++) &#123;</span><br><span class="line">            if (vec[min_id]&gt;vec[i]) &#123;</span><br><span class="line">                min_id=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int tmp = vec[min_id];</span><br><span class="line">        vec[min_id] = vec[count];</span><br><span class="line">        vec[count] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    return vec[2];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void __selection_sort__(vector&lt;int&gt;&amp; A)&#123;</span><br><span class="line">    unsigned long size = A.size();</span><br><span class="line">    int i=1,k;</span><br><span class="line">    int the_smallest;</span><br><span class="line">    while (i&lt;size) &#123;</span><br><span class="line">        k=i-1;</span><br><span class="line">        the_smallest=A[k];</span><br><span class="line">        for (int j=i; j&lt;size; j++) &#123;</span><br><span class="line">            if (the_smallest&gt;A[j])&#123;</span><br><span class="line">                k=j;</span><br><span class="line">                the_smallest=A[k];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (k != i-1) &#123;</span><br><span class="line">            int tmp=A[i-1];</span><br><span class="line">            A[i-1]=A[k];</span><br><span class="line">            A[k]=tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int SELECT(vector&lt;int&gt;&amp; Array,unsigned long k)&#123;</span><br><span class="line">    unsigned long size = Array.size();</span><br><span class="line">    if (size&lt;44) &#123;</span><br><span class="line">        __selection_sort__(Array);</span><br><span class="line">        return Array[k-1];</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        unsigned long q =size/5;</span><br><span class="line">        vector&lt;int&gt; M;</span><br><span class="line">        auto begin = Array.begin();</span><br><span class="line">        for (int i=1; i&lt;=q; i++) &#123;</span><br><span class="line">            M.push_back(__findmid5__(vector&lt;int&gt;(begin+(i-1)*5,begin+5*i)));</span><br><span class="line">        &#125;</span><br><span class="line">        int mm = SELECT(M,M.size()/2);</span><br><span class="line">        vector&lt;int&gt; A1;</span><br><span class="line">        vector&lt;int&gt; A2;</span><br><span class="line">        vector&lt;int&gt; A3;</span><br><span class="line">        for (auto iter=begin; iter!=Array.end(); iter++) &#123;</span><br><span class="line">            if (*iter&lt;mm) &#123;</span><br><span class="line">                A1.push_back(*iter);</span><br><span class="line">            &#125;else if (*iter==mm)&#123;</span><br><span class="line">                A2.push_back(*iter);</span><br><span class="line">            &#125;else</span><br><span class="line">                A3.push_back(*iter);</span><br><span class="line">        &#125;</span><br><span class="line">        unsigned long size_A1 = A1.size();</span><br><span class="line">        unsigned long size_A2 = A2.size();</span><br><span class="line">        if (size_A1 &gt;= k)</span><br><span class="line">            SELECT(A1, k);</span><br><span class="line">        else if (size_A1+size_A2 &gt;= k)</span><br><span class="line">            return mm;</span><br><span class="line">        else if (size_A1+size_A2 &lt; k)</span><br><span class="line">            SELECT(A3, k-size_A1-size_A2);</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    vector&lt;int&gt; Array&#123;8,33,17,51,57,49,35,11,25,37,14,3,2,13,52,12,6,29,32,54,5,16,22,23,7&#125;;</span><br><span class="line">    //vector&lt;int&gt; Array&#123;8,33,17,51&#125;;</span><br><span class="line">    int result = SELECT(Array,13);</span><br><span class="line">    std::cout&lt;&lt;result;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/算法课2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/算法课2/" itemprop="url">算法课2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T23:47:55+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="SELECTIONSORTREC"><a href="#SELECTIONSORTREC" class="headerlink" title="SELECTIONSORTREC"></a>SELECTIONSORTREC</h3><p><img src="/2019/09/16/算法课2/selectionsort.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">void exchange(int i,int j, int* Array)&#123;</span><br><span class="line">    int tmp=Array[j];</span><br><span class="line">    Array[j]=Array[i];</span><br><span class="line">    Array[i]=tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void sort(int begin,int end,int* Array)&#123;</span><br><span class="line">    if (begin==end) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        int min_id =begin;</span><br><span class="line">        for (int i=begin+1; i&lt;=end; i++) &#123;</span><br><span class="line">            if (Array[min_id]&gt;Array[i]) &#123;</span><br><span class="line">                min_id=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        exchange(begin,min_id,Array);</span><br><span class="line">        sort(begin+1, end, Array);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int A[]&#123;8,4,3,5,2,1,7,22,88,45,25&#125;;</span><br><span class="line">    sort(0, sizeof(A)/sizeof(int)-1, A);</span><br><span class="line">    for (auto i:A) &#123;</span><br><span class="line">        std::cout&lt;&lt;i&lt;&lt;&quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="生成排列"><a href="#生成排列" class="headerlink" title="生成排列"></a>生成排列</h3><p><img src="/2019/09/16/算法课2/%E7%94%9F%E6%88%90%E6%8E%92%E5%88%97.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void exchange(int i,int j, int* Array)&#123;</span><br><span class="line">    int tmp=Array[j];</span><br><span class="line">    Array[j]=Array[i];</span><br><span class="line">    Array[i]=tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void perml(int begin,int end,int*Array)&#123;</span><br><span class="line">    if (begin == end) &#123;</span><br><span class="line">        for (int i=0 ;i&lt;=end;i++) &#123;</span><br><span class="line">            std::cout&lt;&lt;Array[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        std::cout&lt;&lt;std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i=begin; i&lt;=end; i++) &#123;</span><br><span class="line">        exchange(i, begin, Array);</span><br><span class="line">        perml(begin+1, end, Array);</span><br><span class="line">        exchange(i, begin, Array);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int A[]&#123;1,2,3,4,5,6&#125;;</span><br><span class="line">    perml(0, sizeof(A)/sizeof(int)-1, A);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="寻找多数元素"><a href="#寻找多数元素" class="headerlink" title="寻找多数元素"></a>寻找多数元素</h3><p><img src="/2019/09/16/算法课2/%E5%AF%BB%E6%89%BE%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">bool __Majority(int* result,int* A,int first,int last)&#123;</span><br><span class="line">    if (first &gt; last) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    int x = A[first];</span><br><span class="line">    int count = 1;</span><br><span class="line">    int i = 1;</span><br><span class="line">    while (count &amp;&amp; (i+first)&lt;=last) &#123;</span><br><span class="line">        if (x == A[first+i]) &#123;</span><br><span class="line">            count++;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            count--;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (!count) &#123;</span><br><span class="line">        return __Majority(result, A, first+i, last);</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        *result = x;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void Majority(int *A,int size)&#123;</span><br><span class="line">    int result;</span><br><span class="line">    if (__Majority(&amp;result, A, 0, size-1)) &#123;</span><br><span class="line">        std::cout&lt;&lt;&quot;多数元素为:&quot;&lt;&lt;result&lt;&lt;std::endl;</span><br><span class="line">    &#125;else</span><br><span class="line">        std::cout&lt;&lt;&quot;没有多数元素&quot;&lt;&lt;std::endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int A[]&#123;2,3,4,4,4,5,6&#125;;</span><br><span class="line">    int A1[]&#123;2,3,4,4,2,5&#125;;</span><br><span class="line">    int A2[]&#123;2,3,2&#125;;</span><br><span class="line">    int A3[]&#123;1&#125;;</span><br><span class="line">    Majority(A, sizeof(A)/sizeof(int));</span><br><span class="line">    Majority(A1, sizeof(A1)/sizeof(int));</span><br><span class="line">    Majority(A2, sizeof(A2)/sizeof(int));</span><br><span class="line">    Majority(A3, sizeof(A3)/sizeof(int));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/C-并发与多线程第十一节笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/30/C-并发与多线程第十一节笔记/" itemprop="url">C-并发与多线程第十一节笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-30T15:41:29+08:00">
-                2019-08-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="std-future的成员函数"><a href="#std-future的成员函数" class="headerlink" title="std::future的成员函数"></a>std::future的成员函数</h3><ol>
-<li>vaild()<br>如果future对象可以调用get()就返回真,即future对象内有值</li>
-<li>wait_for()<br>返回值是线程状态future_status标记</li>
-</ol>
-<ul>
-<li>future_status::timeout</li>
-<li>future_status::ready</li>
-<li>future_status::deffered</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;future&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int A(int var)&#123;</span><br><span class="line">    cout&lt;&lt;&quot;开始执行A() &quot;&lt;&lt;this_thread::get_id()&lt;&lt;endl;</span><br><span class="line">    int a = var;</span><br><span class="line">    chrono::milliseconds dura(5000);</span><br><span class="line">    this_thread::sleep_for(dura);</span><br><span class="line">    cout&lt;&lt;&quot;结束执行A()&quot;&lt;&lt;endl;</span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    future&lt;int&gt;result=async(launch::deferred, A, 250);</span><br><span class="line">    future_status state=result.wait_for(chrono::microseconds(2000));</span><br><span class="line">    if (state==future_status::ready) &#123;</span><br><span class="line">        cout&lt;&lt;&quot;线程执行完毕&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;else if (state==future_status::timeout)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;线程执行超时&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;else</span><br><span class="line">        cout&lt;&lt;&quot;线程deffered&quot;&lt;&lt;endl;</span><br><span class="line">    result.wait();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="std-share-future类模版"><a href="#std-share-future类模版" class="headerlink" title="std::share_future类模版"></a>std::share_future类模版</h3><p>future对象的get()函数是移动语义,执行一次后future对象就为空了所以不能多次调用get()<br>share_future对象的get()函数执行的是拷贝,可以多次调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    future&lt;int&gt;result=async(launch::deferred, A, 250);</span><br><span class="line">    //shared_future&lt;int&gt;result_s(move(result));//注意移动语义</span><br><span class="line">    shared_future&lt;int&gt;result_s(result.share());//注意</span><br><span class="line">    cout&lt;&lt;result_s.get()&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;result_s.get()&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    packaged_task&lt;int(int)&gt;pack_g(A);</span><br><span class="line">    shared_future&lt;int&gt;result(pack_g.get_future());//注意:直接使用构造函数用临时future对象初始化shared_future对象</span><br><span class="line">    thread th_one(ref(pack_g),250);</span><br><span class="line">    th_one.join();</span><br><span class="line">    cout&lt;&lt;result.get()&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="原子操作std-atomic"><a href="#原子操作std-atomic" class="headerlink" title="原子操作std::atomic"></a>原子操作std::atomic</h3><p>mutex互斥锁是对一段代码加锁<br>原子操作是对一个变量操作<br>reason:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int global_var=0;</span><br><span class="line">void B()&#123;</span><br><span class="line">    for (int i=0; i&lt;1000000; i++) &#123;</span><br><span class="line">        global_var++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main(void)&#123;</span><br><span class="line">    thread th_one(B);</span><br><span class="line">    thread th_two(B);</span><br><span class="line">    th_one.join();</span><br><span class="line">    th_two.join();</span><br><span class="line">    cout&lt;&lt;global_var;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果:<br><img src="/2019/08/30/C-并发与多线程第十一节笔记/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C.png" alt></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">std::atomic&lt;int&gt; global_var;</span><br><span class="line">void B()&#123;</span><br><span class="line">    for (int i=0; i&lt;1000000; i++) &#123;</span><br><span class="line">        global_var++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main(void)&#123;</span><br><span class="line">    thread th_one(B);</span><br><span class="line">    thread th_two(B);</span><br><span class="line">    th_one.join();</span><br><span class="line">    th_two.join();</span><br><span class="line">    cout&lt;&lt;global_var;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2019/08/30/C-并发与多线程第十一节笔记/%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C1.png" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1960,7 +2127,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1971,7 +2138,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1982,7 +2149,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
