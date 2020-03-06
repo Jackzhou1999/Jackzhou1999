@@ -989,7 +989,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h2><p>数据集的线性可分性性: 存在一个超平面<br>最终目的:每一个特征有一个权重,学习权重<br>感知机算法是误分类驱动<br>Pocket 算法:针对存在噪声数据集无法线性可分情况  </p>
+<h2 id="感知机-PLA"><a href="#感知机-PLA" class="headerlink" title="感知机(PLA)"></a>感知机(PLA)</h2><p>数据集的线性可分性性: 存在一个超平面<br>最终目的:每一个特征有一个权重,学习权重<br>感知机算法是误分类驱动<br>Pocket 算法:针对存在噪声数据集无法线性可分情况  </p>
 <h3 id="一、感知机算法原始形式"><a href="#一、感知机算法原始形式" class="headerlink" title="一、感知机算法原始形式"></a>一、感知机算法原始形式</h3><p><img src="/images/pasted-41.png" alt="upload successful"></p>
 <h3 id="二、感知机模型训练方法"><a href="#二、感知机模型训练方法" class="headerlink" title="二、感知机模型训练方法"></a>二、感知机模型训练方法</h3><ol>
 <li><p>批量梯度下降</p>
@@ -1031,7 +1031,23 @@
 <li>逻辑回归是对数线性模型的证明<br>逻辑回归的本质是认为机率是一个线性模型<br>事件的机率:事件发生的概率/事件不发生的概率</li>
 </ul>
 <p><img src="/images/pasted-39.png" alt="upload successful"></p>
-<h3 id="三、工具"><a href="#三、工具" class="headerlink" title="三、工具"></a>三、工具</h3><ol>
+<ul>
+<li>logistic回归损失函数?</li>
+</ul>
+<h3 id="三、局部加权回归-LWR"><a href="#三、局部加权回归-LWR" class="headerlink" title="三、局部加权回归(LWR)"></a>三、局部加权回归(LWR)</h3><p>对每一个样本加权,区分于之前的对于特征的加权</p>
+<ul>
+<li>局部加权模型</li>
+</ul>
+<p><img src="/images/pasted-45.png" alt="upload successful"><br>理解: 对于每一个样本i都有一个权重wi,每预测一个x对应的y都需要重新计算一次wi,wi越大表示样本i对x的预测作用越重要.<br>    当我们获取某个x的预测值的时候，我们需要计算回归系数w,但是如果针对样本中的数据，距离x越近我们就给个越大的权重，如果距离越远就给一个小的权重，这样就会使得针对x的预测值y能够更贴合样本数据。<br>wi的计算方法如下:</p>
+<p><img src="/images/pasted-46.png" alt="upload successful"><br>加权函数只有一个系数，那就是分母上的方差τ，当τ取很小时，exp得到的很多值均趋于0，此时只有很少一部分样本用于训练，而当τ取很大时，exp的值不会很快趋于0，从而会有一大部分点用于训练，可以通过调整K的值，决定这个‘局部’的大小究竟是多大.</p>
+<ul>
+<li>矩阵形式求解θ</li>
+</ul>
+<p><img src="/images/pasted-47.png" alt="upload successful"><br>其中W为对角距阵,wii的值为样本权值wi</p>
+<ul>
+<li>参数学习算法于非参数学习算法<br>参考:<a href="https://www.cnblogs.com/wallacup/p/6023124.html?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">https://www.cnblogs.com/wallacup/p/6023124.html?utm_source=itdadao&amp;utm_medium=referral</a></li>
+</ul>
+<h3 id="四、工具"><a href="#四、工具" class="headerlink" title="四、工具"></a>四、工具</h3><ol>
 <li>梯度下降法<ol>
 <li>随机梯度下降  </li>
 <li>mini-batch梯度下降</li>
@@ -1039,10 +1055,12 @@
 </li>
 <li>极大似然估计</li>
 </ol>
-<h3 id="四、思考"><a href="#四、思考" class="headerlink" title="四、思考"></a>四、思考</h3><ol>
+<h3 id="五、思考"><a href="#五、思考" class="headerlink" title="五、思考"></a>五、思考</h3><ol>
 <li>为什么不用回归解决分类问题?<br>平方损失大于二分类损失</li>
 <li>什么是过拟合,如何避免过拟合</li>
 </ol>
+<hr>
+<p>softmax 广义线性</p>
 
           
         
