@@ -304,6 +304,245 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/Ubuntu双系统安装记录-主机/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/20/Ubuntu双系统安装记录-主机/" itemprop="url">Ubuntu双系统安装记录(主机)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-20T20:26:48+08:00">
+                2020-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Win10“主机”-ubuntu16-04-Geforce-RTX2070S"><a href="#Win10“主机”-ubuntu16-04-Geforce-RTX2070S" class="headerlink" title="Win10“主机”+ubuntu16.04+Geforce RTX2070S"></a>Win10“主机”+ubuntu16.04+Geforce RTX2070S</h1><p>深刻的感受到了网上某些blog的险恶,装了3次才配好工作环境,特此记录以备日后快速重装。  </p>
+<h2 id="一、总体步骤"><a href="#一、总体步骤" class="headerlink" title="一、总体步骤"></a>一、总体步骤</h2><ol>
+<li>windows 分区</li>
+<li>ubuntu系统盘制作</li>
+<li>ubuntu系统安装及卸载</li>
+<li>nvidia驱动安装+cuda+cudnn(驱动没装好就黑屏死机,其他的先装好都是无用功😭)</li>
+<li>ubuntu换源</li>
+<li>ubuntu中文输入法安装</li>
+<li>anaconda、pycharm、vim、chrome安装  </li>
+<li>python虚拟环境配置for pytorch tf2.0</li>
+</ol>
+<h2 id="二、-详细流程"><a href="#二、-详细流程" class="headerlink" title="二、 详细流程"></a>二、 详细流程</h2><h3 id="1-Win10分区"><a href="#1-Win10分区" class="headerlink" title="1. Win10分区"></a>1. Win10分区</h3><p>在win搜索栏输入“创建并格式化硬盘分区” ==&gt; 选择在那个磁盘的那个区进行分区, 在这里我使用磁盘0的C区进行分区,在所选的C区上点击鼠标右键 ==&gt; 在扩展框中选择压缩卷 ==&gt; 指定分区大小。<br>  选择要被拆分的区块<br>  <img src="/images/pasted-50.png" alt="upload successful"><br>  指定新系统硬盘大小<br>  <img src="/images/pasted-51.png" alt="upload successful"><br>  分区结果(没法子重现了😁,网上搞了个结果图)<br>  <img src="/images/pasted-52.png" alt="upload successful"></p>
+<h3 id="2-系统盘制作"><a href="#2-系统盘制作" class="headerlink" title="2. 系统盘制作"></a>2. 系统盘制作</h3><p>使用软件UltralISO</p>
+<ol>
+<li><p>在本地目录中选中下载的ubuntu镜像iso文件</p>
+<p><img src="/images/pasted-53.png" alt="upload successful"></p>
+</li>
+<li><p>点击左上角”启动” ==&gt; “写入硬盘映像”</p>
+<p><img src="/images/pasted-54.png" alt="upload successful"></p>
+</li>
+<li><p>在弹框界面中选择“硬盘驱动器”(U盘) ==&gt; “写入”  </p>
+<p><img src="/images/pasted-55.png" alt="upload successful"></p>
+</li>
+</ol>
+<h3 id="3-ubuntu安装及卸载"><a href="#3-ubuntu安装及卸载" class="headerlink" title="3. ubuntu安装及卸载"></a>3. ubuntu安装及卸载</h3><p>在众多剧毒的博客中淘到了一篇良心之作</p>
+<p>参考自博客: <a href="https://blog.csdn.net/Spacegene/article/details/86659349?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase" target="_blank" rel="noopener">https://blog.csdn.net/Spacegene/article/details/86659349?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase</a></p>
+<p>这老哥的教程完全可用(试了两次), 此乃大佬鼠😎<br>安装过程注意点: 根目录分区大小一定要大😭,我分了60GB,某铁憨憨刚开始只分了10GB配环境配到一半根目录爆了。</p>
+<h3 id="4-nvidia驱动安装-cuda-cudnn"><a href="#4-nvidia驱动安装-cuda-cudnn" class="headerlink" title="4. nvidia驱动安装+cuda+cudnn"></a>4. nvidia驱动安装+cuda+cudnn</h3><p>参考自博客: <a href="https://www.jianshu.com/p/c2212b89f7b6" target="_blank" rel="noopener">https://www.jianshu.com/p/c2212b89f7b6</a> (进行了修改)</p>
+<ol>
+<li><p>我的配置:<br>我的显卡(2070super)对应驱动: NVIDIA-Linux-x86_64-440.82.run;<br>cuda: cuda_10.0.130_410.48_linux.run;<br>cudnn: cudnn-10.0-linux-x64-v7.6.5.32.tar;<br>百度网盘链接<br>链接：<a href="https://pan.baidu.com/s/1Jqvdrvg4Q4PwR-C2aQoeLw" target="_blank" rel="noopener">https://pan.baidu.com/s/1Jqvdrvg4Q4PwR-C2aQoeLw</a><br>提取码：w4c5  </p>
+</li>
+<li><p>直达网址<br>nvidia驱动下载地址: <a href="https://www.geforce.cn/drivers" target="_blank" rel="noopener">https://www.geforce.cn/drivers</a><br>cuda下载链接: <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit-archive</a><br>cuDNN下载链接: <a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-download</a><br>⚠️注意选定自己显卡的驱动, 注意cuda和cudnn的对应关系 </p>
+</li>
+<li><p>操蛋的安装过程(<strong>只适用于主机</strong>)笔记本没试过</p>
+<ul>
+<li><p>我将以上所有下载的文件存储与<code>\usr\jackzhou\Download\</code>文件夹中</p>
+</li>
+<li><p>cd到该目录下赋予文件权限(不行就 +sudo)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$chmod a+x NVIDIA-Linux-x86_64-440.82.run</span><br><span class="line">$chmod a+x cuda_10.0.130_410.48_linux.run</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果之前有安装驱动，需要先卸载旧版本驱动，没有就不用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   $sudo apt-get remove nvidia-*</span><br><span class="line">$sudo apt-get autoremove  (加上才能卸载干净原驱动)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭显示服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo service lightdm stop</span><br></pre></td></tr></table></figure>
+
+<p>关闭显示服务后黑屏,不慌</p>
+</li>
+<li><p>键盘输入CTRL+ALT+F1进入文本模式(F2,F3…F6)都行  </p>
+</li>
+<li><p>根据提示输入用户名and密码进入文本模式命令行</p>
+</li>
+<li><p>进入文件存储目录<code>cd \usr\jackzhou\Download\</code></p>
+</li>
+<li><p>输入<br>  <code>$sudo ./NVIDIA-Linux-x86_64-440.82.run -no-x-check -no-nouveau-check</code><br>⚠️注意对于电脑主机只有”-no-x-check -no-nouveau-check”没有” -no-opengl-files”, 我第一次尝试是在指令中加入了” -no-opengl-files”项然后在ubuntu的关于本机上Graphics上仍然为llvmpipe(LLVM 6.0,118bit),也就是说没有成功, 以下为关于这三个参数项描述的截图:</p>
+<p><img src="/images/pasted-57.png" alt="upload successful"></p>
+</li>
+<li><p>安装过程中选项(唉,忘记拍照记录了,差不多如下):</p>
+<p><img src="/images/pasted-58.png" alt="upload successful"></p>
+</li>
+<li><p>启动显示服务</p>
+<p><code>$sudo service lightdm restart（将自动跳转到桌面）</code></p>
+</li>
+<li><p>查看Nvidia驱动是否安装成功</p>
+<p><code>$nvidia-smi</code></p>
+<p>显示显卡信息并且查看主界面左上角“about this computer”中Graphics为nvidia显卡表示驱动安装成功</p>
+<p><img src="/images/pasted-61.png" alt="upload successful"></p>
+</li>
+<li><p>安装cuda(我没有进文本模式,直接在终端搞了)<br><code>sudo sh cuda_10.0.130_410.48_linux.run</code></p>
+</li>
+<li><p>安装过程中选项<br><img src="/images/pasted-62.png" alt="upload successful"></p>
+</li>
+<li><p>然后设置环境：使用vi在～/.bashrc文件最后添加下面几行,这些路径在cuda的安装成功后在界面会显示<br><img src="/images/pasted-60.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64</span><br><span class="line">PATH=$PATH:/usr/local/cuda-10.0/bin</span><br><span class="line">CUDA_HOME=$CUDA_HOME:/usr/local/cuda-10.0</span><br></pre></td></tr></table></figure>
+
+<p>然后输入</p>
+<p><code>$nvcc --version</code></p>
+<p>如果出现如下版本信息，证明安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nvcc: NVIDIA (R) Cuda compiler driver</span><br><span class="line">Copyright (c) 2005-2018 NVIDIA Corporation</span><br><span class="line">Built on Sat_Aug_25_21:08:01_CDT_2018</span><br><span class="line">Cuda compilation tools, release 10.0, V10.0.130</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>* 安装cudnn
+解压下载的文件cuda文件夹，打开终端，执行如下命令：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$sudo cp cuda/include/cudnn.h /usr/local/cuda/include/</span><br><span class="line">$sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/</span><br><span class="line">$sudo chmod a+r /usr/local/cuda/include/cudnn.h</span><br><span class="line">$sudo chmod a+r /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure>
+
+查看cudnn版本信息：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>
+
+出现版本信息则安装成功
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#define CUDNN_MAJOR 7</span><br><span class="line">#define CUDNN_MINOR 6</span><br><span class="line">#define CUDNN_PATCHLEVEL 5</span><br><span class="line">--</span><br><span class="line"></span><br><span class="line">#define CUDNN_VERSION (CUDNN_MAJOR * 1000 + CUDNN_MINOR * 100 + CUDNN_PATCHLEVEL)</span><br><span class="line"></span><br><span class="line">#include &quot;driver_types.h&quot;</span><br></pre></td></tr></table></figure></code></pre><h3 id="5-ubuntu16-04换国内源"><a href="#5-ubuntu16-04换国内源" class="headerlink" title="5. ubuntu16.04换国内源"></a>5. ubuntu16.04换国内源</h3><p>参考自博客: <a href="https://blog.csdn.net/u012308586/article/details/102953882" target="_blank" rel="noopener">https://blog.csdn.net/u012308586/article/details/102953882</a><br>⚠️注意系统版本</p>
+<h3 id="6-安装sougo输入法"><a href="#6-安装sougo输入法" class="headerlink" title="6. 安装sougo输入法"></a>6. 安装sougo输入法</h3><p>链接: <a href="https://pinyin.sogou.com/linux/" target="_blank" rel="noopener">https://pinyin.sogou.com/linux/</a>  </p>
+<ol>
+<li>下载文件</li>
+<li><code>sudo dpkg -i ****.deb</code></li>
+<li>点击”system settings” ==&gt;点击”language support”<br>初次使用会要求更新和安装啥的,会出一个关于thunderbird的问题,简单粗暴直接删除thunderbird软件,反正我也不用。<br>命令行输入<code>sudo apt-get remove thunderbird</code><br>在安装时还出了个啥无法获得锁lock的错误<br>简单粗暴,删除!!!   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /var/lib/dpkg/lock</span><br><span class="line">sudo dpkg --configure -a</span><br><span class="line">```   </span><br><span class="line">然后该install的install,update的update</span><br><span class="line">后面的操作参考博客: https://blog.csdn.net/leijieZhang/article/details/53707181?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase</span><br><span class="line">    </span><br><span class="line">### 7. anaconda、pycharm、vim、chrome安装  </span><br><span class="line"></span><br><span class="line">1. anaconda  </span><br><span class="line">	* 下载.sh文件</span><br><span class="line">    * bash .sh</span><br><span class="line">    * 差不多: https://blog.csdn.net/ITBigGod/article/details/85690257/</span><br><span class="line">2. pycharm  </span><br><span class="line">	* 下载安装包(下载时我选的save file） </span><br><span class="line">    * ``tar xvf pycharm-community-2020.1.1.tar.gz``  </span><br><span class="line">    * ``cd pycharm-community-2020.1.1/bin``</span><br><span class="line">    * ``./pycharm.sh``</span><br><span class="line">3. vim  </span><br><span class="line">``sudo apt-get install vim``    </span><br><span class="line">4. chrome</span><br><span class="line">	* 下载安装包(下载时我选的save file)  </span><br><span class="line">	* ``sudo dpkg -i google-chrome-stable_current_amd64.deb``</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">### 8. python虚拟环境配置for pytorch tf2.0</span><br><span class="line">1. python的pip换源</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>mkdir ~/.pip<br>vim ~/.pip/pip.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">编辑如下内容:</span><br></pre></td></tr></table></figure>
+
+<p>[global]<br>index-url=<a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/</a><br>[install]<br>trusted-host=mirrors.aliyun.com</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. 安装pip3 pip</span><br></pre></td></tr></table></figure>
+
+<p>sudo apt install python-pip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. 升级pip</span><br></pre></td></tr></table></figure>
+
+<p>pip install –upgrade pip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">4. 安装虚拟环境  </span><br><span class="line">参考我的mac虚拟环境安装(唯一区别 将~/.bash_profile改为~/.bashrc)</span><br><span class="line">https://jackzhou1999.github.io/2020/02/23/虚拟环境搭建/</span><br><span class="line"></span><br><span class="line">5. 安装pytorch, tensorflow</span><br><span class="line">pytorch网址(直接下载whl文件在安装):   </span><br><span class="line">https://pytorch.org/get-started/previous-versions/  </span><br><span class="line">执行</span><br></pre></td></tr></table></figure>
+
+<p>cd 环境目录<br>workon 环境<br>sudo pip install 安装包.whl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorflow</span><br></pre></td></tr></table></figure>
+
+<p>pip3 install tensorflow-gpu==2.0.0</p>
+<pre><code>
+
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/mysql命令记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1018,7 +1257,7 @@
 <li>将目标函数增加绝对值损失:</li>
 </ul>
 <p><img src="/images/pasted-32.png" alt="upload successful"></p>
-<h4 id="5-从该问题理解机器学习中的数据使用"><a href="#5-从该问题理解机器学习中的数据使用" class="headerlink" title="5. 从该问题理解机器学习中的数据使用"></a>5. 从该问题理解机器学习中的数据使用</h4><p><img src="/images/pasted-34.png" alt="upload successful"><br>超参数λ无法训练得到,只能通过手动调整,在用验证数据取验证正确率,取正确率高的所对应的超参数λ,通过交叉验证来充分使用数据</p>
+<h4 id="5-从该问题理解机器学习中的数据使用"><a href="#5-从该问题理解机器学习中的数据使用" class="headerlink" title="5. 从该问题理解机器学习中的数据使用"></a>5. 从该问题理解机器学习中的数据使用</h4><p><img src="/images/pasted-34.png" alt="upload successful"><br>超参数λ无法训练得到,只能通过手动调整,在用验证数据取验证正确率,取正确率高的所对应的超参数λ,通过交叉验证来充分使用数据<br>使用交叉验证确定超参数</p>
 <h4 id="6-扩展到奇异值分解SVD"><a href="#6-扩展到奇异值分解SVD" class="headerlink" title="6. 扩展到奇异值分解SVD"></a>6. 扩展到奇异值分解SVD</h4><p>若A为非奇异矩阵,则线性方程组Ax=b的解为:</p>
 <p><img src="/images/pasted-35.png" alt="upload successful"><br>伪逆:</p>
 <p><img src="/images/pasted-36.png" alt="upload successful"></p>
@@ -1061,6 +1300,10 @@
 </ol>
 <hr>
 <p>softmax 广义线性</p>
+<hr>
+<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><h3 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h3><p>硬间隔最大化<br>硬间隔支持向量机</p>
+<h3 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h3><p>软间隔最大化<br>软间隔支持向量机</p>
+<h3 id="非线性支持向量机"><a href="#非线性支持向量机" class="headerlink" title="非线性支持向量机"></a>非线性支持向量机</h3><p>核函数</p>
 
           
         
@@ -1910,189 +2153,6 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/算法课4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/07/算法课4/" itemprop="url">算法课4</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-07T22:46:00+08:00">
-                2019-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a><strong>0-1背包问题</strong></h2><h3 id="动态规划递推公式"><a href="#动态规划递推公式" class="headerlink" title="动态规划递推公式:"></a>动态规划递推公式:</h3><p><img src="/images/pasted-0.png" alt="upload successful"></p>
-<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码:"></a>伪代码:</h3><p><img src="/images/pasted-2.png" alt="upload successful"></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现:"></a>代码实现:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int Knapsack(int* S,int* V,int n,int s)&#123;</span><br><span class="line">    int* prev = new int[s+1];</span><br><span class="line">    int* pres = new int[s+1];</span><br><span class="line">    int* tmp;</span><br><span class="line">    fill(prev, prev+s+1, 0);</span><br><span class="line">    pres[0] = 0;</span><br><span class="line">    </span><br><span class="line">    for (int i=1; i&lt;=n; i++) &#123;</span><br><span class="line">        for (int j = 1; j&lt;=s; j++) &#123;</span><br><span class="line">            if (j&lt;S[i]) &#123;</span><br><span class="line">                pres[j] = prev[j];</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                pres[j]=max(prev[j],prev[j-S[i]]+V[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        tmp = prev;</span><br><span class="line">        prev = pres;</span><br><span class="line">        pres =tmp;</span><br><span class="line">        pres[0]=0;</span><br><span class="line">    &#125;</span><br><span class="line">    delete [] prev;</span><br><span class="line">    delete [] pres;</span><br><span class="line">    return prev[s];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    int S[5]&#123;0,2,3,4,5&#125;;</span><br><span class="line">    int V[5]&#123;0,3,4,5,7&#125;;</span><br><span class="line">    int s = 9;</span><br><span class="line">    int result = Knapsack(S,V,sizeof(S)/sizeof(int)-1,s);</span><br><span class="line">    cout&lt;&lt;result;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="FLOYD算法"><a href="#FLOYD算法" class="headerlink" title="FLOYD算法"></a><strong>FLOYD算法</strong></h2><h3 id="算法目标"><a href="#算法目标" class="headerlink" title="算法目标:"></a>算法目标:</h3><p>计算图中每个节点对之间的最短距离</p>
-<h3 id="算法思想-个人理解"><a href="#算法思想-个人理解" class="headerlink" title="算法思想(个人理解):"></a>算法思想(个人理解):</h3><p>动态规划思想,每次加入一个节点进行考虑,问题规模增加一个节点,对该节点进行分类讨论:</p>
-<ol>
-<li>不把这个节点加入到路径中</li>
-<li>把这个节点加入到路径中,即该新增加节点必须在路径中</li>
-</ol>
-<h3 id="动态规划递推式"><a href="#动态规划递推式" class="headerlink" title="动态规划递推式:"></a>动态规划递推式:</h3><p>Dk[i, j]=min{Dk-1[i, j], Dk-1[i, k]+Dk-1[k, j]}</p>
-<h3 id="伪代码-1"><a href="#伪代码-1" class="headerlink" title="伪代码:"></a>伪代码:</h3><p><img src="/images/pasted-3.png" alt="upload successful"></p>
-<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现:"></a>代码实现:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">const int big =10000;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">vector&lt;vector&lt;int&gt;&gt; FLOYD(vector&lt;vector&lt;int&gt;&gt;distance)&#123;</span><br><span class="line">    unsigned long n = distance[0].size();</span><br><span class="line">    for (int count = 1; count&lt;=n; count++) &#123;</span><br><span class="line">        for (int i=0; i&lt;n; i++) &#123;</span><br><span class="line">            for (int j=0; j&lt;n; j++) &#123;</span><br><span class="line">                distance[i][j]=min(distance[i][j],distance[i][count-1]+distance[count-1][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return distance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt;distance&#123;&#123;0,2,9&#125;,&#123;8,0,6&#125;,&#123;1,big,0&#125;&#125;;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; result=FLOYD(distance);</span><br><span class="line">    for (auto x = result.begin(); x!=result.end(); x++) &#123;</span><br><span class="line">        for (auto y = x-&gt;begin(); y!=x-&gt;end(); y++) &#123;</span><br><span class="line">            cout&lt;&lt;*y&lt;&lt;&quot; &quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p><img src="/images/pasted-4.png" alt="upload successful"><br>运行结果:</p>
-<p><img src="/images/pasted-5.png" alt="upload successful"></p>
-<h2 id="狄杰斯特拉算法"><a href="#狄杰斯特拉算法" class="headerlink" title="狄杰斯特拉算法"></a><strong>狄杰斯特拉算法</strong></h2><h3 id="算法目标-1"><a href="#算法目标-1" class="headerlink" title="算法目标:"></a>算法目标:</h3><p>寻找指定起始节点到图中每个节点的最短路径</p>
-<h3 id="算法思想-个人理解-1"><a href="#算法思想-个人理解-1" class="headerlink" title="算法思想(个人理解):"></a>算法思想(个人理解):</h3><p>贪心思想,创建一个路径节点集合,每次都加入一条最短的边(该边两个端点必须一个端点在路径端点集合中一个不在集合中),每加入一条边就将边的不在集合中的端点加入到路径节点集合中,直到路径节点集合中节点个数等于图中节点个数.</p>
-<h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现:"></a>代码实现:</h3><p>解释:</p>
-<ol>
-<li>work向量数组作用:储存起始节点到其他个个节点的最短距离,路径节点集合每加进去一个节点就,更新一波,原因是加进去的新节点可能可以减小起始节点到个个节点的距离</li>
-<li>delete_array数组作用:路径节点集合,每个元素对应一个节点是否被加入到路径集合,true为加入,反之还未加入</li>
-<li>prev数组记录对应节点的前趋节点,以便最后打印最短路径</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line"></span><br><span class="line">const int big = 10000;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int __Minimum__(bool* delete_array,vector&lt;int&gt;&amp; work)&#123;</span><br><span class="line">    int result;</span><br><span class="line">    for (int i=0; i&lt;work.size(); i++) &#123;</span><br><span class="line">        if (!delete_array[i]) &#123;</span><br><span class="line">            result = i;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i=1; i&lt;work.size(); i++) &#123;</span><br><span class="line">        if (work[result]&gt;work[i] &amp;&amp; !delete_array[i]) &#123;</span><br><span class="line">            result = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Dijkstra(const vector&lt;vector&lt;int&gt;&gt;&amp; D)&#123;</span><br><span class="line">    unsigned long x = D.size();</span><br><span class="line">    </span><br><span class="line">    int prev[x];</span><br><span class="line">    prev[0] = -1;</span><br><span class="line">    for (int i=1;i&lt;x;i++) &#123;</span><br><span class="line">        if (D[0][i]!=big) &#123;</span><br><span class="line">            prev[i]=0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; work(D[0].begin(),D[0].end());</span><br><span class="line">    </span><br><span class="line">    bool delete_array[x];</span><br><span class="line">    fill(delete_array, delete_array+x, false);</span><br><span class="line">    delete_array[0]=true;</span><br><span class="line">    </span><br><span class="line">    for (int i=1; i&lt;x; i++) &#123;</span><br><span class="line">        int min_id = __Minimum__(delete_array, work);</span><br><span class="line">        delete_array[min_id] = true;</span><br><span class="line">        for (int j=0; j&lt;x; j++) &#123;</span><br><span class="line">            if (D[min_id][j]+work[min_id]&lt;work[j] &amp;&amp; !delete_array[j]) &#123;</span><br><span class="line">                work[j] = D[min_id][j]+work[min_id];</span><br><span class="line">                prev[j]=min_id;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (auto iter=work.begin(); iter!=work.end(); iter++) &#123;</span><br><span class="line">        cout&lt;&lt;*iter&lt;&lt;&quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">    for (int i=1; i&lt;x; i++) &#123;</span><br><span class="line">        int j=i;</span><br><span class="line">        stack&lt;int&gt; Stack;</span><br><span class="line">        while (prev[j]!=-1) &#123;</span><br><span class="line">            Stack.push(prev[j]);</span><br><span class="line">            j=prev[j];</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;&quot;结点0到结点&quot;&lt;&lt;i&lt;&lt;&quot;: &quot;;</span><br><span class="line">        while (!Stack.empty()) &#123;</span><br><span class="line">            cout&lt;&lt;Stack.top()&lt;&lt;&quot;-&gt;&quot;;</span><br><span class="line">            Stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; a&#123;</span><br><span class="line">        &#123;0,1,12,big,big,big&#125;,</span><br><span class="line">        &#123;big,0,9,3,big,big&#125;,</span><br><span class="line">        &#123;big,big,0,big,5,big&#125;,</span><br><span class="line">        &#123;big,big,4,0,13,15&#125;,</span><br><span class="line">        &#123;big,big,big,big,0,4&#125;,</span><br><span class="line">        &#123;big,big,big,big,big,0&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    Dijkstra(a);</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例:"></a>实例:</h3><p><img src="/images/pasted-8.png" alt="upload successful"><br>代码结果:<br><img src="/images/pasted-7.png" alt="upload successful"></p>
-<h2 id="克鲁斯卡尔算法"><a href="#克鲁斯卡尔算法" class="headerlink" title="克鲁斯卡尔算法"></a><strong>克鲁斯卡尔算法</strong></h2><h3 id="算法目标-2"><a href="#算法目标-2" class="headerlink" title="算法目标:"></a>算法目标:</h3><p>产生最小生成树(包含图中所有节点,且所有路径权重之和最小的树)</p>
-<h3 id="算法思想-个人理解-2"><a href="#算法思想-个人理解-2" class="headerlink" title="算法思想(个人理解):"></a>算法思想(个人理解):</h3><p>贪心算法,将图拆成n个节点,每次产生一条最短的边,这条边将两棵树连接起来,这就要求这条最短的边的两个端点分别在不同的树上,否则将产生回环</p>
-<h3 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现:"></a>代码实现:</h3><p>解释:</p>
-<ol>
-<li>tree数组用来标记两个节点所在的树🌲,数组中每个元素的值表示对应节点所在的树的编号,初始化时每个节点就是一棵树,当产生一条最短的边,这条边将两棵树连接起来时,两棵树合并,我的默认合并方式是编号大的树的所有节点编号都改为编号小的树的编号</li>
-<li>edge数组用来储存所有的边</li>
-<li>代码思路:将图的所有边排序,选择符合要求(权值小,两端点不在同一棵树上)的最小的n-1条边</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#define SIZE 7</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struct Edge&#123;</span><br><span class="line">    int x;</span><br><span class="line">    int y;</span><br><span class="line">    int weight;</span><br><span class="line">    bool flag;</span><br><span class="line">    Edge&amp; operator=(const Edge a)&#123;</span><br><span class="line">        x=a.x;</span><br><span class="line">        y=a.y;</span><br><span class="line">        weight=a.weight;</span><br><span class="line">        flag=a.flag;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">inline int mininum(int a,int b)&#123;</span><br><span class="line">    return a&gt;b?b:a;</span><br><span class="line">&#125;</span><br><span class="line">inline int maxinum(int a,int b)&#123;</span><br><span class="line">    return a&gt;b?a:b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void selection_sort(Edge* A,int size)&#123;</span><br><span class="line">    int i=1,k;</span><br><span class="line">    int the_smallest;</span><br><span class="line">    while (i&lt;size) &#123;</span><br><span class="line">        k=i-1;</span><br><span class="line">        the_smallest=A[k].weight;</span><br><span class="line">        for (int j=i; j&lt;size; j++) &#123;</span><br><span class="line">            if (the_smallest&gt;A[j].weight)&#123;</span><br><span class="line">                k=j;</span><br><span class="line">                the_smallest=A[k].weight;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (k != i-1) &#123;</span><br><span class="line">            Edge tmp=A[i-1];</span><br><span class="line">            A[i-1]=A[k];</span><br><span class="line">            A[k]=tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Kruskal(int distance_array[][SIZE],int N)&#123;</span><br><span class="line">    int tree[N+1];</span><br><span class="line">    for (int i = 1; i&lt;=N; i++) &#123;</span><br><span class="line">        tree[i]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    int edge_number = (N-1)*N/2;</span><br><span class="line">    Edge edge[edge_number];</span><br><span class="line">    int index = 0;</span><br><span class="line">    for (int i = 1; i&lt;N; i++) &#123;</span><br><span class="line">        for (int j=i+1; j&lt;=N; j++) &#123;</span><br><span class="line">            edge[index].x = i;</span><br><span class="line">            edge[index].y = j;</span><br><span class="line">            edge[index].weight =distance_array[i][j];</span><br><span class="line">            edge[index].flag = false;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    selection_sort(edge, edge_number);</span><br><span class="line">    for (int i = 1; i&lt;N; i++) &#123;</span><br><span class="line">        for (int j=0; j&lt;edge_number; j++) &#123;</span><br><span class="line">            if (!edge[j].flag &amp;&amp; tree[edge[j].x]!=tree[edge[j].y]) &#123;</span><br><span class="line">                edge[j].flag=true;</span><br><span class="line">                int min = mininum(edge[j].x, edge[j].y);</span><br><span class="line">                int max = maxinum(edge[j].x, edge[j].y);</span><br><span class="line">                for (int k=1; k&lt;=N; k++) &#123;</span><br><span class="line">                    if (tree[k]==tree[max]) &#123;</span><br><span class="line">                        tree[k]=tree[min];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i&lt;edge_number; i++) &#123;</span><br><span class="line">        if (edge[i].flag) &#123;</span><br><span class="line">            cout&lt;&lt;edge[i].x&lt;&lt;&quot;-&gt;&quot;&lt;&lt;edge[i].y&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    const int N =SIZE-1;</span><br><span class="line">    const int inf = 10000;</span><br><span class="line">    int  distance[SIZE][SIZE]&#123;</span><br><span class="line">        &#123;0,0,0,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,0,1,2,inf,inf,inf&#125;,</span><br><span class="line">        &#123;0,1,0,6,11,inf,inf&#125;,</span><br><span class="line">        &#123;0,2,6,0,9,13,inf&#125;,</span><br><span class="line">        &#123;0,inf,11,9,0,7,3&#125;,</span><br><span class="line">        &#123;0,inf,inf,13,7,0,4&#125;,</span><br><span class="line">        &#123;0,inf,inf,inf,3,4,0&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    Kruskal(distance, N);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例:"></a>实例:</h3><p><img src="/images/pasted-9.png" alt="upload successful"><br>代码结果:<br><img src="/images/pasted-10.png" alt="upload successful"></p>
-<h2 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a><strong>哈夫曼编码</strong></h2><h3 id="算法目标-3"><a href="#算法目标-3" class="headerlink" title="算法目标:"></a>算法目标:</h3><p>产生哈夫曼树,用以编码,按字符的出现频率来编码,出现频率越高的字符的编码越短.</p>
-<h3 id="算法思想-个人理解-3"><a href="#算法思想-个人理解-3" class="headerlink" title="算法思想(个人理解):"></a>算法思想(个人理解):</h3><p>贪心思想,每次合并两个最小的节点产生一个新节点作为该两节点的根结点,该新节点的频率值为两节点频率之和,之后新节点代替两节点进行以后的排序</p>
-<h3 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现:"></a>代码实现:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">inline int minimun(int a,int b)&#123;</span><br><span class="line">    return a&gt;b?b:a;</span><br><span class="line">&#125;</span><br><span class="line">inline int maximun(int a,int b)&#123;</span><br><span class="line">    return a&gt;b?a:b;</span><br><span class="line">&#125;</span><br><span class="line">struct node&#123;</span><br><span class="line">    node* leftchild;</span><br><span class="line">    node* rightchild;</span><br><span class="line">    char val;</span><br><span class="line">    int frequency;</span><br><span class="line">&#125;;</span><br><span class="line">struct min1_and_min2&#123;</span><br><span class="line">    int index1;</span><br><span class="line">    int index2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struct mystack&#123;</span><br><span class="line">    int* stack;</span><br><span class="line">    int top;</span><br><span class="line">    mystack(int capacity)&#123;</span><br><span class="line">        stack = new int[capacity];</span><br><span class="line">        top = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    ~mystack()&#123;</span><br><span class="line">        delete [] stack;</span><br><span class="line">    &#125;</span><br><span class="line">    void push(int i)&#123;</span><br><span class="line">        stack[top++]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    void pop()&#123;</span><br><span class="line">        top--;</span><br><span class="line">    &#125;</span><br><span class="line">    void print()&#123;</span><br><span class="line">        for(int i=0;i&lt;top;i++)&#123;</span><br><span class="line">            cout&lt;&lt;stack[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void Encode(node* root,mystack&amp; stack)&#123;</span><br><span class="line">    if(root-&gt;leftchild == nullptr)&#123;</span><br><span class="line">        cout&lt;&lt;root-&gt;val&lt;&lt;&quot;:&quot;&lt;&lt;endl;</span><br><span class="line">        stack.print();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    stack.push(0);</span><br><span class="line">    Encode(root-&gt;leftchild,stack);</span><br><span class="line">    stack.pop();</span><br><span class="line">    stack.push(1);</span><br><span class="line">    Encode(root-&gt;rightchild,stack);</span><br><span class="line">    stack.pop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Decode(int* code,int size,node* root)&#123;</span><br><span class="line">    node* now=root;</span><br><span class="line">    for (int i=0; i&lt;size; i++) &#123;</span><br><span class="line">        if (code[i]) &#123;</span><br><span class="line">            now = now-&gt;rightchild;</span><br><span class="line">            if (now-&gt;rightchild == nullptr) &#123;</span><br><span class="line">                cout&lt;&lt;now-&gt;val;</span><br><span class="line">                now = root;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            now = now-&gt;leftchild;</span><br><span class="line">            if (now-&gt;rightchild == nullptr) &#123;</span><br><span class="line">                cout&lt;&lt;now-&gt;val;</span><br><span class="line">                now = root;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//N:array数组的大小</span><br><span class="line">min1_and_min2 find(node* array,bool* flag,int N)&#123;</span><br><span class="line">    int index[2];</span><br><span class="line">    int index1,index2;</span><br><span class="line">    int count = 0;</span><br><span class="line">    for (int i=0; i&lt;N; i++) &#123;</span><br><span class="line">        if (!flag[i]) &#123;</span><br><span class="line">            index[count++] = i;</span><br><span class="line">            if (count == 2) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    index1 =minimun(index[0], index[1]);</span><br><span class="line">    index2 =maximun(index[0], index[1]);</span><br><span class="line">    </span><br><span class="line">    for (int i=0; i&lt;N; i++) &#123;</span><br><span class="line">        if (!flag[i]) &#123;</span><br><span class="line">            if (array[i].frequency&lt;array[index2].frequency &amp;&amp; array[i].frequency&gt;array[index1].frequency) &#123;</span><br><span class="line">                index2 = i;</span><br><span class="line">            &#125;</span><br><span class="line">            if (array[i].frequency&lt;array[index1].frequency) &#123;</span><br><span class="line">                index2 = index1;</span><br><span class="line">                index1 = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return min1_and_min2&#123;index1,index2&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">node* Huffman(node* array,int N)&#123;</span><br><span class="line">    cout&lt;&lt;boolalpha;</span><br><span class="line">    int end=N;</span><br><span class="line">    bool flag[2*N-1];</span><br><span class="line">    fill(flag, flag+2*N-1, false);</span><br><span class="line">    for (int i=1; i&lt;N; i++) &#123;</span><br><span class="line">        min1_and_min2 a=find(array,flag,end);</span><br><span class="line">        array[end].frequency=array[a.index1].frequency+array[a.index2].frequency;</span><br><span class="line">        array[end].leftchild = &amp;array[a.index1];</span><br><span class="line">        array[end].rightchild = &amp;array[a.index2];</span><br><span class="line">        end++;</span><br><span class="line">        flag[a.index1]=true;</span><br><span class="line">        flag[a.index2]=true;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return &amp;array[end-1];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    const int size = 9;</span><br><span class="line">    int frequency[size]&#123;20,7,10,4,18,3,2,5,40&#125;;</span><br><span class="line">    char var[size]=&#123;&apos;a&apos;,&apos;b&apos;,&apos;e&apos;,&apos;o&apos;,&apos;r&apos;,&apos;s&apos;,&apos;u&apos;,&apos;y&apos;,&apos; &apos;&#125;;</span><br><span class="line">    node huffmantree[2*size-1];</span><br><span class="line">    for (int i=0; i&lt;size; i++) &#123;</span><br><span class="line">        huffmantree[i].leftchild = nullptr;</span><br><span class="line">        huffmantree[i].rightchild = nullptr;</span><br><span class="line">        huffmantree[i].frequency = frequency[i];</span><br><span class="line">        huffmantree[i].val = var[i];</span><br><span class="line">    &#125;</span><br><span class="line">    node* root=Huffman(huffmantree, size);</span><br><span class="line">    mystack stack(5);</span><br><span class="line">    Encode(root,stack);</span><br><span class="line">    </span><br><span class="line">    int code[]=&#123;1,1,0,0,1,1,1,0,0,0,1,0,0,0,0,0,1,1,1,1,0,1,1,1,0,1,0,1,0,0,0,1,1,0,0,1,&#125;;//&quot;you are sb&quot;的编码</span><br><span class="line">    Decode(code, sizeof(code)/sizeof(int), root);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2145,7 +2205,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Win10“主机”+ubuntu16.04+Geforce RTX2070S深刻的感受到了网上某些blog的险恶,装了3次才配好工作环境,特此记录以备日后快速重装。   一、总体步骤 windows 分区 ubuntu系统盘制作 ubuntu系统安装及卸载 nvidia驱动安装+cuda+cudnn(驱动没装好就黑屏死机,其他的先装好都是无用功😭) ubuntu换源 ubuntu中文输入法安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu双系统安装记录(主机)">
+<meta property="og:url" content="http://yoursite.com/2020/05/20/Ubuntu双系统安装记录-主机/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Win10“主机”+ubuntu16.04+Geforce RTX2070S深刻的感受到了网上某些blog的险恶,装了3次才配好工作环境,特此记录以备日后快速重装。   一、总体步骤 windows 分区 ubuntu系统盘制作 ubuntu系统安装及卸载 nvidia驱动安装+cuda+cudnn(驱动没装好就黑屏死机,其他的先装好都是无用功😭) ubuntu换源 ubuntu中文输入法安装">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/pasted-50.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-51.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-52.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-53.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-54.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-55.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-57.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-58.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-61.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-62.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-60.png">
+<meta property="og:updated_time" content="2020-05-21T04:38:39.378Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu双系统安装记录(主机)">
+<meta name="twitter:description" content="Win10“主机”+ubuntu16.04+Geforce RTX2070S深刻的感受到了网上某些blog的险恶,装了3次才配好工作环境,特此记录以备日后快速重装。   一、总体步骤 windows 分区 ubuntu系统盘制作 ubuntu系统安装及卸载 nvidia驱动安装+cuda+cudnn(驱动没装好就黑屏死机,其他的先装好都是无用功😭) ubuntu换源 ubuntu中文输入法安装">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-50.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/20/Ubuntu双系统安装记录-主机/">
+
+
+
+
+
+  <title>Ubuntu双系统安装记录(主机) | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/Ubuntu双系统安装记录-主机/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ubuntu双系统安装记录(主机)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-20T20:26:48+08:00">
+                2020-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Win10“主机”-ubuntu16-04-Geforce-RTX2070S"><a href="#Win10“主机”-ubuntu16-04-Geforce-RTX2070S" class="headerlink" title="Win10“主机”+ubuntu16.04+Geforce RTX2070S"></a>Win10“主机”+ubuntu16.04+Geforce RTX2070S</h1><p>深刻的感受到了网上某些blog的险恶,装了3次才配好工作环境,特此记录以备日后快速重装。  </p>
+<h2 id="一、总体步骤"><a href="#一、总体步骤" class="headerlink" title="一、总体步骤"></a>一、总体步骤</h2><ol>
+<li>windows 分区</li>
+<li>ubuntu系统盘制作</li>
+<li>ubuntu系统安装及卸载</li>
+<li>nvidia驱动安装+cuda+cudnn(驱动没装好就黑屏死机,其他的先装好都是无用功😭)</li>
+<li>ubuntu换源</li>
+<li>ubuntu中文输入法安装</li>
+<li>anaconda、pycharm、vim、chrome安装  </li>
+<li>python虚拟环境配置for pytorch tf2.0</li>
+</ol>
+<h2 id="二、-详细流程"><a href="#二、-详细流程" class="headerlink" title="二、 详细流程"></a>二、 详细流程</h2><h3 id="1-Win10分区"><a href="#1-Win10分区" class="headerlink" title="1. Win10分区"></a>1. Win10分区</h3><p>在win搜索栏输入“创建并格式化硬盘分区” ==&gt; 选择在那个磁盘的那个区进行分区, 在这里我使用磁盘0的C区进行分区,在所选的C区上点击鼠标右键 ==&gt; 在扩展框中选择压缩卷 ==&gt; 指定分区大小。<br>  选择要被拆分的区块<br>  <img src="/images/pasted-50.png" alt="upload successful"><br>  指定新系统硬盘大小<br>  <img src="/images/pasted-51.png" alt="upload successful"><br>  分区结果(没法子重现了😁,网上搞了个结果图)<br>  <img src="/images/pasted-52.png" alt="upload successful"></p>
+<h3 id="2-系统盘制作"><a href="#2-系统盘制作" class="headerlink" title="2. 系统盘制作"></a>2. 系统盘制作</h3><p>使用软件UltralISO</p>
+<ol>
+<li><p>在本地目录中选中下载的ubuntu镜像iso文件</p>
+<p><img src="/images/pasted-53.png" alt="upload successful"></p>
+</li>
+<li><p>点击左上角”启动” ==&gt; “写入硬盘映像”</p>
+<p><img src="/images/pasted-54.png" alt="upload successful"></p>
+</li>
+<li><p>在弹框界面中选择“硬盘驱动器”(U盘) ==&gt; “写入”  </p>
+<p><img src="/images/pasted-55.png" alt="upload successful"></p>
+</li>
+</ol>
+<h3 id="3-ubuntu安装及卸载"><a href="#3-ubuntu安装及卸载" class="headerlink" title="3. ubuntu安装及卸载"></a>3. ubuntu安装及卸载</h3><p>在众多剧毒的博客中淘到了一篇良心之作</p>
+<p>参考自博客: <a href="https://blog.csdn.net/Spacegene/article/details/86659349?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase" target="_blank" rel="noopener">https://blog.csdn.net/Spacegene/article/details/86659349?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase</a></p>
+<p>这老哥的教程完全可用(试了两次), 此乃大佬鼠😎<br>安装过程注意点: 根目录分区大小一定要大😭,我分了60GB,某铁憨憨刚开始只分了10GB配环境配到一半根目录爆了。</p>
+<h3 id="4-nvidia驱动安装-cuda-cudnn"><a href="#4-nvidia驱动安装-cuda-cudnn" class="headerlink" title="4. nvidia驱动安装+cuda+cudnn"></a>4. nvidia驱动安装+cuda+cudnn</h3><p>参考自博客: <a href="https://www.jianshu.com/p/c2212b89f7b6" target="_blank" rel="noopener">https://www.jianshu.com/p/c2212b89f7b6</a> (进行了修改)</p>
+<ol>
+<li><p>我的配置:<br>我的显卡(2070super)对应驱动: NVIDIA-Linux-x86_64-440.82.run;<br>cuda: cuda_10.0.130_410.48_linux.run;<br>cudnn: cudnn-10.0-linux-x64-v7.6.5.32.tar;<br>百度网盘链接<br>链接：<a href="https://pan.baidu.com/s/1Jqvdrvg4Q4PwR-C2aQoeLw" target="_blank" rel="noopener">https://pan.baidu.com/s/1Jqvdrvg4Q4PwR-C2aQoeLw</a><br>提取码：w4c5  </p>
+</li>
+<li><p>直达网址<br>nvidia驱动下载地址: <a href="https://www.geforce.cn/drivers" target="_blank" rel="noopener">https://www.geforce.cn/drivers</a><br>cuda下载链接: <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit-archive</a><br>cuDNN下载链接: <a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-download</a><br>⚠️注意选定自己显卡的驱动, 注意cuda和cudnn的对应关系 </p>
+</li>
+<li><p>操蛋的安装过程(<strong>只适用于主机</strong>)笔记本没试过</p>
+<ul>
+<li><p>我将以上所有下载的文件存储与<code>\usr\jackzhou\Download\</code>文件夹中</p>
+</li>
+<li><p>cd到该目录下赋予文件权限(不行就 +sudo)  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$chmod a+x NVIDIA-Linux-x86_64-440.82.run</span><br><span class="line">$chmod a+x cuda_10.0.130_410.48_linux.run</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果之前有安装驱动，需要先卸载旧版本驱动，没有就不用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   $sudo apt-get remove nvidia-*</span><br><span class="line">$sudo apt-get autoremove  (加上才能卸载干净原驱动)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭显示服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo service lightdm stop</span><br></pre></td></tr></table></figure>
+
+<p>关闭显示服务后黑屏,不慌</p>
+</li>
+<li><p>键盘输入CTRL+ALT+F1进入文本模式(F2,F3…F6)都行  </p>
+</li>
+<li><p>根据提示输入用户名and密码进入文本模式命令行</p>
+</li>
+<li><p>进入文件存储目录<code>cd \usr\jackzhou\Download\</code></p>
+</li>
+<li><p>输入<br>  <code>$sudo ./NVIDIA-Linux-x86_64-440.82.run -no-x-check -no-nouveau-check</code><br>⚠️注意对于电脑主机只有”-no-x-check -no-nouveau-check”没有” -no-opengl-files”, 我第一次尝试是在指令中加入了” -no-opengl-files”项然后在ubuntu的关于本机上Graphics上仍然为llvmpipe(LLVM 6.0,118bit),也就是说没有成功, 以下为关于这三个参数项描述的截图:</p>
+<p><img src="/images/pasted-57.png" alt="upload successful"></p>
+</li>
+<li><p>安装过程中选项(唉,忘记拍照记录了,差不多如下):</p>
+<p><img src="/images/pasted-58.png" alt="upload successful"></p>
+</li>
+<li><p>启动显示服务</p>
+<p><code>$sudo service lightdm restart（将自动跳转到桌面）</code></p>
+</li>
+<li><p>查看Nvidia驱动是否安装成功</p>
+<p><code>$nvidia-smi</code></p>
+<p>显示显卡信息并且查看主界面左上角“about this computer”中Graphics为nvidia显卡表示驱动安装成功</p>
+<p><img src="/images/pasted-61.png" alt="upload successful"></p>
+</li>
+<li><p>安装cuda(我没有进文本模式,直接在终端搞了)<br><code>sudo sh cuda_10.0.130_410.48_linux.run</code></p>
+</li>
+<li><p>安装过程中选项<br><img src="/images/pasted-62.png" alt="upload successful"></p>
+</li>
+<li><p>然后设置环境：使用vi在～/.bashrc文件最后添加下面几行,这些路径在cuda的安装成功后在界面会显示<br><img src="/images/pasted-60.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64</span><br><span class="line">PATH=$PATH:/usr/local/cuda-10.0/bin</span><br><span class="line">CUDA_HOME=$CUDA_HOME:/usr/local/cuda-10.0</span><br></pre></td></tr></table></figure>
+
+<p>然后输入</p>
+<p><code>$nvcc --version</code></p>
+<p>如果出现如下版本信息，证明安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nvcc: NVIDIA (R) Cuda compiler driver</span><br><span class="line">Copyright (c) 2005-2018 NVIDIA Corporation</span><br><span class="line">Built on Sat_Aug_25_21:08:01_CDT_2018</span><br><span class="line">Cuda compilation tools, release 10.0, V10.0.130</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>* 安装cudnn
+解压下载的文件cuda文件夹，打开终端，执行如下命令：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$sudo cp cuda/include/cudnn.h /usr/local/cuda/include/</span><br><span class="line">$sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/</span><br><span class="line">$sudo chmod a+r /usr/local/cuda/include/cudnn.h</span><br><span class="line">$sudo chmod a+r /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure>
+
+查看cudnn版本信息：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>
+
+出现版本信息则安装成功
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#define CUDNN_MAJOR 7</span><br><span class="line">#define CUDNN_MINOR 6</span><br><span class="line">#define CUDNN_PATCHLEVEL 5</span><br><span class="line">--</span><br><span class="line"></span><br><span class="line">#define CUDNN_VERSION (CUDNN_MAJOR * 1000 + CUDNN_MINOR * 100 + CUDNN_PATCHLEVEL)</span><br><span class="line"></span><br><span class="line">#include &quot;driver_types.h&quot;</span><br></pre></td></tr></table></figure></code></pre><h3 id="5-ubuntu16-04换国内源"><a href="#5-ubuntu16-04换国内源" class="headerlink" title="5. ubuntu16.04换国内源"></a>5. ubuntu16.04换国内源</h3><p>参考自博客: <a href="https://blog.csdn.net/u012308586/article/details/102953882" target="_blank" rel="noopener">https://blog.csdn.net/u012308586/article/details/102953882</a><br>⚠️注意系统版本</p>
+<h3 id="6-安装sougo输入法"><a href="#6-安装sougo输入法" class="headerlink" title="6. 安装sougo输入法"></a>6. 安装sougo输入法</h3><p>链接: <a href="https://pinyin.sogou.com/linux/" target="_blank" rel="noopener">https://pinyin.sogou.com/linux/</a>  </p>
+<ol>
+<li>下载文件</li>
+<li><code>sudo dpkg -i ****.deb</code></li>
+<li>点击”system settings” ==&gt;点击”language support”<br>初次使用会要求更新和安装啥的,会出一个关于thunderbird的问题,简单粗暴直接删除thunderbird软件,反正我也不用。<br>命令行输入<code>sudo apt-get remove thunderbird</code><br>在安装时还出了个啥无法获得锁lock的错误<br>简单粗暴,删除!!!   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /var/lib/dpkg/lock</span><br><span class="line">sudo dpkg --configure -a</span><br><span class="line">```   </span><br><span class="line">然后该install的install,update的update</span><br><span class="line">后面的操作参考博客: https://blog.csdn.net/leijieZhang/article/details/53707181?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase</span><br><span class="line">    </span><br><span class="line">### 7. anaconda、pycharm、vim、chrome安装  </span><br><span class="line"></span><br><span class="line">1. anaconda  </span><br><span class="line">	* 下载.sh文件</span><br><span class="line">    * bash .sh</span><br><span class="line">    * 差不多: https://blog.csdn.net/ITBigGod/article/details/85690257/</span><br><span class="line">2. pycharm  </span><br><span class="line">	* 下载安装包(下载时我选的save file） </span><br><span class="line">    * ``tar xvf pycharm-community-2020.1.1.tar.gz``  </span><br><span class="line">    * ``cd pycharm-community-2020.1.1/bin``</span><br><span class="line">    * ``./pycharm.sh``</span><br><span class="line">3. vim  </span><br><span class="line">``sudo apt-get install vim``    </span><br><span class="line">4. chrome</span><br><span class="line">	* 下载安装包(下载时我选的save file)  </span><br><span class="line">	* ``sudo dpkg -i google-chrome-stable_current_amd64.deb``</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">### 8. python虚拟环境配置for pytorch tf2.0</span><br><span class="line">1. python的pip换源</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>mkdir ~/.pip<br>vim ~/.pip/pip.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">编辑如下内容:</span><br></pre></td></tr></table></figure>
+
+<p>[global]<br>index-url=<a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/</a><br>[install]<br>trusted-host=mirrors.aliyun.com</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. 安装pip3 pip</span><br></pre></td></tr></table></figure>
+
+<p>sudo apt install python-pip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. 升级pip</span><br></pre></td></tr></table></figure>
+
+<p>pip install –upgrade pip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">4. 安装虚拟环境  </span><br><span class="line">参考我的mac虚拟环境安装(唯一区别 将~/.bash_profile改为~/.bashrc)</span><br><span class="line">https://jackzhou1999.github.io/2020/02/23/虚拟环境搭建/</span><br><span class="line"></span><br><span class="line">5. 安装pytorch, tensorflow</span><br><span class="line">pytorch网址(直接下载whl文件在安装):   </span><br><span class="line">https://pytorch.org/get-started/previous-versions/  </span><br><span class="line">执行</span><br></pre></td></tr></table></figure>
+
+<p>cd 环境目录<br>workon 环境<br>sudo pip install 安装包.whl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorflow</span><br></pre></td></tr></table></figure>
+
+<p>pip3 install tensorflow-gpu==2.0.0</p>
+<pre><code>
+
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/03/mysql命令记录/" rel="next" title="我使用过的mysql命令记录(积累)">
+                <i class="fa fa-chevron-left"></i> 我使用过的mysql命令记录(积累)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/头像.png" alt="Qionglin Zhou">
+            
+              <p class="site-author-name" itemprop="name">Qionglin Zhou</p>
+              <p class="site-description motion-element" itemprop="description">Let's do amazing!!!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Win10“主机”-ubuntu16-04-Geforce-RTX2070S"><span class="nav-number">1.</span> <span class="nav-text">Win10“主机”+ubuntu16.04+Geforce RTX2070S</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、总体步骤"><span class="nav-number">1.1.</span> <span class="nav-text">一、总体步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、-详细流程"><span class="nav-number">1.2.</span> <span class="nav-text">二、 详细流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Win10分区"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. Win10分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-系统盘制作"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 系统盘制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ubuntu安装及卸载"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. ubuntu安装及卸载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-nvidia驱动安装-cuda-cudnn"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. nvidia驱动安装+cuda+cudnn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ubuntu16-04换国内源"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. ubuntu16.04换国内源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-安装sougo输入法"><span class="nav-number">1.2.6.</span> <span class="nav-text">6. 安装sougo输入法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qionglin Zhou</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

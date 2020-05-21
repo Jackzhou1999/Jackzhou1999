@@ -304,6 +304,143 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/C-类和对象1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/C-类和对象1/" itemprop="url">C++类和对象1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T20:57:03+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a>零碎知识点</h3><p>1.使用enum在类的public部分创建常量<br>enum Mode{ ONE,TWE}<br>2.定义类内特定的常量<br>private:enum{A=250}<br>static const int A=250;<br>3.静态类成员<code>static int a</code><br>类的所有对象共享一个数据成员<br>初始化:int class_name::a=20,位置在类声明之外,不带static关键字<br>初始化在方法文件中,不能在头文件中,否则将出现多个初始化副本<br>注意⚠️:如果静态成员是整形或枚举型const,可以在类声明中初始化<br>4.C++自动提供下列成员函数<br><img src="/2019/08/13/C-类和对象1/%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0.png" alt><br>5.使用const<br>在类成员函数后加const可以防止函数修改调用它的对象</p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><h4 id="默认构造函数"><a href="#默认构造函数" class="headerlink" title="* 默认构造函数"></a>* 默认构造函数</h4><p>原型:<code>class_name();</code><br>如果定义了构造函数,将不会定义默认构造函数,如果要在创建对象是不显式初始化必须显式定义默认构造函数<code>class_name::class_name(){}</code><br>⚠️:没有参数或参数有默认值, <em>二者选其一</em><br>用途:<code>class_name obj</code>时调用<br>注意:构造函数不被继承;子类没有使用成员初始化列表调用基类构造函数将隐式调用基类默认构造函数,使用must确保默认构造函数存在</p>
+<h4 id="转换函数-将参数类型的值转换为类对象或将类转换为某种类型"><a href="#转换函数-将参数类型的值转换为类对象或将类转换为某种类型" class="headerlink" title="* 转换函数(将参数类型的值转换为类对象或将类转换为某种类型)"></a>* 转换函数(将参数类型的值转换为类对象或将类转换为某种类型)</h4><h5 id="1-参数类型转换为类对象"><a href="#1-参数类型转换为类对象" class="headerlink" title="1. 参数类型转换为类对象"></a>1. 参数类型转换为类对象</h5><p>原型:<code>class_name(double);</code><br>只接受一个参数或第二个参数被提供了默认值<br>使用explicit关键字可以关闭隐式转换<code>explicit class_name (double var){}</code>,使用之后只允许使用显式强制类型转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class_name (double var)&#123;&#125;//转换函数</span><br><span class="line">class_name obj;</span><br><span class="line">obj=12.4;</span><br></pre></td></tr></table></figure>
+
+<p>分析:12.4调用转换函数生成临时对象,然后使用赋值运算符重载函数进行逐成员复制,此过程为隐式转换(自动进行)<br>隐式类型转换发生场景<br>一.class_name obj(12)<br>二.obj=12<br>三.将参数类型的值传递给接受以类为参数的函数<br>四.返回值被声明为类时返回的却是参数类型</p>
+<h5 id="2-类转换为参数类型"><a href="#2-类转换为参数类型" class="headerlink" title="2. 类转换为参数类型"></a>2. 类转换为参数类型</h5><p>原型:<code>operator double() const</code><br>注意:<br>一.必须是类方法<br>二.不能指定返回类型,double就是返回类型<br>三.不能有参数<br>四.使用explicit关键词可以避免隐式类型转换</p>
+<h4 id="复制构造函数"><a href="#复制构造函数" class="headerlink" title="* 复制构造函数"></a>* 复制构造函数</h4><p>原型:<code>class_name(const class_name&amp; )</code><br>使用一个对象来初始化另一个对象<br>何时被调用:在按值传递对象和返回对象时被调用<br>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class_name A;</span><br><span class="line">class_name B(A);//1</span><br><span class="line">class_name B=A;//2等价于class_name B=class_name(A),调用的函数为class_name(const class_name &amp;)</span><br><span class="line">class_name B=class_name(A);//3</span><br><span class="line">class_name* B=new class_name(A);//4</span><br></pre></td></tr></table></figure>
+
+<p>⚠️:第二三种方法:可能使用复制构造函数直接生成B对象,也可能使用复制构造函数生成临时对象在建临时对象复制给B<br>第四种方法:初始化一个匿名对象然后将其地址赋给B指针<br>默认复制构造函数:执行浅拷贝,复制的是成员的值<br>需要显式定义复制构造函数的情况:<br>1.类中包含了使用new初始化的指针成员</p>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="* 赋值运算符"></a>* 赋值运算符</h4><p>1.默认赋值运算符原型:<code>class_name &amp; class_name::operator=(const class_name&amp;)</code><br>2.何时被调用:将已有对象赋给另一对象,注意⚠️初始化时不一定会调用赋值运算符,参考复制构造函数的第二三种方法<br>3.它是怎么赋值的:逐成员按值复制<br>4.何时显式定义赋值运算符:看情况😓</p>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><p>基类一定要定义一个虚析构函数</p>
+<h3 id="静态成员函数"><a href="#静态成员函数" class="headerlink" title="静态成员函数:"></a>静态成员函数:</h3><p>1.函数声明包含关键字static,函数定义不包含关键字<br>2.不能通过对象调用<br>3.不能使用this指针<br>4.只能使用静态数据成员</p>
+<h3 id="返回对象的方式"><a href="#返回对象的方式" class="headerlink" title="返回对象的方式"></a>返回对象的方式</h3><h4 id="返回指向对象的引用"><a href="#返回指向对象的引用" class="headerlink" title="* 返回指向对象的引用"></a>* 返回指向对象的引用</h4><p>一.类没有复制构造函数时必须返回对象的引用<br>二.不使用复制构造函数<br>三.在类继承使用虚函数时,指向基类的引用可以指向派生类<br>两种常见的形式<br>一.重载赋值运算符<br>用途:s1=s2=s3<br>二.重载与cout连用的&lt;&lt;运算符<br>原因:ostream类没有复制构造函数</p>
+<h4 id="返回指向对象的const引用"><a href="#返回指向对象的const引用" class="headerlink" title="* 返回指向对象的const引用"></a>* 返回指向对象的const引用</h4><p>一.不能作为左值(如果参数是const&amp;a,要返回a,则返回类型必须声明为const&amp;,否则将const变量传给a形式参数可能存在利用返回值修改const变量的危险)<br>二.省去拷贝构造</p>
+<h4 id="返回对象"><a href="#返回对象" class="headerlink" title="* 返回对象"></a>* 返回对象</h4><p>一.将调用复制构造函数构造一个调用程序可以访问的对象</p>
+<h4 id="返回const对象"><a href="#返回const对象" class="headerlink" title="* 返回const对象"></a>* 返回const对象</h4><p>防止返回的临时对象被作为左值,将临时对象作为左值没有意义</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/C-友元/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1647,206 +1784,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/git学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/06/git学习/" itemprop="url">git学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T21:35:38+08:00">
-                2019-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Git-初始化及仓库创建和操作"><a href="#Git-初始化及仓库创建和操作" class="headerlink" title="Git 初始化及仓库创建和操作"></a><strong>Git 初始化及仓库创建和操作</strong></h2><h3 id="Git-本地操作"><a href="#Git-本地操作" class="headerlink" title="Git 本地操作"></a><strong><em>Git 本地操作</em></strong></h3><ol>
-<li>基本信息设置</li>
-</ol>
-<ul>
-<li>设置用户名<br><code>git config --global user.name github用户名</code></li>
-<li>设置用户名邮箱<br><code>git config --global user.email github邮箱</code></li>
-</ul>
-<ol start="2">
-<li><p>初始化一个新的Git仓库<br><code>mkdir work_directory</code><br><code>cd work_directory</code><br><code>git init</code><br>会产生一个.git文件</p>
-</li>
-<li><p>向仓库添加文件<br>在工作区生成文件后将文件提交到暂存区<code>git add filename</code>+<code>git status</code><br>将在暂存区文件提交到git仓库<code>git commit -m &#39;add filename&#39;</code></p>
-</li>
-<li><p>修改仓库文件<br>第一步修改文件vim filename<br>第二步git add<br>对比文件差异<br>git diff 文件名#工作区和暂存区对比<br>git diff 本地库历史版本 文件名#工作区文件和本地库历史记录对比</p>
-</li>
-<li><p>删除文件</p>
-</li>
-<li><p>删除本地库文件</p>
-</li>
-</ol>
-<ul>
-<li>删除文件<br><code>rm filename</code></li>
-<li>从git中删除文件<br><code>git rm filename</code></li>
-<li>提交操作<br><code>git commit -m &#39;提交描述&#39;</code></li>
-</ul>
-<p>2.删除提交到暂存区，取消删除，找回文件<br>git reset –hard 被删除文件创建时的索引<br>删除文件找回前提：删除前文件已经提交到本地库</p>
-<ol start="6">
-<li>分支操作</li>
-</ol>
-<ul>
-<li>创建分支 git branch 分支名</li>
-<li>查看分支 git branch -v</li>
-<li>切换分支 git checkout 分支名</li>
-<li>合并分支</li>
-</ul>
-<p>1.切换到接收修改的分支 git checkout 被合并分支名<br>2.执行merge命令 git merge 有新内容的分支名</p>
-<ul>
-<li>合并时冲突产生：两个分支同时修改同一个文件同一行</li>
-<li>解决冲突：<br>vim 冲突文件可以看到冲突表现<br>git add 冲突文件<br>git commit -m “啪啪啪” #不带文件名</li>
-</ul>
-<ol start="7">
-<li>查看历史记录即显示<br>git log<br>git log –oneline<br>git log –pretty=oneline#只显示过去<br>git reflog#当前版本移动需要几步</li>
-</ol>
-<ol start="8">
-<li>版本前进后退</li>
-</ol>
-<ul>
-<li>基于索引<br>git reset –hard 索引值</li>
-<li>使用^<br>git reset –hard HEAD^#后退一步</li>
-<li>使用～<br>git reset –hard HEAD ~n步数</li>
-</ul>
-<p>reset命令三个参数对比<br>–soft<br>仅仅在本地库移动HEAD指针<br>–mixed<br>在本地库移动HEAD指针<br>重置暂存区<br>–hard<br>在本地库移动HEAD指针<br>重置暂存区<br>重置工作区</p>
-<h2 id="Git管理远程仓库"><a href="#Git管理远程仓库" class="headerlink" title="Git管理远程仓库"></a><strong><em>Git管理远程仓库</em></strong></h2><ol>
-<li><p>创建远程仓库别名<br>git remote -v 查看当前所有远程地址别名<br>git remote add [远程库地址别名] [远程地址]</p>
-</li>
-<li><p>Git推送操作<br>将本地仓库同步到远程仓库将<br>git push [远程库地址别名] [分支名]<br>git push &lt;远程主机名&gt; &lt;本地分支名&gt;  &lt;远程分支名&gt; </p>
-</li>
-<li><p>Git克隆操作</p>
-</li>
-</ol>
-<ul>
-<li>目的<br>将远程仓库(github对应项目)复制到本地</li>
-<li>代码<br><code>git clone 仓库地址</code></li>
-<li>效果</li>
-</ul>
-<p>1.完整的把远程库下载到本地<br>2.创建origin远程地址别名<br>3.初始化本地仓库</p>
-<ol start="4">
-<li><p>Git拉取操作<br>pull=fetch+merge<br>git fetch [远程库地址别名 远程分支名]<br>git merge [远城地址别名/远程分支名]<br>git pull [远程库地址别名] [远程分支名]</p>
-</li>
-<li><p>解决冲突</p>
-</li>
-<li><p>如果不是基于GitHub远程库的最新版所做的修改，不能推送，必须先拉取。</p>
-</li>
-<li><p>拉取下来后如果进入冲突状态，则按照“分支冲突解决”操作解决即可。</p>
-</li>
-</ol>
-<h2 id="Git-基本原理"><a href="#Git-基本原理" class="headerlink" title="Git 基本原理"></a><strong>Git 基本原理</strong></h2><ol>
-<li>哈希</li>
-</ol>
-<h2 id="一些问题的解决"><a href="#一些问题的解决" class="headerlink" title="一些问题的解决"></a><strong>一些问题的解决</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">To https://github.com/Jackzhou1999/test_git.git</span><br><span class="line"> ! [rejected]        master -&gt; master (fetch first)</span><br><span class="line">error: failed to push some refs to &apos;https://github.com/Jackzhou1999/test_git.git&apos;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</span><br><span class="line">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</span><br></pre></td></tr></table></figure>
-
-<p>本地没有update到最新版本的项目<br>解决<code>git pull --rebase origin master</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1899,7 +1836,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
