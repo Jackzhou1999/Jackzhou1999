@@ -81,13 +81,13 @@
 
 <meta name="description" content="Let&apos;s do amazing!!!">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="ZhouSir&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="ZhouSir&#39;s Blog">
 <meta property="og:description" content="Let&apos;s do amazing!!!">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="ZhouSir&#39;s Blog">
 <meta name="twitter:description" content="Let&apos;s do amazing!!!">
 
 
@@ -98,7 +98,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -124,7 +124,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>ZhouSir's Blog</title>
   
 
 
@@ -143,10 +143,10 @@
     
   
 
-  <div class="container sidebar-position-right 
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
-
+	<a href="https://github.com/Jackzhou1999"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
@@ -155,7 +155,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">ZhouSir's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -304,6 +304,511 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/11/论文积累7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhouSir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/11/论文积累7/" itemprop="url">论文积累7</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T17:28:26+08:00">
+                2020-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基于metric的元学习"><a href="#基于metric的元学习" class="headerlink" title="基于metric的元学习"></a>基于metric的元学习</h2><p>这几篇文章都未进行仿真,且论文的实验部分没看,发现最近读论文都不想看实验部分,本来就一仿真菜鸡还tm不好好读论文进行仿真😡<br>不仿真实现论文不删上文</p>
+<hr>
+<p>paper list:   </p>
+<ol>
+<li>Siamese Neural Networks for One-shot Image Recognition</li>
+<li>Matching Networks for One Shot Learning</li>
+<li>Prototypical Networks for Few-shot Learning</li>
+</ol>
+<hr>
+<h4 id="论文一、"><a href="#论文一、" class="headerlink" title="论文一、"></a>论文一、</h4><p>孪生网络共用权值,身体(特征提取部分)相同,头(输出)不同.将一对图片组(两张)传给孪生网络,在网络的倒数第二层使用L1距离将两个网络的输出进行融合,并度量两者的相似性,网络的最后一层使用全连接(说是使用了注意力机制)并用sigmoid输出得到相似性(1同类0不同类),训练的时候<br>网络结构:<br><img src="/images/pasted-137.png" alt="upload successful"><br>小样本学习原因:并不是学习出分辨类别的能力,只是学习出衡量相似性的能力<br>应用场景:可用于相似性度量,也可用于分类任务,将待分类样本与训练集数据比对,进行投票决定类别(个人观点,必须实验试试)<br>code: <a href="https://github.com/kevinzakka/one-shot-siamese" target="_blank" rel="noopener">https://github.com/kevinzakka/one-shot-siamese</a>  </p>
+<hr>
+<h4 id="论文二、"><a href="#论文二、" class="headerlink" title="论文二、"></a>论文二、</h4><p>Matching Networks=记忆力LSTM+CNN+attention机制,将query图片和support set有效embedding,使用余弦距离衡量相似性,模型具体操作:<br>对于support set(func G): 使用一个简单的CNN将图片进行编码后,将每个图片看作一个单词Xt,输入双向LSTM进行二次embedding,ht即为新的embedding<br>对于query image(func F): 使用CNN将图片进行编码后,使用一个K个LSTM cell进行编码<br>每个LSTM cell的输入:   </p>
+<ol>
+<li>Xt=图片的CNN_embedding  </li>
+<li>ht-1(new)=ht-1(old)+CNN_embedding+attetions_map * support_embedding  </li>
+<li>attetions_map = softmax(torch.mm(ht-1(old)+CNN_embedding, support_embedding))</li>
+</ol>
+<p>最后的一个cell的输出hK-1即为query image的embedding   </p>
+<hr>
+<p><strong>LSTM 结构</strong>:<br><img src="/images/pasted-138.png" alt="upload successful"></p>
+<p><strong>func F定义</strong>:<br><img src="/images/pasted-141.png" alt="upload successful"></p>
+<p><strong>func G定义</strong>:<br><img src="/images/pasted-143.png" alt="upload successful"></p>
+<hr>
+<h4 id="论文三、"><a href="#论文三、" class="headerlink" title="论文三、"></a>论文三、</h4><p>使用神经网络将图片进行编码,然后计算每一类的中心作为原型,得到每一类的聚类中心,就可以对图片进行分类  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/11/论文积累6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhouSir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/11/论文积累6/" itemprop="url">论文积累6</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T11:26:00+08:00">
+                2020-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper/" itemprop="url" rel="index">
+                    <span itemprop="name">paper</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Deep-Hash-learning-for-Remote-Sensing-Image-Retrieval"><a href="#Deep-Hash-learning-for-Remote-Sensing-Image-Retrieval" class="headerlink" title="Deep Hash learning for Remote Sensing Image Retrieval"></a>Deep Hash learning for Remote Sensing Image Retrieval</h1><hr>
+<p>目录:</p>
+<ol>
+<li>相关概念</li>
+<li>model</li>
+<li>主要思想</li>
+<li>理论知识点</li>
+<li>实验仿真</li>
+<li>实验结果分析</li>
+<li>github代码</li>
+</ol>
+<hr>
+<h2 id="一、相关概念"><a href="#一、相关概念" class="headerlink" title="一、相关概念"></a>一、相关概念</h2><ol>
+<li>hash编码: 将图片编码为0,1串,使用神经网络先生成real-value编码然后取阈值将real-value编码转换为hash编码  </li>
+<li>hash编码的三个必须要保证的限制: similarity preserving; coding balance; quantization errors;<br>similarity preserving即图片在语义空间的相似性在哈希空间也要保持,coding balance即编码bits之间相互独立, quantization errors即real-value编码转换到hash编码的损失要尽量小  </li>
+<li>Hamming distance: 衡量两个字符串的相似性,将其中一个变为另外一个所需要作的最小替换次数</li>
+</ol>
+<h2 id="二、model"><a href="#二、model" class="headerlink" title="二、model"></a>二、model</h2><p>第一部分:特征提取器<br><img src="/images/pasted-131.png" alt="upload successful"><br>主干特征提取网络使用Alexnet进行特征提取,使用passthrough进行多尺度特征图聚合,使用注意力机制(attention branch network (<strong>ABN</strong>)) 生成attention map 根据每个类的特点去突出 the discriminative regions<br>需要学习一下:《Attention branch network: Learning of attention mechanism for visual explanation》</p>
+<p>第二部分:hash编码器<br><img src="/images/pasted-132.png" alt="upload successful"><br>使用对抗正则模型迫使生成的value code逼近离散均匀分布</p>
+<h2 id="三、主要思想"><a href="#三、主要思想" class="headerlink" title="三、主要思想"></a>三、主要思想</h2><p>end to end网络, 模型同时进行特征提取和编码, 具体是特征提取后进行real-value编码再将real-value编码转换为hash编码, 特点是使用了特征融合和注意力机制进行特征提取,使用对抗正则网络迫使生成的数据逼近于一个指定的分布 </p>
+<h2 id="四、理论于仿真知识点"><a href="#四、理论于仿真知识点" class="headerlink" title="四、理论于仿真知识点"></a>四、理论于仿真知识点</h2><ol>
+<li><p>pytorch正则化<br><a href="https://blog.csdn.net/guyuealian/article/details/88426648" target="_blank" rel="noopener">https://blog.csdn.net/guyuealian/article/details/88426648</a></p>
+</li>
+<li><p>pytorch自定义损失函数<br><a href="https://www.zhihu.com/question/66988664/answer/247952270" target="_blank" rel="noopener">https://www.zhihu.com/question/66988664/answer/247952270</a></p>
+</li>
+<li><p>pytorch自动求导机制(裂开)<br><a href="http://bindog.github.io/blog/2020/05/20/optimize-training-memory-by-op-fusion-gradient-checkpoint/" target="_blank" rel="noopener">http://bindog.github.io/blog/2020/05/20/optimize-training-memory-by-op-fusion-gradient-checkpoint/</a><br><a href="https://zhuanlan.zhihu.com/p/83172023" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/83172023</a></p>
+</li>
+<li><p>损失函数设计积累<br> <img src="/images/pasted-125.png" alt="upload successful"><br> 该损失函数迫使同类样本之间距离减小, 不同类样本之间距离大于m,小于m则产生损失(类似于合页损失函数)<br> <img src="/images/pasted-133.png" alt="upload successful"><br> 该损失函数迫使生成的编码值向0或1靠近 </p>
+</li>
+<li><p>检索任务中MAP计算方法<br>进行Q次检索,每次选取距离最小的top m个图片作为检索结果,从距离最小的图片到距离最大的图片<br> <img src="/images/pasted-127.png" alt="upload successful"></p>
+</li>
+</ol>
+<p><strong>AP</strong>计算公式如下:<br>    <img src="/images/pasted-128.png" alt="upload successful"><br>    R表示数据集中和query图像同类的图像数量, r的取值范围为1-m, 当top r 图片和query图像同类时δ(r)为1,反之为0<br><strong>MAP</strong>计算公式如下:<br>    <img src="/images/pasted-129.png" alt="upload successful"></p>
+<h2 id="五、实验仿真"><a href="#五、实验仿真" class="headerlink" title="五、实验仿真"></a>五、实验仿真</h2><p>仍在调参,斯密达</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/10/论文积累5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhouSir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/10/论文积累5/" itemprop="url">论文积累5</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-10T10:12:00+08:00">
+                2020-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="A-Discriminative-Distillation-Network-for-Cross-Source-Remote-Sensing-Image-Retrieval"><a href="#A-Discriminative-Distillation-Network-for-Cross-Source-Remote-Sensing-Image-Retrieval" class="headerlink" title="A Discriminative Distillation Network for Cross-Source Remote Sensing Image Retrieval"></a>A Discriminative Distillation Network for Cross-Source Remote Sensing Image Retrieval</h1><hr>
+<p>目录:</p>
+<ol>
+<li>相关概念</li>
+<li>model</li>
+<li>主要思想</li>
+<li>理论知识点</li>
+<li>实验仿真、实验结果分析、github代码</li>
+</ol>
+<hr>
+<h2 id="一、相关概念"><a href="#一、相关概念" class="headerlink" title="一、相关概念"></a>一、相关概念</h2><ul>
+<li><p>Knowledge Distillation(知识蒸馏): 将知识从复杂笨重的网络迁移给较轻便的网络,以压缩/训练模型。本文中使用知识蒸馏并不是为了压缩模型,而是根据不同模态遥感图像低层特征不同,高层语义近似的特点,把f网络学到的高层特征给G网络以加快G网络收敛,同时促使后一模态图像的特征逼近于前一模态的特征,使二者在同一特征空间。在该论文中使用logits计算MSEloss,而不是使用softmax后计算crossentropyloss应该是由于该网络并不是一个用于的分类网络,网络学到的是图片的特征向量而不是一组概率值。<br>参考博客:<a href="https://zhuanlan.zhihu.com/p/90049906" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/90049906</a> </p>
+</li>
+<li><p>attention mechanism: 注意力分配,重要的值得注意的东西权值高。 </p>
+</li>
+<li><p>multitask learning:😔</p>
+</li>
+<li><p>cross-model retrieval:query图像和数据库图像不同源,为不同类型遥感图像   </p>
+</li>
+<li><p>Metric learning: 相似度学习,学习一个度量相似度的距离函数:相似的目标离得近,不相似的离得远   </p>
+</li>
+<li><p>person re-identification:行人重识别,行人重识别问题通常看做是一个图片检索问题，具体地讲就是在不同摄像头中进行行人匹配，给出一个行人目标，判断其他摄像头是否也检测到这个行人。</p>
+<h2 id="二、Model"><a href="#二、Model" class="headerlink" title="二、Model"></a>二、Model</h2></li>
+</ul>
+<p><img src="/images/pasted-134.png" alt="upload successful"></p>
+<p><img src="/images/pasted-135.png" alt="upload successful"><br>使用两个架构完全相同的特征提取网络,训练方法是:先训练一个特征提取网络,然后将学到的参数传给第二个网络,固定第二个网络的高层参数,只训练低层部分,使得学到的特征和第一个网络的特征在同一个特征空间</p>
+<h2 id="三、主要思想"><a href="#三、主要思想" class="headerlink" title="三、主要思想"></a>三、主要思想</h2><p>使用知识蒸馏思想进行跨模态图像检索,使用知识蒸馏网络,使不同源图片训练出来的特征在同一个特征空间,使用triplet loss提高类间分散性和类内致密性,使用Center loss减小类内距离  </p>
+<h2 id="四、理论知识点"><a href="#四、理论知识点" class="headerlink" title="四、理论知识点"></a>四、理论知识点</h2><ol>
+<li><p>t-SNE(t分布随机邻域嵌入)</p>
+</li>
+<li><p>triplet loss<br> <img src="/images/pasted-136.png" alt="upload successful"><br> 对于batch中的每一个图片,在batch中选择一个同类的图片作为positive anchor,选择一个不同类图片作为negetive anchor</p>
+</li>
+</ol>
+<ol start="3">
+<li>pytorch 中的 CrossEntropyLoss详解<br>⚠️:使用CrossEntropyLoss,softmax回归后的输出size=(batchsize, num_class)后不必进行softmax,且计算得到的损失是进行了(求和/batchsize)操作的。<br><a href="https://www.pianshen.com/article/4916145350/" target="_blank" rel="noopener">https://www.pianshen.com/article/4916145350/</a><br><a href="https://pytorch.org/docs/stable/nn.html?highlight=cross#torch.nn.CrossEntropyLoss" target="_blank" rel="noopener">https://pytorch.org/docs/stable/nn.html?highlight=cross#torch.nn.CrossEntropyLoss</a>  </li>
+</ol>
+<h2 id="五、实验结果分析"><a href="#五、实验结果分析" class="headerlink" title="五、实验结果分析"></a>五、实验结果分析</h2><p>效果糟糕,检索100张图片正确率80%左右,主要是代码实现问题,我的损失函数实现及数据读取方式需要改进, pytorch编程问题还是蛮大的<br>github代码: <a href="https://github.com/Jackzhou1999/CS-CBRSIR" target="_blank" rel="noopener">https://github.com/Jackzhou1999/CS-CBRSIR</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/Ubuntu双系统安装记录-主机/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -313,7 +818,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -335,7 +840,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-20T20:26:48+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-20T20:26:00+08:00">
                 2020-05-20
               </time>
             
@@ -345,6 +850,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/环境配置/" itemprop="url" rel="index">
+                    <span itemprop="name">环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -533,6 +1060,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -582,7 +1112,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -695,6 +1225,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -744,7 +1277,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -869,6 +1402,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -918,7 +1454,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -1026,6 +1562,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -1075,7 +1614,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -1562,6 +2101,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -1611,7 +2153,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -1760,6 +2302,9 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -1809,7 +2354,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -1929,453 +2474,9 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
     
     
     
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/微机原理第三章数据传输指令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/14/微机原理第三章数据传输指令/" itemprop="url">微机原理第三章之数据传输指令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T00:09:00+08:00">
-                2019-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/微机原理/" itemprop="url" rel="index">
-                    <span itemprop="name">微机原理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/images/pasted-17.png" alt="upload successful"></p>
-
-          
-        
+    <div>
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/算法课5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/10/算法课5/" itemprop="url">算法课5</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T23:52:00+08:00">
-                2019-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="图的深度优先遍历算法"><a href="#图的深度优先遍历算法" class="headerlink" title="图的深度优先遍历算法"></a><strong>图的深度优先遍历算法</strong></h2><p>尚未实现</p>
-<h2 id="图的广度优先遍历算法"><a href="#图的广度优先遍历算法" class="headerlink" title="图的广度优先遍历算法"></a><strong>图的广度优先遍历算法</strong></h2><p>尚未实现</p>
-<h2 id="寻找图的关节点算法"><a href="#寻找图的关节点算法" class="headerlink" title="寻找图的关节点算法"></a><strong>寻找图的关节点算法</strong></h2><h3 id="算法目标"><a href="#算法目标" class="headerlink" title="算法目标:"></a>算法目标:</h3><p>目标:寻找图的关节点.</p>
-<p>some定义:</p>
-<ol>
-<li>关节点:存在顶点v,如果有不同与v的两个顶点u和w,在u和w间的任何路径都必定经过顶点v,则v为关节点(我的理解:删掉这个点,将产生图的不联通子图)</li>
-<li>树边:深度优先搜索树上的边.如果在探索边(v,w)时,w是第一次被访问,这(v,w)是树边</li>
-<li>回边:在迄今为止构建的深度优先搜索树中,w是v的<strong>祖先</strong>(不是父亲),并且当探索(v,w)时顶点w已被标上已访问</li>
-</ol>
-<h3 id="关节点的确定"><a href="#关节点的确定" class="headerlink" title="关节点的确定"></a>关节点的确定</h3><ul>
-<li><p>根是一个关节点当且仅当在dfs树中，它有两个或更多的儿子。</p>
-</li>
-<li><p>根以外的顶点v是一个关节点当且仅当v有一个儿子w，使得β[w]&gt;=α[v]。</p>
-</li>
-</ul>
-<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码:"></a>伪代码:</h3><p><img src="/images/pasted-11.png" alt="upload successful"></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现:"></a>代码实现:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int size=10;</span><br><span class="line"></span><br><span class="line">struct data&#123;</span><br><span class="line">    char var;</span><br><span class="line">    friend ostream&amp; operator&lt;&lt;(ostream&amp; os,data&amp; d)&#123;</span><br><span class="line">        os&lt;&lt;d.var;</span><br><span class="line">        return os;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct node&#123;</span><br><span class="line">    int a;</span><br><span class="line">    int b;</span><br><span class="line">    bool access;</span><br><span class="line">    bool is_artpoint;</span><br><span class="line">    data val;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">inline int minimun(int a,int b)&#123;</span><br><span class="line">    return a&gt;b?b:a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool judge_tree_edges(node* Nodes,int v,int w)&#123;</span><br><span class="line">    if (Nodes[w].access == false &amp;&amp; Nodes[v].access == true) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool judge_back_edges(node* Nodes,int v,int w)&#123;</span><br><span class="line">    if (Nodes[v].access &amp;&amp; Nodes[w].access) &#123;</span><br><span class="line">        if (Nodes[v].a-Nodes[w].a &gt; 1) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;else</span><br><span class="line">            return false;</span><br><span class="line">    &#125;else</span><br><span class="line">        return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void dfs(int v,int number,node* Nodes,bool graph[][size],int&amp; rootdegree)&#123;</span><br><span class="line">    Nodes[v].access = true;</span><br><span class="line">    Nodes[v].a = number;</span><br><span class="line">    Nodes[v].b = number++;</span><br><span class="line">    for (int w=0; w&lt;size; w++) &#123;</span><br><span class="line">        if(graph[v][w] == true)&#123;</span><br><span class="line">            if (judge_tree_edges(Nodes, v, w)) &#123;</span><br><span class="line">                dfs(w, number, Nodes, graph,rootdegree);</span><br><span class="line">                if (v == 0) &#123;</span><br><span class="line">                    rootdegree++;</span><br><span class="line">                    if (rootdegree == 2) &#123;</span><br><span class="line">                        Nodes[v].is_artpoint = true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    Nodes[v].b = minimun(Nodes[v].b, Nodes[w].b);</span><br><span class="line">                    if (Nodes[w].b &gt;= Nodes[v].a) &#123;</span><br><span class="line">                        Nodes[v].is_artpoint = true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;else if (judge_back_edges(Nodes, v, w))&#123;</span><br><span class="line">                Nodes[v].b = minimun(Nodes[v].b, Nodes[w].a);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ARTICPOINTS(bool graph[][size],data* vars)&#123;</span><br><span class="line">    node Nodes[size];</span><br><span class="line">    for (int i=0; i&lt;size; i++) &#123;</span><br><span class="line">        Nodes[i].access = false;</span><br><span class="line">        Nodes[i].val = vars[i];</span><br><span class="line">        Nodes[i].is_artpoint = false;</span><br><span class="line">    &#125;</span><br><span class="line">    int number = 1;</span><br><span class="line">    int v=0;</span><br><span class="line">    int rootdegree = 0;</span><br><span class="line">    dfs(v, number, Nodes, graph, rootdegree);</span><br><span class="line">    for (int i=0; i&lt;size; i++) &#123;</span><br><span class="line">        //cout&lt;&lt;Nodes[i].a&lt;&lt;&quot; &quot;&lt;&lt;Nodes[i].b&lt;&lt;endl;</span><br><span class="line">        if (Nodes[i].is_artpoint) &#123;</span><br><span class="line">            cout&lt;&lt;i&lt;&lt;&quot;:&quot;&lt;&lt;Nodes[i].val&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    bool graph[][size]&#123;</span><br><span class="line">        &#123;0,1,0,0,0,0,1,0,0,0&#125;,</span><br><span class="line">        &#123;1,0,1,0,0,1,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,1,0,1,1,0,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,0,1,0,1,0,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,0,1,1,0,0,0,0,0,0&#125;,</span><br><span class="line">        &#123;0,1,0,0,0,0,1,0,0,0&#125;,</span><br><span class="line">        &#123;1,0,0,0,0,1,0,1,0,0&#125;,</span><br><span class="line">        &#123;0,0,0,0,0,0,1,0,1,1&#125;,</span><br><span class="line">        &#123;0,0,0,0,0,0,0,1,0,1&#125;,</span><br><span class="line">        &#123;0,0,0,0,0,0,0,1,1,0&#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    data d[size];</span><br><span class="line">    for (int i = 0; i&lt;size; i++) &#123;</span><br><span class="line">        d[i].var=&apos;a&apos;+i;</span><br><span class="line">    &#125;</span><br><span class="line">    ARTICPOINTS(graph, d);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例:"></a>实例:</h3><p><img src="/images/pasted-12.png" alt="upload successful"></p>
-<h3 id="一些规律"><a href="#一些规律" class="headerlink" title="一些规律"></a>一些规律</h3><p><img src="/images/pasted-14.png" alt="upload successful"><br>在深度优先搜索树中关节点是每个回环之间相连的一条边的两个端点</p>
-<p>代码结果:</p>
-<p><img src="/images/pasted-13.png" alt="upload successful"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/关于hexo博客换主题踩坑记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/10/关于hexo博客换主题踩坑记录/" itemprop="url">关于hexo博客换主题踩坑记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T21:54:00+08:00">
-                2019-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/blog/" itemprop="url" rel="index">
-                    <span itemprop="name">blog</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题:hexo更换主题后github远程并不更新<br>解决方法:删除博客根目录下的public目录和隐藏文件夹.deploy_git<br>删除后再执行<code>hexo g</code>和<code>hexo d</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
 
     
 
@@ -2455,7 +2556,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2466,7 +2567,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2477,7 +2578,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2581,9 +2682,6 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
 
 
 
-  
-  
-
 
 
 
@@ -2620,16 +2718,6 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
   
 
 
@@ -3032,5 +3120,5 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

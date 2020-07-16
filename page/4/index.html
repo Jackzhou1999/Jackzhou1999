@@ -81,13 +81,13 @@
 
 <meta name="description" content="Let&apos;s do amazing!!!">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="ZhouSir&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/page/4/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="ZhouSir&#39;s Blog">
 <meta property="og:description" content="Let&apos;s do amazing!!!">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="ZhouSir&#39;s Blog">
 <meta name="twitter:description" content="Let&apos;s do amazing!!!">
 
 
@@ -98,7 +98,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -124,7 +124,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>ZhouSir's Blog</title>
   
 
 
@@ -143,10 +143,10 @@
     
   
 
-  <div class="container sidebar-position-right 
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
-
+	<a href="https://github.com/Jackzhou1999"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
@@ -155,7 +155,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">ZhouSir's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -304,6 +304,537 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/C-的IO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhouSir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/08/C-的IO/" itemprop="url">C++的IO</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T11:46:51+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、输入"><a href="#一、输入" class="headerlink" title="一、输入"></a><strong><em>一、输入</em></strong></h2><h4 id="1-cin根据接受值的变量的类型来将字符序列转换为所需类型"><a href="#1-cin根据接受值的变量的类型来将字符序列转换为所需类型" class="headerlink" title="1. cin根据接受值的变量的类型来将字符序列转换为所需类型"></a>1. cin根据接受值的变量的类型来将字符序列转换为所需类型</h4><h4 id="2-cin检查输入流时跳过空白-换行符-空格-制表符"><a href="#2-cin检查输入流时跳过空白-换行符-空格-制表符" class="headerlink" title="2. cin检查输入流时跳过空白(换行符,空格,制表符)"></a>2. cin检查输入流时跳过空白(换行符,空格,制表符)</h4><h4 id="3-cin确定字符串结尾的方式-空白-制表符-空格-换行符-cin在获取字符输入时只读取一个单词-并自动在结尾加上空字符"><a href="#3-cin确定字符串结尾的方式-空白-制表符-空格-换行符-cin在获取字符输入时只读取一个单词-并自动在结尾加上空字符" class="headerlink" title="3. cin确定字符串结尾的方式:空白(制表符,空格,换行符),cin在获取字符输入时只读取一个单词,并自动在结尾加上空字符"></a>3. cin确定字符串结尾的方式:空白(制表符,空格,换行符),cin在获取字符输入时只读取一个单词,并自动在结尾加上空字符</h4><h4 id="4-使用cin-gt-gt-array方式无法控制输入字符数不超出a数组容量"><a href="#4-使用cin-gt-gt-array方式无法控制输入字符数不超出a数组容量" class="headerlink" title="4. 使用cin&gt;&gt;array方式无法控制输入字符数不超出a数组容量"></a>4. 使用cin&gt;&gt;array方式无法控制输入字符数不超出a数组容量</h4><h4 id="5-cin-gt-gt-string使用的是string类的友元函数"><a href="#5-cin-gt-gt-string使用的是string类的友元函数" class="headerlink" title="5. cin&gt;&gt;string使用的是string类的友元函数"></a>5. cin&gt;&gt;string使用的是string类的友元函数</h4><h4 id="6-一次读取一行的方式"><a href="#6-一次读取一行的方式" class="headerlink" title="6. 一次读取一行的方式:"></a>6. 一次读取一行的方式:</h4><ul>
+<li>cin.getline(array_name,n,’split_symbol’)<br>⚠️注意点:</li>
+</ul>
+<p>1.返回值为cin对象<br>2.读取(n-1)个字符,若输入超过数组容量,余下字符留在输入队列中,同时设置失效位关闭后面的输入<br>3.自动在结尾加上空字符,不保留分界字符<br>4.停止读取:读取指定数目字符or分界字符(默认换行符),通过分界字符确定结尾但不保存换行符,用空字符代替分界字符<br>5.对于输入方法立即到达文件为这一情况:设置failbit<br>6.对于输入了一个空行:不设置failbit</p>
+<ul>
+<li>cin.get(array_name,n)<br>⚠️注意点:</li>
+</ul>
+<p>1.返回值为cin对象<br>2.不读取分界字符也不丢弃分界字符符,⚠️而是把它保存在输入队列中<br>3.通过查看下一个字符是换行符还是其他字符就可以判断输入结束是因为数组容量限制还是输入结束(\n)<br>4.读取空行是设置失效位failbit,可用cin.clear()恢复输入<br>5.对于输入方法立即到达文件为这一情况:设置failbit<br>6.对于输入空行:设置failbit</p>
+<h4 id="7-一次读取一个字符的方式"><a href="#7-一次读取一个字符的方式" class="headerlink" title="7.一次读取一个字符的方式:"></a>7.一次读取一个字符的方式:</h4><ul>
+<li>int a=cin.get()</li>
+</ul>
+<p>1.读取下一个字符,任何字符都可以被读取包括(空格,制表符,换行符)<br>2.到达文件尾时返回EOF符号常量</p>
+<ul>
+<li>ostream&amp; cin.get(char&amp;)<br>⚠️1.返回值为对象引用</li>
+</ul>
+<p>2.到文件尾时不会再给参数赋值</p>
+<ul>
+<li>cin&gt;&gt;char a<br>⚠️1.将跳过换行符,空格</li>
+</ul>
+<h4 id="8-读取指定数目字符并丢弃"><a href="#8-读取指定数目字符并丢弃" class="headerlink" title="8.读取指定数目字符并丢弃"></a>8.读取指定数目字符并丢弃</h4><ul>
+<li>ostream &amp;cin.ignore(int n,char a)<br>n:最大字符数<br>a:输入分界符</li>
+</ul>
+<h4 id="9-其他一些istream方法"><a href="#9-其他一些istream方法" class="headerlink" title="9.其他一些istream方法"></a>9.其他一些istream方法</h4><p>cin.read(array_name,array_capicity):不会在输入后加上空字符使其成为字符串<br>char a=cin.peek():返回输入中的下一个字符,但不抽取输入流中的字符<br>putback():将一个字符插入到输入字符串中</p>
+<h4 id="10-cin-gt-gt-int-a"><a href="#10-cin-gt-gt-int-a" class="headerlink" title="10.cin&gt;&gt;int a"></a>10.cin&gt;&gt;int a</h4><p>注意点:<br>返回值是cin对象<br>输入数字后的换行符会留在输入队列中<br>解决方法:<br>1.cin.get()<br>2.cin.get(ch)</p>
+<h4 id="11-getline-cin-string"><a href="#11-getline-cin-string" class="headerlink" title="11. getline(cin,string)"></a>11. getline(cin,string)</h4><p>结束的三个标志:<br>1.到达文件尾<br>2.遇到分界字符,将把分界字符从输入流中删除但不储存它<br>3.读取的字符数达到最大允许值string::npos</p>
+<h2 id="二、输出"><a href="#二、输出" class="headerlink" title="二、输出"></a><strong><em>二、输出</em></strong></h2><h4 id="1-IO类之间的关系"><a href="#1-IO类之间的关系" class="headerlink" title="1. IO类之间的关系"></a>1. IO类之间的关系</h4><p><img src="/2019/08/08/C-的IO/IO%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.png" alt></p>
+<h4 id="2-cout输出指针"><a href="#2-cout输出指针" class="headerlink" title="2. cout输出指针"></a>2. cout输出指针</h4><p>1.输出字符型指针时输出字符串,字符型指针有:char数组名,char类型指针,字符串<br>2.输出其他类型的指针时,输出的是地址</p>
+<h4 id="3-ostream方法"><a href="#3-ostream方法" class="headerlink" title="3. ostream方法"></a>3. ostream方法</h4><p>1.ostream&amp; operator&lt;&lt;()函数<br>2.ostream&amp; put(char)函数<br>cout.put(66)==&gt;输出为ascii码66的char值B<br>3.ostream&amp; write()函数<br>第一个参数为要显示的字符串的地址;第二个参数指出要显示多少个字符</p>
+<h4 id="4-刷新输出缓冲区"><a href="#4-刷新输出缓冲区" class="headerlink" title="4. 刷新输出缓冲区"></a>4. 刷新输出缓冲区</h4><p>1.换行符发送到缓冲区后,将刷新缓冲区<br>2.输入即将发生时刷新缓冲区<br>3.控制符flush刷新缓冲区<br>4.控制符endl刷新缓冲区并插入一个换行符<br>flush(cout)<br>cout&lt;&lt;flush</p>
+<h4 id="5-cout输出格式化"><a href="#5-cout输出格式化" class="headerlink" title="5. cout输出格式化:"></a>5. cout输出格式化:</h4><h5 id="1-lt-lt-运算法将值转换为文本格式"><a href="#1-lt-lt-运算法将值转换为文本格式" class="headerlink" title="1.&lt;&lt;运算法将值转换为文本格式"></a>1.&lt;&lt;运算法将值转换为文本格式</h5><p><img src="/2019/08/08/C-的IO/%E6%8F%92%E5%85%A5%E8%BF%90%E7%AE%97%E7%AC%A6%E5%B0%86%E5%80%BC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%96%87%E6%9C%AC%E6%A0%BC%E5%BC%8F.png" alt></p>
+<h5 id="2-控制进制"><a href="#2-控制进制" class="headerlink" title="2.控制进制"></a>2.控制进制</h5><ul>
+<li>hex</li>
+<li>dec</li>
+<li>oct</li>
+</ul>
+<h5 id="3-调整字符宽度"><a href="#3-调整字符宽度" class="headerlink" title="3.调整字符宽度"></a>3.调整字符宽度</h5><p>⚠️:设置仅对下一次输出有效<br>两种格式:<br>int width():返回字段宽度的当前设置<br>int width(int i):设置字段宽度并返回以前的字段宽度<br>用法:int b = cout.width(a)</p>
+<h5 id="4-填充字符"><a href="#4-填充字符" class="headerlink" title="4.填充字符"></a>4.填充字符</h5><p>cout.fill()</p>
+<h5 id="5-浮点数的显示精度"><a href="#5-浮点数的显示精度" class="headerlink" title="5.浮点数的显示精度"></a>5.浮点数的显示精度</h5><ul>
+<li>默认模式<br>精度:显示的总位数</li>
+<li>定点模式and科学模式<br>精度:小数点后面的位数<br>定点表示法:使用格式123.4来表示浮点数,而不管数字的长度<br>科学表示法:使用格式1.23e04<br>用法:<br>cout.precision(n)<br>⚠️:设置后长期有效</li>
+</ul>
+<h5 id="6-打印末尾的小数点和零"><a href="#6-打印末尾的小数点和零" class="headerlink" title="6.打印末尾的小数点和零"></a>6.打印末尾的小数点和零</h5><p>cout.setf(ios_base::showpoint)</p>
+<h5 id="7-setf-函数"><a href="#7-setf-函数" class="headerlink" title="7.setf()函数"></a>7.setf()函数</h5><p>⚠️:ios_base定义于std名称空间中,使用时要using std::ios_base<br>两种格式:<br>一.fmtflags setf(fmtflags)<br>fmtflags是bitmask类型;<br>一些格式常量(函数参数):<br><img src="/2019/08/08/C-的IO/%E6%A0%BC%E5%BC%8F%E5%B8%B8%E9%87%8F.png" alt><br>二.fmtflags setf(fmtflags,fmtflags)<br>第一个参数:所需设置的位<br>第二个参数:指出要清除那位<br>个人理解:第二个参数直接全清恢复全零状态,然后第一位再设置所需要的位<br><img src="/2019/08/08/C-的IO/setf%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B01.png" alt><br><img src="/2019/08/08/C-的IO/setf%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B02.png" alt></p>
+<h4 id="6-标准控制符"><a href="#6-标准控制符" class="headerlink" title="6. 标准控制符"></a>6. 标准控制符</h4><p>用法:cout&lt;&lt;标控<br><img src="/2019/08/08/C-的IO/%E6%A0%87%E5%87%86%E6%8E%A7%E5%88%B6%E7%AC%A61.png" alt><br><img src="/2019/08/08/C-的IO/%E6%A0%87%E5%87%86%E6%8E%A7%E5%88%B6%E7%AC%A62.png" alt></p>
+<h4 id="7-头文件iomanip中的控制符"><a href="#7-头文件iomanip中的控制符" class="headerlink" title="7. 头文件iomanip中的控制符"></a>7. 头文件iomanip中的控制符</h4><p>1.setprecision(n)<br>2.setw(n)<br>3.setfill(char a)</p>
+<h2 id="三、文件IO"><a href="#三、文件IO" class="headerlink" title="三、文件IO"></a><strong><em>三、文件IO</em></strong></h2><p>1.包含头文件fstream<br>2.必须指明命名空间std</p>
+<ul>
+<li>将内容写入文件</li>
+</ul>
+<p>ofstream fout;<br>fout.open(filename);<br>fouttext line;<br>fout.close()</p>
+<p>背记方法:将内容输入到文件类比与cout将内容输入到屏幕</p>
+<ul>
+<li>读取文本文件</li>
+</ul>
+<p>string a;<br>ifstream fin;<br>fin.open(filename);<br>fin&gt;&gt; a;<br>fin.close();</p>
+<ul>
+<li><p>检查文件是否打开</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">include&lt;cstdlib&gt;</span><br><span class="line">if(!fin.is_open())&#123;</span><br><span class="line">exit(EXIT_FAILURE)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环输入<br>代码1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fin&gt;&gt;a;</span><br><span class="line">while(fin.good())&#123;</span><br><span class="line">fin&gt;&gt;a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>代码2.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(fin&gt;&gt;a)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原因:fin&gt;&gt;a返回值是fin对象,在需要判断时fin的结果为fin.good()</p>
+<ul>
+<li>流状态<br>由三个元素组成:eofbit,badbit,failbit<br>流状态位被设置后流将对后面的输入或输出关闭</li>
+</ul>
+<p>一、检查IO错误方法<br>1.eof():遇到eof<br>2.fail():读取操作类型不匹配,遇到文件尾EOF;badbit或failbit被设置<br>3.bad():文件受损或硬件故障,文件读取错误<br>4.good():没有发生任何错误时返回true<br>二、设置流状态<br>clear(iostate s):无参数时重置状态,<br>setstate(iostate s):无参数时重置状态,有参数时该参数被设置,其他两个状态位被清除<br>exceptions(iostate ex):设置ex位被设置,有参数时只影响参数设置的位</p>
+<p>对于输入错误的处理代码(输入类型和要求类型不符合)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">char a[20];</span><br><span class="line">while(!cin&gt;&gt;a[i])&#123;</span><br><span class="line">    if(cin.fail()&amp;&amp;!cin.eof())&#123;</span><br><span class="line">        cin.clear();</span><br><span class="line">        while(cin.get()!=&apos;\n&apos;)</span><br><span class="line">        continue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>文件模式<br><img src="/2019/08/08/C-的IO/%E6%96%87%E4%BB%B6%E6%A8%A1%E5%BC%8F.png" alt></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhouSir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/08/正则表达式/" itemprop="url">正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T11:20:14+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在Linux中，有两种流行的正则表达式引擎:<br>1.POSIX基础正则表达式(basic regular expression，BRE)引擎<br>2.POSIX扩展正则表达式(extended regular expression，ERE)引擎</p>
+<p>sed只支持BRE<br>gawk和awk支持ERE<br>⚠️:<br>1.正则表达式模式都区分大小写。这意味着它们只会匹配大小写也相符的模式<br>2.在正则表达式中，不用写出整个单词。只要定义的文本出现在数据流中，正则表达式就能够匹配<br>3.在正则表达式中，空格和其他的字符并没有什么区别<br>4.不能在文本模式中单独使用.*[]^${}+?|(),如果要用某个特殊字符作为文本字符，就必须转义来告诉正则表达式引擎应该将接下来的字符当作普通的文本字符,使用反斜线<br>5.由于反斜线是特殊字符，如果要在正则表达式模式中使用它，你必须对其转义，这样就产生了两个反斜线<br>6.尽管正斜线不是正则表达式的特殊字符,要使用正斜线，也需要进行转义</p>
+<h3 id="BRE"><a href="#BRE" class="headerlink" title="BRE"></a><strong><em>BRE</em></strong></h3><ul>
+<li>锚字符</li>
+</ul>
+<ol>
+<li>锁定在行首(^)<br>如果你将^放到模式开头之外的其他位置，那么它就跟普通字符一样，不再是特殊字符了</li>
+<li>锁定在行尾($)<br>例子:过滤出数据流中的空白行<br><code>sed &#39;/^$/d&#39; data5</code></li>
+</ol>
+<ul>
+<li>点号字符(.)<br>用来匹配除换行符之外的任意<strong>单个字符</strong>。它必须匹配一个字符，如果在点号字符的位置没有字符，那么模式就不成立</li>
+<li>字符组([])<br>使用方括号来定义一个字符组。方括号中包含所有你希望出现在该字符组中的字符。</li>
+<li>排除型字符组([ ^])</li>
+<li>区间[n1-n2]</li>
+<li>特殊的字符组<br><img src="/2019/08/08/正则表达式/BRE%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E7%BB%84.png" alt></li>
+<li>星号<br>字符后面放置星号表明该字符必须在匹配模式的文本中出现0次或多次<br>将点号特殊字符和星号特殊字符组合起来。这个组合能够匹配任意数量的任意字符<br>星号还能用在字符组上。它允许指定可能在文本中出现多次的字符组或字符区间<br>例子[ae]*:a和e字符以任何组合形式出现<h3 id="ERE"><a href="#ERE" class="headerlink" title="ERE"></a><strong><em>ERE</em></strong></h3></li>
+<li>问号<br>问号表明前面的字符可以出现0次或1次<br>例子:[ae]?如果字符组中的字符出现了0次或1次，模式匹配就成立。但如果两个字符都出现了，或者其一个字符出现了2次，模式匹配就不成立</li>
+<li>加号<br>加号表明前面的字符可以出现1次或多次，但必须至少出现1次。如果该字符没有出现，那么模式就不会匹配<br>例子[ae]+:如果字符组中定义的任一字符出现了，文本就会匹配指定的模式</li>
+<li>花括号<br>{n}:正则表达式准确出现n次<br>{m,n}:正则表达式至少出现m次，至多n次<br>注意⚠️:默认情况下，gawk程序不会识别正则表达式间隔。必须指定gawk程序的–re-interval 命令行选项才能识别正则表达式间隔。</li>
+<li>管道符号<br>格式:expr1|expr2|…<br>用逻辑OR方式指定正则表达式引擎要用的两个或多个模式。如果任何一个模式匹配了数据流文本，文本就通过测试</li>
+<li>表达式分组<br>将正则表达式模式分组时，该组会被视为一个标准字符。可以像对普通字符一样给该组使用特殊字符<br>like this:sat(urday)?其中urday匹配0次或1次</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/sed和gawk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/头像.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhouSir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/07/sed和gawk/" itemprop="url">sed和gawk</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T14:31:41+08:00">
+                2019-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="sed-编辑器"><a href="#sed-编辑器" class="headerlink" title="sed 编辑器"></a><strong><em>sed 编辑器</em></strong></h2><p>sed编辑器被称作流编辑器,sed编辑器可以根据命令来处理数据流中的数据，这些命令要么从命令行中输入，要么存储在一个命令文本文件中<br>sed编辑器会执行下列操作:<br>(1) 一次从输入中读取一行数据。<br>(2) 根据所提供的编辑器命令匹配数据。<br>(3) 按照命令修改流中的数据。<br>(4) 将新的数据输出到STDOUT。<br>sed命令的格式如下:<br><code>sed options script file</code><br><img src="/2019/08/07/sed和gawk/sed%E5%91%BD%E4%BB%A4%E9%80%89%E9%A1%B9.png" alt><br>sed编辑器并不会修改文本文件的数据。它只会将修改后的数据发送到STDOUT</p>
+<p>###1. 在命令行使用多个编辑器命令<br>使用-e选项<br><code>sed -e &#39;s/brown/green/; s/dog/cat/&#39; data1.txt</code><br>⚠️:命令之间必须用分号隔开，并且在命令末尾和分号之间不能有空格。</p>
+<p>###2. 从文件中读取编辑器命令<br>用-f选项来指定文件来读取命令<br>不用在每条命令后面放一个分号。sed编辑器知道每行都是一条单独的命令</p>
+<p>###3. 命令</p>
+<p>####一、s命令<br>功能：替换功能,但默认情况下它只替换每行中出现的第一处<br>格式：<code>s/string/string/</code><br>1.替换标记：让替换命令能够替换一行中不同地方出现的文本<br>格式：<code>s/pattern/replacement/flags</code><br>有4种可用的替换标记flags:</p>
+<ul>
+<li>数字，表明新文本将替换第几处模式匹配的地方; </li>
+<li>g，表明新文本将会替换所有匹配的文本;</li>
+<li>p，配合-n选项一起使用，只输出被替换命令修改过的行</li>
+<li>w file，将替换的结果写到文件中，只将哪些可以匹配的被处理过的行写入文件，其显示和p配合-n选项一样</li>
+</ul>
+<p>2.字符串分隔符<br>不一定一定要使用s/string_a/string_b/，也可以s!string_a!string_b!</p>
+<p>####二、d命令<br>功能:删除行<br>1.删除特定行<br>sed ‘nd’ filename<br>sed ‘n1,n2d’ filename<br>sed ‘n1,$d’ filename<br>sed ‘/pattern/d’ filename</p>
+<p>####三、i命令 and a命令<br>插入(insert)命令(i)会在指定行前增加一个新行<br>附加(append)命令(a)会在指定行后增加一个新行<br>格式：</p>
+<figure class="highlight plain"><figcaption><span>'[address]command\</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new line&apos; filename</span><br></pre></td></tr></table></figure>
+
+<p>⚠️:必须在sed命令中单独指定新行<br>such as </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;ni\</span><br><span class="line">new line&apos; filename</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;$i\</span><br><span class="line">new line1\</span><br><span class="line">new line2&apos; filename</span><br></pre></td></tr></table></figure>
+
+<p>####四、c命令<br>修改(change)命令允许修改数据流中整行文本的内容<br>格式和i and s命令一样<br>such as </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;/pattern/c\</span><br><span class="line">the change line&apos; filenname</span><br></pre></td></tr></table></figure>
+
+<p>#####五、y命令<br>转换(transform)命令(y)是唯一可以处理单个字符的sed编辑器命令<br>格式:<br><code>[address]y/inchars/outchars/</code><br>换命令会对inchars和outchars值进行一对一的映射。inchars中的第一个字符会被转<br>换为outchars中的第一个字符，第二个字符会被转换成outchars中的第二个字符。这个映射过程会一直持续到处理完指定字符。<br>⚠️ ：<br>1.inchar和outchar必须等长<br>2.转换命令是一个全局命令，也就是说，它会文本行中找到的所有指定字符自动进行转换，而不会考虑它们出现的位置。</p>
+<p>####六、p and = and l命令</p>
+<ul>
+<li>p命令用来打印文本行;</li>
+<li>等号(=)命令用来打印行号; </li>
+<li>l(小写的L)命令用来列出行。</li>
+</ul>
+<ol>
+<li>p命令<br>例子:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sed -n &apos;/3/&#123;</span><br><span class="line">&gt; p</span><br><span class="line">&gt; s/line/test/p</span><br><span class="line">&gt; &#125;&apos; data6.txt</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>2.=命令<br>等号命令会打印行在数据流中的当前行号。行号由数据流中的换行符决定<br>例子:<br>让sed编辑器只显示包含匹配文本模式的行的行号和文本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sed -n &apos;/pattern/&#123; </span><br><span class="line">&gt; =</span><br><span class="line">&gt; p</span><br><span class="line">&gt; &#125;&apos; data6.txt</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>l命令<br>打印特殊字符<br>####七、w命令<br>用来向文件写入行<br>格式:<br><code>[address]w filename</code><br>####八、r命令<br>功能:将一个独立文件中的数据插入到数据流中,sed编辑器会将文件中的文本插入到指定地址后。<br>格式:<br><code>[address]r filename</code><br>地址区间，只能指定单独一个行号或文本模式地址<br>例子：利用另一个文件中的数据来替换文件中的占位字符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sed &apos;/LIST/&#123;</span><br><span class="line">r data11.txt</span><br><span class="line">d</span><br><span class="line">&#125;&apos; notice.std</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>解析：data11内容替换notice.std中的list占位符,并删除占位符</p>
+<p>####九、q命令<br>退出{}</p>
+<p>###5. 使用地址<br>如果只想将命令作用于特定行或某些行，则必须用行寻址<br>两种形式的行寻址</p>
+<p>####1.以数字形式表示行区间<br>sed ‘n1,n2s/string1/string2/‘ filename<br>sed ‘ns/string1/string2/‘ filename(其中n为数字)<br>sed ‘n,$/string1/string2/‘ filename</p>
+<p>####2.用文本模式来过滤出行<br>格式:/pattren/command<br>such as <code>sed &#39;/pattern_string/s/string1/string2/&#39; filename</code><br>必须用正斜线将要指定的pattern封起来。sed编辑器会将该命令作用到包含指定文本模式的行上</p>
+<p>####3.两种方法组合<br>例子:<code>/pattern/,$!d</code></p>
+<p>####4.命令组合<br>格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">address &#123;</span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    command3 </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>such as:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sed &apos;2&#123;</span><br><span class="line">&gt; s/fox/elephant/</span><br><span class="line">&gt; s/dog/cat/</span><br><span class="line">&gt; &#125;&apos; data1.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="gawk-程序"><a href="#gawk-程序" class="headerlink" title="gawk 程序"></a><strong><em>gawk 程序</em></strong></h2><p> 定义变量来保存数据;<br> 使用算术和字符串操作符来处理数据;<br> 使用结构化编程概念(比如if-then语句和循环)来为数据处理增加处理逻辑;<br> 通过提取数据文件中的数据元素，将其重新排列或格式化，生成格式化报告。<br>gawk程序的基本格式如下:<br><code>gawk options program file</code></p>
+<p>###1. 从命令行读取程序脚本<br>gawk程序脚本用一对花括号来定义。你必须将脚本命令放到两个花括号({})中。<br>由于gawk命令行假定脚本是单个文本字符串，你还必须将脚本放到单引号中。<br>like this <code>gawk &#39;{print &quot;Hello World!&quot;}&#39;</code><br>gawk程序会从STDIN接收数据,gawk程序会针对数据流中的每行文本执行程序脚本<br>要终止这个gawk程序,Ctrl+D组合键会在bash中产生一个EOF字符。这个组合键能够终止该gawk程序并返回到命令行界面提示符下</p>
+<p>###2. 使用数据字段变量<br>gawk会自动给一行中的每个数据元素分配一个变量,每个数据字段都是通过字段分隔符划分的。gawk在读取一行文本时，会用预定 义的字段分隔符划分每个数据字段。gawk中默认的字段分隔符是任意的空白字符(例如空格或制表符)</p>
+<ul>
+<li>$0代表整个文本行;</li>
+<li>$1代表文本行中的第1个数据字段;</li>
+<li>$2代表文本行中的第2个数据字段;</li>
+<li>$n代表文本行中的第n个数据字段。<br>注意使用-F来指定IFS<br>###3. 在程序脚本中使用多个命令<br>在命令行上的程序脚本中使用多条命令，只要在命令之间放个分号即可<br>###4. 从文件中读取程序<br>使用-f选项<br>可以在程序文件中指定多条命令。要这么做的话，只要一条命令放一行即可<br>可以在文件中定义了一个叫作FS的特殊变量。这是定义字段分隔符的另一种方法，这样你就不用依靠脚本用户在命令行选项中定义字段分隔符了<br>###5. 在处理数据前运行脚本<br>默认情况下，gawk会从输入中读取一行文本，然后针对该行的数据执行程序脚本。有时可能需要在处理数据前运行脚本，比如为报告创建标题。BEGIN 关键字就是用来做这个的。它会强制gawk在读取数据前执行BEGIN关键字后指定的程序脚本<br><code>gawk &#39;BEGIN {print &quot;The data3 File Contents:&quot;} {print $0}&#39; data3.txt</code><br>###6. 在处理数据后运行脚本<br>END关键字允许你指定一个程序脚本，gawk会在读完数据后执行它<br><code>gawk &#39;BEGIN {print &quot;The data3 File Contents:&quot;}{print $0} END{print &quot;End of File&quot;}&#39; data3.txt</code></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/git学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -313,7 +844,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -464,6 +995,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -513,7 +1047,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -590,6 +1124,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -639,7 +1176,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -758,6 +1295,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -807,7 +1347,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -918,6 +1458,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -967,7 +1510,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -1048,6 +1591,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -1097,7 +1643,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -1213,6 +1759,9 @@
     
     
     
+    <div>
+      
+    </div>
 
     
 
@@ -1262,7 +1811,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="ZhouSir's Blog">
     </span>
 
     
@@ -1402,497 +1951,9 @@
     
     
     
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/Linux脚本编程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/30/Linux脚本编程/" itemprop="url">Linux脚本编程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-30T13:04:56+08:00">
-                2019-07-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a><strong>变量</strong></h2><ol>
-<li>如果要给变量赋一个含有空格的字符串值，必须用单引号来界定字符串的首和尾</li>
-<li>如果要用到变量，使用$;如果要操作变量，不使用$，这条规则的一 个例外就是使用printenv显示某个变量的值;引用一个变量值时需要使 用美元符，而引用变量来对其进行赋值时则不要使用美元符$</li>
-<li>子shell无法使用export命令改变父shell中全局环境变量的值,在子进程中删除了一个全局环境变量,这只对子进程有效,该全局环境变量在父进程中依然可用</li>
-<li>子shell可以继承父shell导出过的变量。 举例来说，如果父shell是登录shell，在/etc/profile、/etc/profile.d/*.sh和$HOME/.bashrc文件中设置并导出了变量，用于执行脚本的子shell就能够继承这些变量。要记住，由父shell设置但并未导出的变量都是局部变量，子shell无法继承局部变量。</li>
-<li>存储个人用户永久性bash shell变量的地方是$HOME/.bashrc文件</li>
-<li>要给某个环境变量设置多个值，可以把值放在括号里，值与值之间用空格分隔<br>🌰:mytest=(one two three four five)⚠️ :环境变量数组的索引值都是从零开始</li>
-<li>用户变量可以是任何由字母、数字或下划线组成的文本字符串，长度不超过20个。用户变量 区分大小写,使用等号将值赋给用户变量。在变量、等号和值之间不能出现空格</li>
-</ol>
-<hr>
-<h2 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a><strong>零碎知识点</strong></h2><ol>
-<li>在创建shell脚本文件时，必须在文件的第一行指定要使用的shell。其格式为: #!/bin/bash</li>
-<li>命令替换(从命令输出中提取信息，并将其赋给变量):法一、反引号字符;法二、$()格式</li>
-<li>重定向输入和输出:输出重定向将命令的输出发送到一个文件中。bash shell用大于号(&gt;)来完成这项功能,如果输出文件已经存在了，重定向操作符会用新的文件数据覆盖已有文件,在这种情况下，可以用双大于号(&gt;&gt;)来追加数据;输入重定向将文件的内容重定向到命令，而非将命令的输出重定向到文件</li>
-<li>管道(|):将命令输出重定向到另一个命令。这个过程叫作管道连接(piping)</li>
-<li>在bash中，在将一个数学运算结果赋给某个变量时，可以用美元符和方括号($[ operation ])或( $((operation)) )将数学表达式围起来</li>
-<li>bash shell数学运算符只支持整数运算。若要进行任何实际的数学计算，这是一个巨大的限制<br>🌰:var3=$(echo “scale=4; $var1 / $var2” | bc)<br>bc命令能识别输入重定向，允许你将一个文件重定向到bc命令来处理;使用内联输入重定向，它允许直接在命令行中重定向数据。在shell脚本中可以将输出赋给一个变量🌰<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">variable=$(bc &lt;&lt; EOF</span><br><span class="line">options</span><br><span class="line">statements</span><br><span class="line">expressions</span><br><span class="line">EOF )</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var5=$(bc &lt;&lt; EOF</span><br><span class="line">    scale = 4</span><br><span class="line">    a1 = ( $var1 * $var2)</span><br><span class="line">    b1 = ($var3 * $var4)</span><br><span class="line">    a1 + b1</span><br><span class="line">    EOF</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
-
-<ol start="7">
-<li>变量$?来保存上个已执行命令的退出状态码 一个成功结束的命令的退出状态码是0。如果一个命令结束时有错误，退出状态 码就是一个正数值 。exit命令允许你在脚本结束时指定一 个退出状态码 </li>
-<li>文件名中没有加入路径,这要求文件和脚本位于同一个目录中,如果不是的话,需要使用全路径名(不管是绝对路径还是相对路径)来 引用文件位置</li>
-</ol>
-<hr>
-<h2 id="结构化命令"><a href="#结构化命令" class="headerlink" title="结构化命令"></a><strong>结构化命令</strong></h2><h3 id="一、IF-THEN"><a href="#一、IF-THEN" class="headerlink" title="一、IF THEN"></a><strong><em>一、IF THEN</em></strong></h3><h4 id="总的If-then结构"><a href="#总的If-then结构" class="headerlink" title="总的If then结构"></a>总的<strong>If then</strong>结构</h4><p>一、<strong>if-then</strong>语句 (if-then语句不能测试命令退出状态码之外的条件)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if command </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if command; then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<p>Bash shell的if语句会运行if后面的那个命令。如果该命令的退出状态码是0 (该命令成功运行)，位于then部分的命令就会被执行。如果该命令的退出状态码是其他值，then 部分的命令就不会被执行，bash shell会继续执行脚本中的下一个命令。fi语句用来表示if-then 语句到此结束。<br>二、<strong>if-then-else</strong>语句 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if command </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">else </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<p>三、<strong>嵌套if</strong>语句</p>
-<figure class="highlight plain"><figcaption><span>command1 </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">elif command2 </span><br><span class="line">then </span><br><span class="line">    more commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<p>elif语句行提供了另一个要测试的命令，这类似于原始的if语句行。如果elif后命令的退 出状态码是0，则bash执行第二个then语句部分的命令。⚠️bash shell会依次执行if语句， 只有第一个返回退出状态码0的语句中的then部分会被执行</p>
-<h4 id="If-和-then-之间的判断语句"><a href="#If-和-then-之间的判断语句" class="headerlink" title="If 和 then 之间的判断语句"></a><strong>If 和 then 之间的判断语句</strong></h4><h5 id="一、test命令"><a href="#一、test命令" class="headerlink" title="一、test命令"></a>一、<strong>test命令</strong></h5><p>test命令可以判断三类条件:<br>    * 数值比较<br>    * 字符串比较<br>    * 文件比较<br>基本格式1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if test condition </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<p><code>test condition</code>  test命令提供了在if-then语句中测试不同条件的途径 ,如果test命令中列出的条件成立,test命令就会退出并返回退出状态码0<br>基本格式2（无需在if-then 语句中声明test 命令）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if [ condition ] </span><br><span class="line">then </span><br><span class="line">    commands </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<p>方括号定义了测试条件。注意，第一个方括号之后和第二个方括号之前必须加上一个空格，否则就会报错。</p>
-<h6 id="1-数值比较"><a href="#1-数值比较" class="headerlink" title="1.数值比较"></a>1.数值比较</h6><p><img src="/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png" alt></p>
-<h6 id="2-字符串比较"><a href="#2-字符串比较" class="headerlink" title="2.字符串比较"></a>2.字符串比较</h6><p><img src="/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png" alt></p>
-<ol>
-<li>⚠️大于号和小于号必须转义，否则shell会把它们当作重定向符号，把字符串值当作文件名; </li>
-<li>⚠️大于和小于顺序和sort命令所采用的不同:比较测试中使用的是标准的ASCII顺序，根据每个字符的ASCII数值来决定排序结果。sort 命令使用的是系统的本地化语言设置中定义的排序顺序。对于英语，本地化设置指定了在排序顺 序中小写字母出现在大写字母前<br>MOTHER FUCKER:test命令和测试表达式使用标准的数学比较符号来表示字符串比较，而用文本代码来表 示数值比较。<h6 id="3-文件比较"><a href="#3-文件比较" class="headerlink" title="3.文件比较"></a>3.文件比较</h6><img src="/2019/07/30/Linux脚本编程/test%E5%91%BD%E4%BB%A4%E7%9A%84%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83%E5%8A%9F%E8%83%BD.png" alt><br>⚠️if [ -d “$file” ]<br>在Linux中,目录名和文件名中包含空格当然是合法的。要适应这种情况,应该将$file变量用双引号圈起来。如果不这么做，遇到含有空格的目录名或文件名时就会有错误产生。<br>⚠️理解-G比较会检查文件的默认组，如果它匹配了用户的默认组，则测试成功。<h5 id="二、复合条件测试"><a href="#二、复合条件测试" class="headerlink" title="二、复合条件测试"></a>二、<strong>复合条件测试</strong></h5>if-then语句允许使用布尔逻辑来组合测试</li>
-</ol>
-<ul>
-<li>[ condition1 ] &amp;&amp; [ condition2 ]</li>
-<li>[ condition1 ] || [ condition2 ]<h5 id="三、使用双括号"><a href="#三、使用双括号" class="headerlink" title="三、使用双括号"></a>三、<strong>使用双括号</strong></h5>双括号命令允许在比较过程中使用高级数学表达式<br>双括号命令的格式为<code>(( expression ))</code>其中expression可以是任意的数学赋值或比较表达式<br>⚠️不需要将双括号中表达式里的大于号转义<br><img src="/2019/07/30/Linux脚本编程/%E5%8F%8C%E6%8B%AC%E5%8F%B7%E5%91%BD%E4%BB%A4%E7%AC%A6%E5%8F%B7.png" alt><br>🌰:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">val1=10</span><br><span class="line">if (( $val1 ** 2 &gt; 90 )) then</span><br><span class="line">    (( val2 = $val1 ** 2 ))#赋值语句居然可以这样😏</span><br><span class="line">    echo &quot;The square of $val1 is $val2&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="四、使用双方括号"><a href="#四、使用双方括号" class="headerlink" title="四、使用双方括号"></a>四、<strong>使用双方括号</strong></h5><p>双方括号命令提供了针对字符串比较的高级特性。<br>双方括号里的expression使用了test命令中采用的标准字符串比较。但它提供了test命令未提供的另一个特性——模式匹配</p>
-<h3 id="二、CASE语句"><a href="#二、CASE语句" class="headerlink" title="二、CASE语句"></a><strong><em>二、CASE语句</em></strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">case variable in</span><br><span class="line">pattern1 | pattern2) commands1;;</span><br><span class="line">pattern3) commands2;;</span><br><span class="line">*) default commands;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-<p>可以通过竖线操作符在一行中分隔出多个模式模式。星号会捕获所有与已知模式不匹配的值</p>
-<h3 id="三、FOR循环"><a href="#三、FOR循环" class="headerlink" title="三、FOR循环"></a><strong><em>三、FOR循环</em></strong></h3><p>for命令的基本格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for var in list</span><br><span class="line">do</span><br><span class="line">    commands</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<h4 id="1-读取列表中的值"><a href="#1-读取列表中的值" class="headerlink" title="1. 读取列表中的值"></a><strong>1. 读取列表中的值</strong></h4><p>🌰:<code>for test in Alabama Alaska Arizona Arkansas California Colorado</code><br>而且在for循环结束后test变量依然可以使用，$test变量的值会在shell脚本的剩余部分一直保持有效。它会一直保持最后一次迭代的值</p>
-<h4 id="2-读取列表中的复杂值"><a href="#2-读取列表中的复杂值" class="headerlink" title="2. 读取列表中的复杂值"></a><strong>2. 读取列表中的复杂值</strong></h4><p>🌰:<code>for test in I don&#39;t know if this&#39;ll work #会出错</code><br><code>for test in I don\&#39;t know if &quot;this&#39;ll&quot; work #正确</code><br>    * 使用转义字符(反斜线)来将单引号转义;<br>    * 使用双引号来定义用到单引号的值。<br>for循环假定每个值都是用空格分割的，如果在单独的数据值中有空格，就必须用双引号将这些值圈起来</p>
-<h4 id="3-从变量读取列表"><a href="#3-从变量读取列表" class="headerlink" title="3. 从变量读取列表"></a><strong>3. 从变量读取列表</strong></h4><p>🌰:<code>for state in $list</code></p>
-<h4 id="4-从命令读取值"><a href="#4-从命令读取值" class="headerlink" title="4. 从命令读取值"></a><strong>4. 从命令读取值</strong></h4><p>生成列表中所需值的另外一个途径就是使用命令的输出。可以用命令替换来执行任何能产生输出的命令，然后在for命令中使用该命令的输出<br>🌰:<code>for var in $(order)</code></p>
-<h4 id="5-字段分隔符IFS"><a href="#5-字段分隔符IFS" class="headerlink" title="5. 字段分隔符IFS"></a><strong>5. 字段分隔符IFS</strong></h4><p>环境变量IFS，叫作内部字段分隔符(internal field separator)。<br>IFS环境变量定义了bash shell用作字段分隔符的一系列字符。默认情况下，bash shell会将下列字符当作字段分隔符:<br>    * 空格<br>    * 制表符<br>    * 换行符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IFS.OLD=$IFS</span><br><span class="line">IFS=$&apos;\n&apos;</span><br><span class="line">&lt;在代码中使用新的IFS值&gt; </span><br><span class="line">IFS=$IFS.OLD</span><br></pre></td></tr></table></figure>
-
-<p>如果要指定多个IFS字符，只要将它们在赋值行串起来就行。<br>🌰:IFS=$’\n’:;”<br>这个赋值会将换行符、冒号、分号和双引号作为字段分隔符。</p>
-<h4 id="6-用通配符读取目录"><a href="#6-用通配符读取目录" class="headerlink" title="6. 用通配符读取目录"></a><strong>6. 用通配符读取目录</strong></h4><p><code>for file in /home/rich/test/*</code><br>for命令的c语言格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (( variable assignment ; condition ; iteration process ))</span><br><span class="line">do </span><br><span class="line">    ···</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<p>变量可以定义多个，条件只能有一个</p>
-<h3 id="四、WHILE命令"><a href="#四、WHILE命令" class="headerlink" title="四、WHILE命令"></a><strong><em>四、WHILE命令</em></strong></h3><p>只要测试条件成立，while命令就会不停地循环执行定义好的命令<br>while命令的格式是:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while test command </span><br><span class="line">do</span><br><span class="line">    other commands</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<p>test command:任何普通的bash shell命令，或者用test命令进行条件测试,但退出状态码必须随着循环中运行的命令而改变。如果退出状态码不发生变化， while循环就将一直不停地进行下去</p>
-<h4 id="1-使用多个测试命令"><a href="#1-使用多个测试命令" class="headerlink" title="1. 使用多个测试命令"></a><strong>1. 使用多个测试命令</strong></h4><p>while命令允许你在while语句行定义多个测试命令。只有最后一个测试命令的退出状态码会被用来决定什么时候结束循环<br>需要⚠️的是在每次迭代中所有的测试命令都会被执行,包括测试命令失败的最后一次迭代。<br>另一处要留意的是该如何指定多个测试命令。注意,每个测试命令都出现在单独的一行上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while echo $var1</span><br><span class="line">      [ $var1 -ge 0 ]</span><br><span class="line">do</span><br><span class="line">    echo &quot;This is inside the loop&quot;</span><br><span class="line">    var1=$[ $var1 - 1 ]</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<h3 id="五、UNTIL命令"><a href="#五、UNTIL命令" class="headerlink" title="五、UNTIL命令"></a><strong><em>五、UNTIL命令</em></strong></h3><p>until命令和while命令工作的方式完全相反。until命令要求你指定一个通常返回非零退出状态码的测试命令。只有测试命令的退出状态码不为0，bash shell才会执行循环中列出的命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">until test command</span><br><span class="line">do</span><br><span class="line">    other commands </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<h3 id="六、控制循环"><a href="#六、控制循环" class="headerlink" title="六、控制循环"></a><strong><em>六、控制循环</em></strong></h3><ul>
-<li><strong>break命令</strong></li>
-</ul>
-<ol>
-<li>跳出单个循环:在shell执行break命令时，它会尝试跳出当前正在执行的循环</li>
-<li>跳出内部循环:在处理多个循环时，break命令会自动终止你所在的最内层的循环</li>
-<li>跳出外部循环:有时你在内部循环，但需要停止外部循环。break命令接受单个命令行参数值:<br><code>break n</code> 其中n指定了要跳出的循环层级。默认情况下，n为1，表明跳出的是当前的循环。如果你将n设为2，break命令就会停止下一级的外部循环</li>
-</ol>
-<ul>
-<li><strong>continue命令</strong></li>
-</ul>
-<ol>
-<li>continue命令可以提前中止某次循环中的命令，但并不会完全终止整个循环。可以在循环 内部设置shell不执行命令的条件</li>
-<li>和break命令一样，continue命令也允许通过命令行参数指定要继续执行哪一级循环: continue n<br>其中n定义了要继续的循环层级。</li>
-</ol>
-<ul>
-<li><strong>处理循环输出</strong><br>对循环的输出使用管道或进行重定向可以通过在done命令之后添加一个处理命令来实现(将循环内的标准输出重定向到指定文件；或通过管道将输出进行处理）<br>要想把数据从文件中送入while命令，只需在while命令尾部使用一个重定向符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">input=&quot;users.csv&quot;</span><br><span class="line">while IFS=&apos;,&apos; read -r userid name</span><br><span class="line">do</span><br><span class="line">  echo &quot;adding $userid&quot;</span><br><span class="line">  useradd -c &quot;$name&quot; -m $userid</span><br><span class="line">done &lt; &quot;$input&quot;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>$input变量指向数据文件，并且该变量被作为while命令的重定向数据,作为输入</p>
-
-          
-        
+    <div>
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/Linux命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/29/Linux命令/" itemprop="url">Linux命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T16:06:36+08:00">
-                2019-07-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.touch:创建空文件<br>2.cp:命令将源文件复制成一个新文件<br>3.ln:创建硬链接<br>4.mv:将文件和目录移动到另一个位置或重新命名<br>5.mkdir:创建目录<br>6.rmdir:删除目录<br>7.file:探测文件的内部，并决定文件是什么类型的<br>8.cat、more和less:查看文件全部内容，而tail和head命令查看文件中的一小部分内容<br>9.ps:输出运行在系统上的所有程序的许多信息,只能显示某个特定时间点的信息<br>10.top:显示进程信息，但它是实时显示的<br>11.kill:PID结束进程<br>12.killall:通过进程名而不是PID来结束进程<br>13.mount:输出当前系统上挂载的设备列表,在虚拟目录中挂载设备<br>14.umount:卸载设备<br>15.du:显示某个特定目录(默认情况下是当前目录)的磁盘使用情况<br>16.jobs:显示出当前运行 在后台模式中的所有用户的进程(作业)<br>17.coproc:进行协程处理🌰<br>    coproc My_Job { sleep 10; }，必须确保在第一个花括号({)和命令名之间有一个空格。还必须保证命令以分号(;)结尾。另外，分号和闭花括号(})之间也得有一个空格。<br>18.which和type命令找到外部命令<br>    命令type -a显示出了每个命令的两种实现。注意，which命令只显示出了外部命令文件<br>19.history:查看最近用过的命令列表<br>    !!唤出刚刚用过的那条命令来使用<br>20.alias:shell的内建命令,创建别名<br>21.env或printen:查看全局变量,显示个别环境变量的值，可以使用printenv命令<br>22.set:显示为某个特定进程设置的所有环境变量，包括局部变量、全局变量以及用户定义变量<br>23.unset:删除变量，⚠️  不要使用$<br>24.useradd:添加新用户<br>25.userdel:删除用户<br>    默认情况下，userdel命令会只 删除/etc/passwd文件中的用户信息，而不会删除系统中属于该账户的任何文件。如果加上-r参数，userdel会删除用户的HOME目录以及邮件目录。然而，系统上仍可能存有已删除用户的其他文件<br>26.usermod passwd chpasswd chage chfn chsh<br>修改用户账户的字段，还可以指定主要组以及附加组的所属关系<br>修改已有用户的密码<br>从文件中读取登录名密码对，并更新密码<br>修改密码的过期日期<br>修改用户账户的备注信息 修改用户账户的默认登录shell</p>
-<p>27.chpasswd:从标准输入自动读取登录名和密码对(由冒号分割)列表，给密码加密，然后为用户账户设置。可以用重定向命令来将含有userid:passwd对的文件重定向给该命令。<br>28.groupadd:创建新组==&gt;usermod将用户加入组中<br>29.groupmod:修改组<br>30.umask:设置所创建文件和目录的默认权限<br>31.chmod:改变文件权限<br>32.chown:改变文件的属主,也支持同时改变文件的属主和属组<br>33.chgrp:改变文件的默认属组都属于该目录的属组，这个组也就成为了每个用户的属组<br>34.fdisk:分区<br>35.partprob或hdparm:让系统 读取更新过的分区表<br>36.jobs:允许查看shell当前正在处理的作业</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/Linux知识点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/头像.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/29/Linux知识点/" itemprop="url">Linux知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T15:55:41+08:00">
-                2019-07-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/categories/" itemprop="url" rel="index">
-                    <span itemprop="name">categories</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.Linux经常采用隐藏文件来保存配置信息,在Linux上,隐藏文件通常是文件名以点号开始的文件。<br>2.标准通配符:问号(?)代表一个字符,星号(*)代表零个或多个字符,[]中括号表示一个字符位置并给出多个可能的选择,感叹号(!)将不需要的内容排除在外<br>3.符号链接&amp;&amp;硬链接:符号链接就是一个实实在在的文件,与所指向的文件是两个完全不同的文件；硬链接会创建独立的虚拟文件，其中包含了原始文件的信息及位置。但是它们从根本上而言不是同一个文件。引用硬链接文件等同于引用了源文件。<br>4.将进程列表置入后台模式:在后台模式中运行命令可以在处理命令的同时让出CLI，以供他用,要想将命令置入后台模式，可以在命令末尾加上字符&amp;。在CLI中运用子shell的创造性方法之一就是将进程列表置入后台模式。你既可以在子shell中 进行繁重的处理工作，同时也不会让子shell的I/O受制于终端。<br>5.协程可以同时做两件事。它在后台生成一个子shell，并在这个子shell中执行命令。<br>6.外部命令，有时候也被称为文件系统命令，是存在于bash shell之外的程序。它们并不是shell 程序的一部分。外部命令程序通常位于/bin、/usr/bin、/sbin或/usr/sbin中.当外部命令执行时,会创建出一个子进程。这种操作被称为衍生(forking),发送信号(signaling)使得进程间可以通过信号进行通信<br>7.内建命令和外部命令的区别在于前者不需要使用子进程来执行。它们已经和shell编译成了一 体，作为shell工具的组成部分存在。不需要借助外部程序文件来运行。<br>8.命令历史记录被保存在隐藏文件.bash_history中，它位于用户的主目录中。这里要注意的是， bash命令的历史记录是先存放在内存中，当shell退出时才被写入到历史文件中。<br>可以在退出shell会话之前强制将命令历史记录写入.bash_history文件。要实现强制写入，需 要使用history命令的-a选项<br>9.子shell无法使用export命令改变父shell中全局环境变量的值<br>10.环境变量持久化:对全局环境变量来说(Linux系统中所有用户都需要使用的变量),可能更倾向于将新的或修改过的变量设置放在/etc/profile文件中，但这不是什么好主意。如果你升级了所用的发行版,这个文件也会跟着更新，那你所有定制过的变量设置可就都没有了。最好是在/etc/profile.d目录中创建一个以.sh结尾的文件。把所有新的或修改过的全局环境变 量设置放在这个文件中。<br>11.BASH_ENV环境变量:当shell启动一个非交互式shell进程时,它会检查这个环境变量来查看要执行的启动文件,如果有指定的文件，shell会执行该文件里的命令，这通常包括shell脚本变量设置。<br>12.用户权限是通过创建用户时分配的用户ID(User ID，通常缩写为UID)来跟踪的。UID是数值，每个用户都有唯一的UID，但在登录系统时用的不是UID，而是登录名。登录名是用户用来登录系统的最长八字符的字符串(字符可以是数字或字母)，同时会关联一个对应的密码。<br>13.Linux系统会为各种各样的功能创建不同的用户账户，而这些账户并不是真的用户。这些账户叫作系统账户，是系统上运行的各种服务进程访问资源用的特殊账户。所有运行在后台的服务都需要用一个系统用户账户登录到Linux系统上。<br>14.当一个用户在/etc/passwd文件中指定某个组作为默认组时,用户账户不会作为该组成员再出现在/etc/group文件中。<br>15.umask值只是个掩码,它会屏蔽掉不想授予该安全级别的权限要把umask值从对象的全权限值中减掉。对文件来说，全权限的值是666(所有用户都有读和写的权限);而对目录来说，则是777(所有用户都有读、写、执行权限)。所以文件一开始的权限是666，减去umask值022之后，剩下的文件权限就成了644。<br>16.只有root用户能够改变文件的属主。任何属主都可以改变文件的属组，但前提是属主必须是原属组和目标属组的成员<br>17.共享文件:<br><img src="/2019/07/29/Linux知识点/suid.jpg" alt><br>SGID位对文件共享非常重要,启用SGID位后,你可以强制在一个共享目录下创建的新文件<br>chomd suid:4 + sgid:2 +粘着位:1 =7<br>记得要umask 002，默认022组成员没有w权限<br>18.日志文件系统不再使用之前先将数据直接写入存储设备再更新索引节点表的做法，而是先将文件的更改写入到临时文件(称作日志，journal)中。在数据成功写到存储设备和索引节点表之后，再删除对应的日志条目<br><img src="/2019/07/29/Linux知识点/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F1.jpg" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
 
     
 
@@ -1972,7 +2033,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1983,7 +2044,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1994,7 +2055,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2098,9 +2159,6 @@
 
 
 
-  
-  
-
 
 
 
@@ -2137,16 +2195,6 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
   
 
 
@@ -2549,5 +2597,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
