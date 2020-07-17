@@ -307,6 +307,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/16/论文积累8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhouSir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/16/论文积累8/" itemprop="url">论文积累8</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-16T21:28:00+08:00">
+                2020-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper/" itemprop="url" rel="index">
+                    <span itemprop="name">paper</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="知识蒸馏技术meets自监督学习😂"><a href="#知识蒸馏技术meets自监督学习😂" class="headerlink" title="知识蒸馏技术meets自监督学习😂"></a>知识蒸馏技术meets自监督学习😂</h1><hr>
+<p>paper list:  </p>
+<ol>
+<li>Knowledge Distillation Meets Self-Supervision</li>
+</ol>
+<hr>
+<p>目录:</p>
+<ol>
+<li>相关概念</li>
+<li>model</li>
+<li>主要思想</li>
+<li>理论知识点</li>
+</ol>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/16/论文积累8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/11/论文积累7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -338,7 +500,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T17:28:26+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-11T17:28:00+08:00">
                 2020-07-11
               </time>
             
@@ -348,6 +510,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paper/" itemprop="url" rel="index">
+                    <span itemprop="name">paper</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -387,7 +571,7 @@
 <li>Prototypical Networks for Few-shot Learning</li>
 </ol>
 <hr>
-<h4 id="论文一、"><a href="#论文一、" class="headerlink" title="论文一、"></a>论文一、</h4><p>孪生网络共用权值,身体(特征提取部分)相同,头(输出)不同.将一对图片组(两张)传给孪生网络,在网络的倒数第二层使用L1距离将两个网络的输出进行融合,并度量两者的相似性,网络的最后一层使用全连接(说是使用了注意力机制)并用sigmoid输出得到相似性(1同类0不同类),训练的时候<br>网络结构:<br><img src="/images/pasted-137.png" alt="upload successful"><br>小样本学习原因:并不是学习出分辨类别的能力,只是学习出衡量相似性的能力<br>应用场景:可用于相似性度量,也可用于分类任务,将待分类样本与训练集数据比对,进行投票决定类别(个人观点,必须实验试试)<br>code: <a href="https://github.com/kevinzakka/one-shot-siamese" target="_blank" rel="noopener">https://github.com/kevinzakka/one-shot-siamese</a>  </p>
+<h4 id="论文一、"><a href="#论文一、" class="headerlink" title="论文一、"></a>论文一、</h4><p>孪生网络共用权值,身体(特征提取部分)相同,头(输出)不同.将一对图片组(两张)传给孪生网络,在网络的倒数第二层使用L1距离将两个网络的输出进行融合,并度量两者的相似性,网络的最后一层使用全连接(说是使用了注意力机制)并用sigmoid输出得到相似性(1同类0不同类),训练的时候喂数据的方法是一组同类和一组异类交替输入。<br>网络结构:<br><img src="/images/pasted-137.png" alt="upload successful"><br>小样本学习原因:并不是学习出分辨类别的能力,只是学习出衡量相似性的能力<br>应用场景:可用于相似性度量,也可用于分类任务,将待分类样本与训练集数据比对,进行投票决定类别(个人观点,必须实验试试)<br>code: <a href="https://github.com/kevinzakka/one-shot-siamese" target="_blank" rel="noopener">https://github.com/kevinzakka/one-shot-siamese</a>  </p>
 <hr>
 <h4 id="论文二、"><a href="#论文二、" class="headerlink" title="论文二、"></a>论文二、</h4><p>Matching Networks=记忆力LSTM+CNN+attention机制,将query图片和support set有效embedding,使用余弦距离衡量相似性,模型具体操作:<br>对于support set(func G): 使用一个简单的CNN将图片进行编码后,将每个图片看作一个单词Xt,输入双向LSTM进行二次embedding,ht即为新的embedding<br>对于query image(func F): 使用CNN将图片进行编码后,使用一个K个LSTM cell进行编码<br>每个LSTM cell的输入:   </p>
 <ol>
@@ -401,7 +585,7 @@
 <p><strong>func F定义</strong>:<br><img src="/images/pasted-141.png" alt="upload successful"></p>
 <p><strong>func G定义</strong>:<br><img src="/images/pasted-143.png" alt="upload successful"></p>
 <hr>
-<h4 id="论文三、"><a href="#论文三、" class="headerlink" title="论文三、"></a>论文三、</h4><p>使用神经网络将图片进行编码,然后计算每一类的中心作为原型,得到每一类的聚类中心,就可以对图片进行分类  </p>
+<h4 id="论文三、"><a href="#论文三、" class="headerlink" title="论文三、"></a>论文三、</h4><p>使用神经网络将图片进行编码,然后计算每一类的中心作为原型,得到每一类的聚类中心,就可以对图片进行分类</p>
 
           
         
@@ -2335,178 +2519,6 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/记录Mac安装tensorflow并配置pycharm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZhouSir's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/18/记录Mac安装tensorflow并配置pycharm/" itemprop="url">记录Mac安装tensorflow并配置pycharm</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-18T00:53:00+08:00">
-                2019-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/环境配置/" itemprop="url" rel="index">
-                    <span itemprop="name">环境配置</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="基于-VirtualEnv-的安装"><a href="#基于-VirtualEnv-的安装" class="headerlink" title="基于 VirtualEnv 的安装"></a>基于 VirtualEnv 的安装</h2><p>若使用anaconda安装会产生以下warning:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2019-10-17 23:48:15.796554: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn&apos;t compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
-
-<p>所以还是被迫基于 VirtualEnv 的安装</p>
-<ol>
-<li><p>首先</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo easy_install pip  # 如果还没有安装 pip</span><br><span class="line">$ sudo pip install --upgrade virtualenv</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接下来, 建立一个全新的 virtualenv 环境. 为了将环境建在 ~/tensorflow 目录下, 执行:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ virtualenv --system-site-packages ~/tensorflow</span><br><span class="line">$ cd ~/tensorflow</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后, 激活 virtualenv:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ source bin/activate  # 如果使用 bash</span><br><span class="line">$ source bin/activate.csh  # 如果使用 csh</span><br><span class="line">(tensorflow)$  # 终端提示符应该发生变化</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 virtualenv 内, 安装 TensorFlow:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow)$ pip3 install https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0-py3-none-any.whl</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在pycharm中新建项目</p>
-<p> 1.填写文件名</p>
-<p> 2.点击project interpreter</p>
-<p> 3.选择existing interpreter,点击<code>...</code>按键</p>
-<p> <img src="/images/pasted-18.png" alt="upload successful"></p>
-<p> 4.选择Virtualenv environment,点击<code>...</code>按键</p>
-<p> <img src="/images/pasted-19.png" alt="upload successful"><br> 5.找到Python在Virtualenv的路径</p>
-<p> 我的是/Users/zhouqionglin/tensorflow/bin/python3</p>
-<p> <img src="/images/pasted-20.png" alt="upload successful"><br> 6.👌 </p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2559,7 +2571,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2581,7 +2593,7 @@ pip3 install tensorflow-gpu==2.0.0</code></pre></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

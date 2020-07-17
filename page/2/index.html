@@ -307,6 +307,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/记录Mac安装tensorflow并配置pycharm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhouSir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/18/记录Mac安装tensorflow并配置pycharm/" itemprop="url">记录Mac安装tensorflow并配置pycharm</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-18T00:53:00+08:00">
+                2019-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/环境配置/" itemprop="url" rel="index">
+                    <span itemprop="name">环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基于-VirtualEnv-的安装"><a href="#基于-VirtualEnv-的安装" class="headerlink" title="基于 VirtualEnv 的安装"></a>基于 VirtualEnv 的安装</h2><p>若使用anaconda安装会产生以下warning:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2019-10-17 23:48:15.796554: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn&apos;t compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>所以还是被迫基于 VirtualEnv 的安装</p>
+<ol>
+<li><p>首先</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo easy_install pip  # 如果还没有安装 pip</span><br><span class="line">$ sudo pip install --upgrade virtualenv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来, 建立一个全新的 virtualenv 环境. 为了将环境建在 ~/tensorflow 目录下, 执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ virtualenv --system-site-packages ~/tensorflow</span><br><span class="line">$ cd ~/tensorflow</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后, 激活 virtualenv:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ source bin/activate  # 如果使用 bash</span><br><span class="line">$ source bin/activate.csh  # 如果使用 csh</span><br><span class="line">(tensorflow)$  # 终端提示符应该发生变化</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 virtualenv 内, 安装 TensorFlow:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(tensorflow)$ pip3 install https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0-py3-none-any.whl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在pycharm中新建项目</p>
+<p> 1.填写文件名</p>
+<p> 2.点击project interpreter</p>
+<p> 3.选择existing interpreter,点击<code>...</code>按键</p>
+<p> <img src="/images/pasted-18.png" alt="upload successful"></p>
+<p> 4.选择Virtualenv environment,点击<code>...</code>按键</p>
+<p> <img src="/images/pasted-19.png" alt="upload successful"><br> 5.找到Python在Virtualenv的路径</p>
+<p> 我的是/Users/zhouqionglin/tensorflow/bin/python3</p>
+<p> <img src="/images/pasted-20.png" alt="upload successful"><br> 6.👌 </p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/微机原理第三章数据传输指令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1723,144 +1895,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/C-并发与多线程第十节笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZhouSir's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/21/C-并发与多线程第十节笔记/" itemprop="url">C++并发与多线程第十节笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T09:13:12+08:00">
-                2019-08-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="知识点-std-async-future-package-task-promise"><a href="#知识点-std-async-future-package-task-promise" class="headerlink" title="知识点:std::async,future,package_task,promise"></a>知识点:std::async,future,package_task,promise</h2><h3 id="std-async、std-future创建后台任务并返回值"><a href="#std-async、std-future创建后台任务并返回值" class="headerlink" title="std::async、std::future创建后台任务并返回值"></a>std::async、std::future创建后台任务并返回值</h3><ol>
-<li>解析:<br>希望线程返回一个结果<br>std::async是一个函数模版,用来创建一个异步任务,启动异步任务后(创建一个线程并执行线程入口函数),返回值是一个std::future对象,std::future是类模版<br>线程的返回结果通过future对象的get()成员函数取得<br>std::future提供一种访问异步操作结果的机制,在线程执行完毕后可获得结果<br>注意:future对象不可拷贝,只能移动move拷贝</li>
-<li>代码:<br>future<int> result = async(A, var);马上创建线程并执行<br>result.get():卡在该代码处等待线程执行完毕,并获取返回值,⚠️只能调用一次<br>result.wait():等待线程返回,本身并不返回结果<br>如果既不get()也不wait()主线程会在主线程return语句执行前等待子线程执行完毕后主线程才完毕<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Test myobj;</span><br><span class="line">future&lt;int&gt; result = async(&amp;Test::A,ref(myobj),var);</span><br></pre></td></tr></table></figure>
-
-</int></li>
-</ol>
-<p>线程入口函数为类的成员函数,第三个参数是成员函数的参数</p>
-<ol start="3">
-<li>std::async的参数<br>一.<code>std::launch::deffer:future&lt;int&gt; result = async(launch::deferred,A, var)</code>:表示线程入口函数延迟到调用get()或wait()函数才执行而且并不创建子线程只是在主线程中执行线程入口函数,如果不调用get(),线程根本不创建<br>二.<code>std::launch::async:future&lt;int&gt; result = async(launch::async,A, var)</code>:默认参数,创建子线程并开始运行</li>
-</ol>
-<h3 id="std-packaged-task"><a href="#std-packaged-task" class="headerlink" title="std::packaged_task"></a>std::packaged_task</h3><p>希望打包任务,包装可调用对象<br>是一个类模版,模版参数是各种可调用对象<br><code>packaged_task&lt;int(int)&gt; mypt(A);</code>其中int A(int a)<br>packaged_task对象可直接调用相当于函数调用,如下:<br><code>mypt(9)</code><br>然后通过future对象获取返回值:<br><code>future&lt;int&gt; result=mypt.get_future();</code><br><code>cout&lt;&lt;result.get();</code><br>代码实例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    list&lt;packaged_task&lt;int(int)&gt; &gt; task_list;</span><br><span class="line">    packaged_task&lt;int(int)&gt; mypt(A);</span><br><span class="line">    task_list.push_back(move(mypt));</span><br><span class="line">    packaged_task&lt;int(int)&gt; mypt2;</span><br><span class="line">    auto iter = task_list.begin();</span><br><span class="line">    mypt2 = move(*iter);</span><br><span class="line">    task_list.erase(iter);</span><br><span class="line">    int a=9;</span><br><span class="line">    thread th1(ref(mypt2),a);</span><br><span class="line">    th1.join();</span><br><span class="line">    future&lt;int&gt; result=mypt2.get_future();</span><br><span class="line">    cout&lt;&lt;result.get();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="std-promise"><a href="#std-promise" class="headerlink" title="std::promise"></a>std::promise</h3><p>类模版,在某个线程中赋值,在另一个线程中获取结果<br>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void B(promise&lt;int&gt;&amp;promi,int var)&#123;</span><br><span class="line">    cout&lt;&lt;&quot;开始执行A() &quot;&lt;&lt;this_thread::get_id()&lt;&lt;endl;</span><br><span class="line">    int a = ++var;</span><br><span class="line">    chrono::milliseconds dura(5000);</span><br><span class="line">    this_thread::sleep_for(dura);</span><br><span class="line">    promi.set_value(a);//注意</span><br><span class="line">    cout&lt;&lt;&quot;结束执行A()&quot;&lt;&lt;endl;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line">void C(future&lt;int&gt;&amp; a)&#123;</span><br><span class="line">    cout&lt;&lt;&quot;In thread C&quot;&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;a.get()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc,const char *args[])&#123;</span><br><span class="line">    cout&lt;&lt;this_thread::get_id()&lt;&lt;endl;</span><br><span class="line">    promise&lt;int&gt; test;</span><br><span class="line">    thread th1(B,ref(test),249);</span><br><span class="line">    th1.join();</span><br><span class="line">    future&lt;int&gt; ful = test.get_future();</span><br><span class="line">    thread use_ful(C,ref(ful));</span><br><span class="line">    use_ful.join();</span><br><span class="line">    //cout&lt;&lt;ful.get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1913,7 +1947,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1935,7 +1969,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
