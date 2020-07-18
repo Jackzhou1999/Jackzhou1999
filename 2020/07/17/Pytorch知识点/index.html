@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="with torch.no_grad():被该语句 wrap 起来的部分将不会track 梯度    12with torch.no_grad():        knowledge, t_feat, _ = t_model(x)  torch.no_grad()和model.eval()区别:简而言之, torch.no_grad()使用后不进行梯度的追踪,model.eval()使用后仍进行">
+<meta name="description" content="不懂就拿小本本记下来😏">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pytorch知识点">
 <meta property="og:url" content="http://yoursite.com/2020/07/17/Pytorch知识点/index.html">
 <meta property="og:site_name" content="ZhouSir&#39;s Blog">
-<meta property="og:description" content="with torch.no_grad():被该语句 wrap 起来的部分将不会track 梯度    12with torch.no_grad():        knowledge, t_feat, _ = t_model(x)  torch.no_grad()和model.eval()区别:简而言之, torch.no_grad()使用后不进行梯度的追踪,model.eval()使用后仍进行">
+<meta property="og:description" content="不懂就拿小本本记下来😏">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/pasted-158.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-161.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-160.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-159.png">
-<meta property="og:updated_time" content="2020-07-18T07:59:04.524Z">
+<meta property="og:updated_time" content="2020-07-18T08:28:01.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pytorch知识点">
-<meta name="twitter:description" content="with torch.no_grad():被该语句 wrap 起来的部分将不会track 梯度    12with torch.no_grad():        knowledge, t_feat, _ = t_model(x)  torch.no_grad()和model.eval()区别:简而言之, torch.no_grad()使用后不进行梯度的追踪,model.eval()使用后仍进行">
+<meta name="twitter:description" content="不懂就拿小本本记下来😏">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-158.png">
 
 
@@ -400,7 +400,9 @@
       
 
       
-        <ol>
+        <p>不懂就拿小本本记下来😏</p>
+<a id="more"></a>
+<ol>
 <li><p><code>with torch.no_grad()</code>:<br>被该语句 wrap 起来的部分将不会track 梯度   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with torch.no_grad(): </span><br><span class="line">       knowledge, t_feat, _ = t_model(x)</span><br></pre></td></tr></table></figure>
 </li>
@@ -421,14 +423,11 @@
 <div><div class="fold_hider"><div class="close hider_title">点击显/隐内容</div></div><div class="fold">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([[0.3, 0.7], [0.4, 0.6]])</span><br><span class="line">target = torch.tensor([0, 1])</span><br><span class="line">target2 = torch.tensor([[1, 0], [0, 1]]).float()</span><br><span class="line"></span><br><span class="line">c = torch.log(a)</span><br><span class="line">print(&quot;c*target:&quot;, -c*target2)</span><br><span class="line"></span><br><span class="line">e = torch.log(torch.nn.Softmax(dim=1)(a))</span><br><span class="line">print(&quot;e*target&quot;, -e*target2)</span><br><span class="line"></span><br><span class="line">cri = torch.nn.CrossEntropyLoss(reduction=&quot;none&quot;)</span><br><span class="line">cri2 = torch.nn.CrossEntropyLoss(reduction=&quot;mean&quot;)</span><br><span class="line">cri3 = torch.nn.CrossEntropyLoss(reduction=&quot;sum&quot;)</span><br><span class="line"></span><br><span class="line">lo = cri(a, target)</span><br><span class="line">lo2 = cri2(a, target)</span><br><span class="line">lo3 = cri3(a, target)</span><br><span class="line">print(&quot;reduction=none&quot;, lo)</span><br><span class="line">print(&quot;reduction=mean&quot;, lo2)</span><br><span class="line">print(&quot;reduction=sum&quot;, lo3)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/pasted-161.png" alt="upload successful"></p>
-
-</div></div>
-
-<p>pytorch上的理论公式:<br><img src="/images/pasted-160.png" alt="upload successful"><br>交叉熵损失函数理论公式:<br><img src="/images/pasted-159.png" alt="upload successful"><br>其中参数 1.weight为对每一类的加权系数(1D Tensor assigning weight to each of the classes.); 2. reduction:“none”维度不变,“mean”先求和再除以batchsize,“sum”只求和</p>
+</div></div>   
+<p>结果:<br><img src="/images/pasted-161.png" alt="upload successful"><br>pytorch上的理论公式:<br><img src="/images/pasted-160.png" alt="upload successful"><br>交叉熵损失函数理论公式:<br><img src="/images/pasted-159.png" alt="upload successful"><br>其中参数 1.weight为对每一类的加权系数(1D Tensor assigning weight to each of the classes.); 2. reduction:“none”维度不变,“mean”先求和再除以batchsize,“sum”只求和</p>
 </li>
 <li><p><strong>二分类交叉熵损失</strong><br>API1 <code>torch.nn.BCELoss(weight=None, reduction=&#39;mean&#39;)</code><br>⚠️注意:使用之前需要对输入进行sigmoid操作<br>官方避免log0现象的操作:Our solution is that BCELoss clamps its log function outputs to be greater than or equal to -100. This way, we can always have a finite loss value and a linear backward method.   </p>
-<p>API2 <code>torch.nn.BCEWithLogitsLoss(weight=None,reduction=&#39;mean&#39;, pos_weight=None)</code><br>⚠️注意:不用预先使用sigmoid对输入   </p>
+<p>API2 <code>torch.nn.BCEWithLogitsLoss(weight=None,reduction=&#39;mean&#39;, pos_weight=None)</code><br>⚠️注意:不用预先使用sigmoid对输入</p>
 </li>
 </ul>
 </li>
@@ -571,7 +570,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

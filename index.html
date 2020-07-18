@@ -399,42 +399,14 @@
 
       
         
-          
-            <ol>
-<li><p><code>with torch.no_grad()</code>:<br>被该语句 wrap 起来的部分将不会track 梯度   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with torch.no_grad(): </span><br><span class="line">       knowledge, t_feat, _ = t_model(x)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>torch.no_grad()</code>和<code>model.eval()</code>区别:<br>简而言之, torch.no_grad()使用后不进行梯度的追踪,model.eval()使用后仍进行梯度追踪,但是BN层和<br><a href="https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight" target="_blank" rel="noopener">https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight</a></p>
-</li>
-<li><p>nn.ReLU(inplace=True)中inplace的作用<br>对原值进行操作，然后将得到的值又直接复制到该值中,从上层网络Conv2d中传递下来的tensor直接进行修改，这样能够节省运算内存，不用多存储其他变量<br>参考自blog:<a href="https://www.cnblogs.com/wanghui-garcia/p/10642665.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanghui-garcia/p/10642665.html</a></p>
-</li>
-<li><p>各种损失函数API分析:(老是被这鬼东西伤脑筋)<br>MMP,有的自带softmax,有的没有,有的target是2D矩阵,有的是1D。</p>
-<ul>
-<li><p><strong>KL散度损失</strong><br>API <code>torch.nn.KLDivLoss(reduction = &#39;mean&#39;)</code><br><img src="/images/pasted-158.png" alt="upload successful"><br>⚠️注意:其中x在传入函数之前要求先进行softmax和log操作,y传入函数之前要求先进行softmax操作。x和y的size要求相同<br>reduction有三种模式:</p>
-<ol>
-<li>“none”:输入size = N X D,输出size = N X D   </li>
-<li>“mean”:输入size = N X D,输出size = 1,对“none”模式的输出所有点求和之后除以N * D  </li>
-<li>“mean”:输入size = N X D,输出size = 1,对“none”模式的输出所有点求和之后除以N</li>
-</ol>
-</li>
-<li><p><strong>交叉熵损失</strong><br>API<code>torch.nn.CrossEntropyLoss(weight=None,ignore_index=-100,reduction=&#39;mean&#39;)</code><br>⚠️注意:1. 输入X不能预先softmax,因为这玩意儿自带softmax,而且log函数是以e为底; 2. target必须是1D tensor,其元素取值范围为0~C-1我试验了一下:</p>
-<div><div class="fold_hider"><div class="close hider_title">点击显/隐内容</div></div><div class="fold">
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([[0.3, 0.7], [0.4, 0.6]])</span><br><span class="line">target = torch.tensor([0, 1])</span><br><span class="line">target2 = torch.tensor([[1, 0], [0, 1]]).float()</span><br><span class="line"></span><br><span class="line">c = torch.log(a)</span><br><span class="line">print(&quot;c*target:&quot;, -c*target2)</span><br><span class="line"></span><br><span class="line">e = torch.log(torch.nn.Softmax(dim=1)(a))</span><br><span class="line">print(&quot;e*target&quot;, -e*target2)</span><br><span class="line"></span><br><span class="line">cri = torch.nn.CrossEntropyLoss(reduction=&quot;none&quot;)</span><br><span class="line">cri2 = torch.nn.CrossEntropyLoss(reduction=&quot;mean&quot;)</span><br><span class="line">cri3 = torch.nn.CrossEntropyLoss(reduction=&quot;sum&quot;)</span><br><span class="line"></span><br><span class="line">lo = cri(a, target)</span><br><span class="line">lo2 = cri2(a, target)</span><br><span class="line">lo3 = cri3(a, target)</span><br><span class="line">print(&quot;reduction=none&quot;, lo)</span><br><span class="line">print(&quot;reduction=mean&quot;, lo2)</span><br><span class="line">print(&quot;reduction=sum&quot;, lo3)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-161.png" alt="upload successful"></p>
-
-</div></div>
-
-<p>pytorch上的理论公式:<br><img src="/images/pasted-160.png" alt="upload successful"><br>交叉熵损失函数理论公式:<br><img src="/images/pasted-159.png" alt="upload successful"><br>其中参数 1.weight为对每一类的加权系数(1D Tensor assigning weight to each of the classes.); 2. reduction:“none”维度不变,“mean”先求和再除以batchsize,“sum”只求和</p>
-</li>
-<li><p><strong>二分类交叉熵损失</strong><br>API1 <code>torch.nn.BCELoss(weight=None, reduction=&#39;mean&#39;)</code><br>⚠️注意:使用之前需要对输入进行sigmoid操作<br>官方避免log0现象的操作:Our solution is that BCELoss clamps its log function outputs to be greater than or equal to -100. This way, we can always have a finite loss value and a linear backward method.   </p>
-<p>API2 <code>torch.nn.BCEWithLogitsLoss(weight=None,reduction=&#39;mean&#39;, pos_weight=None)</code><br>⚠️注意:不用预先使用sigmoid对输入   </p>
-</li>
-</ul>
-</li>
-</ol>
-
-          
+          <p>不懂就拿小本本记下来😏</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/17/Pytorch知识点/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -576,20 +548,7 @@
 
       
         
-          <h1 id="知识蒸馏技术meets自监督学习😂"><a href="#知识蒸馏技术meets自监督学习😂" class="headerlink" title="知识蒸馏技术meets自监督学习😂"></a>知识蒸馏技术meets自监督学习😂</h1><hr>
-<p>paper list:  </p>
-<ol>
-<li>Knowledge Distillation Meets Self-Supervision</li>
-</ol>
-<hr>
-<p>目录:</p>
-<ol>
-<li>相关概念</li>
-<li>model</li>
-<li>主要思想</li>
-<li>理论知识点</li>
-</ol>
-<hr>
+          <h1 id="知识蒸馏技术meets自监督学习😂"><a href="#知识蒸馏技术meets自监督学习😂" class="headerlink" title="知识蒸馏技术meets自监督学习😂"></a>知识蒸馏技术meets自监督学习😂</h1>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/07/16/论文积累8/#more" rel="contents">
@@ -738,33 +697,14 @@
 
       
         
-          
-            <h2 id="基于metric的元学习"><a href="#基于metric的元学习" class="headerlink" title="基于metric的元学习"></a>基于metric的元学习</h2><p>这几篇文章都未进行仿真,且论文的实验部分没看,发现最近读论文都不想看实验部分,本来就一仿真菜鸡还tm不好好读论文进行仿真😡<br>不仿真实现论文不删上文</p>
-<hr>
-<p>paper list:   </p>
-<ol>
-<li>Siamese Neural Networks for One-shot Image Recognition</li>
-<li>Matching Networks for One Shot Learning</li>
-<li>Prototypical Networks for Few-shot Learning</li>
-</ol>
-<hr>
-<h4 id="论文一、"><a href="#论文一、" class="headerlink" title="论文一、"></a>论文一、</h4><p>孪生网络共用权值,身体(特征提取部分)相同,头(输出)不同.将一对图片组(两张)传给孪生网络,在网络的倒数第二层使用L1距离将两个网络的输出进行融合,并度量两者的相似性,网络的最后一层使用全连接(说是使用了注意力机制)并用sigmoid输出得到相似性(1同类0不同类),训练的时候喂数据的方法是一组同类和一组异类交替输入。<br>网络结构:<br><img src="/images/pasted-137.png" alt="upload successful"><br>小样本学习原因:并不是学习出分辨类别的能力,只是学习出衡量相似性的能力<br>应用场景:可用于相似性度量,也可用于分类任务,将待分类样本与训练集数据比对,进行投票决定类别(个人观点,必须实验试试)<br>code: <a href="https://github.com/kevinzakka/one-shot-siamese" target="_blank" rel="noopener">https://github.com/kevinzakka/one-shot-siamese</a>  </p>
-<hr>
-<h4 id="论文二、"><a href="#论文二、" class="headerlink" title="论文二、"></a>论文二、</h4><p>Matching Networks=记忆力LSTM+CNN+attention机制,将query图片和support set有效embedding,使用余弦距离衡量相似性,模型具体操作:<br>对于support set(func G): 使用一个简单的CNN将图片进行编码后,将每个图片看作一个单词Xt,输入双向LSTM进行二次embedding,ht即为新的embedding<br>对于query image(func F): 使用CNN将图片进行编码后,使用一个K个LSTM cell进行编码<br>每个LSTM cell的输入:   </p>
-<ol>
-<li>Xt=图片的CNN_embedding  </li>
-<li>ht-1(new)=ht-1(old)+CNN_embedding+attetions_map * support_embedding  </li>
-<li>attetions_map = softmax(torch.mm(ht-1(old)+CNN_embedding, support_embedding))</li>
-</ol>
-<p>最后的一个cell的输出hK-1即为query image的embedding   </p>
-<hr>
-<p><strong>LSTM 结构</strong>:<br><img src="/images/pasted-138.png" alt="upload successful"></p>
-<p><strong>func F定义</strong>:<br><img src="/images/pasted-141.png" alt="upload successful"></p>
-<p><strong>func G定义</strong>:<br><img src="/images/pasted-143.png" alt="upload successful"></p>
-<hr>
-<h4 id="论文三、"><a href="#论文三、" class="headerlink" title="论文三、"></a>论文三、</h4><p>使用神经网络将图片进行编码,然后计算每一类的中心作为原型,得到每一类的聚类中心,就可以对图片进行分类</p>
-
-          
+          <h2 id="基于metric的元学习"><a href="#基于metric的元学习" class="headerlink" title="基于metric的元学习"></a>基于metric的元学习</h2><p>这几篇文章都未进行仿真,且论文的实验部分没看,发现最近读论文都不想看实验部分,本来就一仿真菜鸡还tm不好好读论文进行仿真😡<br>不仿真实现论文不删上文</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/11/论文积累7/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -906,43 +846,14 @@
 
       
         
-          
-            <h1 id="Deep-Hash-learning-for-Remote-Sensing-Image-Retrieval"><a href="#Deep-Hash-learning-for-Remote-Sensing-Image-Retrieval" class="headerlink" title="Deep Hash learning for Remote Sensing Image Retrieval"></a>Deep Hash learning for Remote Sensing Image Retrieval</h1><hr>
-<p>目录:</p>
-<ol>
-<li>相关概念</li>
-<li>model</li>
-<li>主要思想</li>
-<li>理论知识点</li>
-<li>实验仿真</li>
-<li>实验结果分析</li>
-<li>github代码</li>
-</ol>
-<hr>
-<h2 id="一、相关概念"><a href="#一、相关概念" class="headerlink" title="一、相关概念"></a>一、相关概念</h2><ol>
-<li>hash编码: 将图片编码为0,1串,使用神经网络先生成real-value编码然后取阈值将real-value编码转换为hash编码  </li>
-<li>hash编码的三个必须要保证的限制: similarity preserving; coding balance; quantization errors;<br>similarity preserving即图片在语义空间的相似性在哈希空间也要保持,coding balance即编码bits之间相互独立, quantization errors即real-value编码转换到hash编码的损失要尽量小  </li>
-<li>Hamming distance: 衡量两个字符串的相似性,将其中一个变为另外一个所需要作的最小替换次数</li>
-</ol>
-<h2 id="二、model"><a href="#二、model" class="headerlink" title="二、model"></a>二、model</h2><p>第一部分:特征提取器<br><img src="/images/pasted-131.png" alt="upload successful"><br>主干特征提取网络使用Alexnet进行特征提取,使用passthrough进行多尺度特征图聚合,使用注意力机制(attention branch network (<strong>ABN</strong>)) 生成attention map 根据每个类的特点去突出 the discriminative regions<br>需要学习一下:《Attention branch network: Learning of attention mechanism for visual explanation》</p>
-<p>第二部分:hash编码器<br><img src="/images/pasted-132.png" alt="upload successful"><br>使用对抗正则模型迫使生成的value code逼近离散均匀分布</p>
-<h2 id="三、主要思想"><a href="#三、主要思想" class="headerlink" title="三、主要思想"></a>三、主要思想</h2><p>end to end网络, 模型同时进行特征提取和编码, 具体是特征提取后进行real-value编码再将real-value编码转换为hash编码, 特点是使用了特征融合和注意力机制进行特征提取,使用对抗正则网络迫使生成的数据逼近于一个指定的分布 </p>
-<h2 id="四、理论于仿真知识点"><a href="#四、理论于仿真知识点" class="headerlink" title="四、理论于仿真知识点"></a>四、理论于仿真知识点</h2><ol>
-<li><p>pytorch正则化<br><a href="https://blog.csdn.net/guyuealian/article/details/88426648" target="_blank" rel="noopener">https://blog.csdn.net/guyuealian/article/details/88426648</a></p>
-</li>
-<li><p>pytorch自定义损失函数<br><a href="https://www.zhihu.com/question/66988664/answer/247952270" target="_blank" rel="noopener">https://www.zhihu.com/question/66988664/answer/247952270</a></p>
-</li>
-<li><p>pytorch自动求导机制(裂开)<br><a href="http://bindog.github.io/blog/2020/05/20/optimize-training-memory-by-op-fusion-gradient-checkpoint/" target="_blank" rel="noopener">http://bindog.github.io/blog/2020/05/20/optimize-training-memory-by-op-fusion-gradient-checkpoint/</a><br><a href="https://zhuanlan.zhihu.com/p/83172023" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/83172023</a></p>
-</li>
-<li><p>损失函数设计积累<br> <img src="/images/pasted-125.png" alt="upload successful"><br> 该损失函数迫使同类样本之间距离减小, 不同类样本之间距离大于m,小于m则产生损失(类似于合页损失函数)<br> <img src="/images/pasted-133.png" alt="upload successful"><br> 该损失函数迫使生成的编码值向0或1靠近 </p>
-</li>
-<li><p>检索任务中MAP计算方法<br>进行Q次检索,每次选取距离最小的top m个图片作为检索结果,从距离最小的图片到距离最大的图片<br> <img src="/images/pasted-127.png" alt="upload successful"></p>
-</li>
-</ol>
-<p><strong>AP</strong>计算公式如下:<br>    <img src="/images/pasted-128.png" alt="upload successful"><br>    R表示数据集中和query图像同类的图像数量, r的取值范围为1-m, 当top r 图片和query图像同类时δ(r)为1,反之为0<br><strong>MAP</strong>计算公式如下:<br>    <img src="/images/pasted-129.png" alt="upload successful"></p>
-<h2 id="五、实验仿真"><a href="#五、实验仿真" class="headerlink" title="五、实验仿真"></a>五、实验仿真</h2><p>仍在调参,斯密达</p>
-
-          
+          <h1 id="Deep-Hash-learning-for-Remote-Sensing-Image-Retrieval"><a href="#Deep-Hash-learning-for-Remote-Sensing-Image-Retrieval" class="headerlink" title="Deep Hash learning for Remote Sensing Image Retrieval"></a>Deep Hash learning for Remote Sensing Image Retrieval</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/11/论文积累6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1084,46 +995,14 @@
 
       
         
-          
-            <h1 id="A-Discriminative-Distillation-Network-for-Cross-Source-Remote-Sensing-Image-Retrieval"><a href="#A-Discriminative-Distillation-Network-for-Cross-Source-Remote-Sensing-Image-Retrieval" class="headerlink" title="A Discriminative Distillation Network for Cross-Source Remote Sensing Image Retrieval"></a>A Discriminative Distillation Network for Cross-Source Remote Sensing Image Retrieval</h1><hr>
-<p>目录:</p>
-<ol>
-<li>相关概念</li>
-<li>model</li>
-<li>主要思想</li>
-<li>理论知识点</li>
-<li>实验仿真、实验结果分析、github代码</li>
-</ol>
-<hr>
-<h2 id="一、相关概念"><a href="#一、相关概念" class="headerlink" title="一、相关概念"></a>一、相关概念</h2><ul>
-<li><p>Knowledge Distillation(知识蒸馏): 将知识从复杂笨重的网络迁移给较轻便的网络,以压缩/训练模型。本文中使用知识蒸馏并不是为了压缩模型,而是根据不同模态遥感图像低层特征不同,高层语义近似的特点,把f网络学到的高层特征给G网络以加快G网络收敛,同时促使后一模态图像的特征逼近于前一模态的特征,使二者在同一特征空间。在该论文中使用logits计算MSEloss,而不是使用softmax后计算crossentropyloss应该是由于该网络并不是一个用于的分类网络,网络学到的是图片的特征向量而不是一组概率值。<br>参考博客:<a href="https://zhuanlan.zhihu.com/p/90049906" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/90049906</a> </p>
-</li>
-<li><p>attention mechanism: 注意力分配,重要的值得注意的东西权值高。 </p>
-</li>
-<li><p>multitask learning:😔</p>
-</li>
-<li><p>cross-model retrieval:query图像和数据库图像不同源,为不同类型遥感图像   </p>
-</li>
-<li><p>Metric learning: 相似度学习,学习一个度量相似度的距离函数:相似的目标离得近,不相似的离得远   </p>
-</li>
-<li><p>person re-identification:行人重识别,行人重识别问题通常看做是一个图片检索问题，具体地讲就是在不同摄像头中进行行人匹配，给出一个行人目标，判断其他摄像头是否也检测到这个行人。</p>
-<h2 id="二、Model"><a href="#二、Model" class="headerlink" title="二、Model"></a>二、Model</h2></li>
-</ul>
-<p><img src="/images/pasted-134.png" alt="upload successful"></p>
-<p><img src="/images/pasted-135.png" alt="upload successful"><br>使用两个架构完全相同的特征提取网络,训练方法是:先训练一个特征提取网络,然后将学到的参数传给第二个网络,固定第二个网络的高层参数,只训练低层部分,使得学到的特征和第一个网络的特征在同一个特征空间</p>
-<h2 id="三、主要思想"><a href="#三、主要思想" class="headerlink" title="三、主要思想"></a>三、主要思想</h2><p>使用知识蒸馏思想进行跨模态图像检索,使用知识蒸馏网络,使不同源图片训练出来的特征在同一个特征空间,使用triplet loss提高类间分散性和类内致密性,使用Center loss减小类内距离  </p>
-<h2 id="四、理论知识点"><a href="#四、理论知识点" class="headerlink" title="四、理论知识点"></a>四、理论知识点</h2><ol>
-<li><p>t-SNE(t分布随机邻域嵌入)</p>
-</li>
-<li><p>triplet loss<br> <img src="/images/pasted-136.png" alt="upload successful"><br> 对于batch中的每一个图片,在batch中选择一个同类的图片作为positive anchor,选择一个不同类图片作为negetive anchor</p>
-</li>
-</ol>
-<ol start="3">
-<li>pytorch 中的 CrossEntropyLoss详解<br>⚠️:使用CrossEntropyLoss,softmax回归后的输出size=(batchsize, num_class)后不必进行softmax,且计算得到的损失是进行了(求和/batchsize)操作的。<br><a href="https://www.pianshen.com/article/4916145350/" target="_blank" rel="noopener">https://www.pianshen.com/article/4916145350/</a><br><a href="https://pytorch.org/docs/stable/nn.html?highlight=cross#torch.nn.CrossEntropyLoss" target="_blank" rel="noopener">https://pytorch.org/docs/stable/nn.html?highlight=cross#torch.nn.CrossEntropyLoss</a>  </li>
-</ol>
-<h2 id="五、实验结果分析"><a href="#五、实验结果分析" class="headerlink" title="五、实验结果分析"></a>五、实验结果分析</h2><p>效果糟糕,检索100张图片正确率80%左右,主要是代码实现问题,我的损失函数实现及数据读取方式需要改进, pytorch编程问题还是蛮大的<br>github代码: <a href="https://github.com/Jackzhou1999/CS-CBRSIR" target="_blank" rel="noopener">https://github.com/Jackzhou1999/CS-CBRSIR</a></p>
-
-          
+          <h1 id="A-Discriminative-Distillation-Network-for-Cross-Source-Remote-Sensing-Image-Retrieval"><a href="#A-Discriminative-Distillation-Network-for-Cross-Source-Remote-Sensing-Image-Retrieval" class="headerlink" title="A Discriminative Distillation Network for Cross-Source Remote Sensing Image Retrieval"></a>A Discriminative Distillation Network for Cross-Source Remote Sensing Image Retrieval</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/06/10/论文积累5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2569,7 +2448,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
