@@ -404,11 +404,32 @@
 <li><p><code>with torch.no_grad()</code>:<br>被该语句 wrap 起来的部分将不会track 梯度   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with torch.no_grad(): </span><br><span class="line">       knowledge, t_feat, _ = t_model(x)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>torch.no_grad()</code>和<code>model.eval()</code>区别:<br>简而言之, torch.no_grad()使用后不进行梯度的追踪<br><a href="https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight" target="_blank" rel="noopener">https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight</a></p>
+<li><p><code>torch.no_grad()</code>和<code>model.eval()</code>区别:<br>简而言之, torch.no_grad()使用后不进行梯度的追踪,model.eval()使用后仍进行梯度追踪,但是BN层和<br><a href="https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight" target="_blank" rel="noopener">https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight</a></p>
 </li>
-<li><p>各种损失函数API分析:(老是被这鬼东西伤脑筋)</p>
+<li><p>nn.ReLU(inplace=True)中inplace的作用<br>对原值进行操作，然后将得到的值又直接复制到该值中,从上层网络Conv2d中传递下来的tensor直接进行修改，这样能够节省运算内存，不用多存储其他变量<br>参考自blog:<a href="https://www.cnblogs.com/wanghui-garcia/p/10642665.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanghui-garcia/p/10642665.html</a></p>
+</li>
+<li><p>各种损失函数API分析:(老是被这鬼东西伤脑筋)<br>MMP,有的自带softmax,有的没有,有的target是2D矩阵,有的是1D。</p>
 <ul>
-<li>torch.nn.KLDivLoss(reduction = ‘mean’)<br><img src="/images/pasted-157.png" alt="upload successful"></li>
+<li><p><strong>KL散度损失</strong><br>API <code>torch.nn.KLDivLoss(reduction = &#39;mean&#39;)</code><br><img src="/images/pasted-158.png" alt="upload successful"><br>⚠️注意:其中x在传入函数之前要求先进行softmax和log操作,y传入函数之前要求先进行softmax操作。x和y的size要求相同<br>reduction有三种模式:</p>
+<ol>
+<li>“none”:输入size = N X D,输出size = N X D   </li>
+<li>“mean”:输入size = N X D,输出size = 1,对“none”模式的输出所有点求和之后除以N * D  </li>
+<li>“mean”:输入size = N X D,输出size = 1,对“none”模式的输出所有点求和之后除以N</li>
+</ol>
+</li>
+<li><p><strong>交叉熵损失</strong><br>API<code>torch.nn.CrossEntropyLoss(weight=None,ignore_index=-100,reduction=&#39;mean&#39;)</code><br>⚠️注意:1. 输入X不能预先softmax,因为这玩意儿自带softmax,而且log函数是以e为底; 2. target必须是1D tensor,其元素取值范围为0~C-1我试验了一下:</p>
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐内容</div></div><div class="fold">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([[0.3, 0.7], [0.4, 0.6]])</span><br><span class="line">target = torch.tensor([0, 1])</span><br><span class="line">target2 = torch.tensor([[1, 0], [0, 1]]).float()</span><br><span class="line"></span><br><span class="line">c = torch.log(a)</span><br><span class="line">print(&quot;c*target:&quot;, -c*target2)</span><br><span class="line"></span><br><span class="line">e = torch.log(torch.nn.Softmax(dim=1)(a))</span><br><span class="line">print(&quot;e*target&quot;, -e*target2)</span><br><span class="line"></span><br><span class="line">cri = torch.nn.CrossEntropyLoss(reduction=&quot;none&quot;)</span><br><span class="line">cri2 = torch.nn.CrossEntropyLoss(reduction=&quot;mean&quot;)</span><br><span class="line">cri3 = torch.nn.CrossEntropyLoss(reduction=&quot;sum&quot;)</span><br><span class="line"></span><br><span class="line">lo = cri(a, target)</span><br><span class="line">lo2 = cri2(a, target)</span><br><span class="line">lo3 = cri3(a, target)</span><br><span class="line">print(&quot;reduction=none&quot;, lo)</span><br><span class="line">print(&quot;reduction=mean&quot;, lo2)</span><br><span class="line">print(&quot;reduction=sum&quot;, lo3)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-161.png" alt="upload successful"></p>
+
+</div></div>
+
+<p>pytorch上的理论公式:<br><img src="/images/pasted-160.png" alt="upload successful"><br>交叉熵损失函数理论公式:<br><img src="/images/pasted-159.png" alt="upload successful"><br>其中参数 1.weight为对每一类的加权系数(1D Tensor assigning weight to each of the classes.); 2. reduction:“none”维度不变,“mean”先求和再除以batchsize,“sum”只求和</p>
+</li>
+<li><p><strong>二分类交叉熵损失</strong><br>API1 <code>torch.nn.BCELoss(weight=None, reduction=&#39;mean&#39;)</code><br>⚠️注意:使用之前需要对输入进行sigmoid操作<br>官方避免log0现象的操作:Our solution is that BCELoss clamps its log function outputs to be greater than or equal to -100. This way, we can always have a finite loss value and a linear backward method.   </p>
+<p>API2 <code>torch.nn.BCEWithLogitsLoss(weight=None,reduction=&#39;mean&#39;, pos_weight=None)</code><br>⚠️注意:不用预先使用sigmoid对输入   </p>
+</li>
 </ul>
 </li>
 </ol>
