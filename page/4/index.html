@@ -307,6 +307,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/12/C-并发与多线程1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qionglin Zhou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZhouSir's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/12/C-并发与多线程1/" itemprop="url">C++并发与多线程1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-12T16:08:22+08:00">
+                2019-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>并发:两个或多个任务同时发生(进行)</li>
+<li>主线程等待子线程执行完毕后自己才能退出<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">//  main.cpp</span><br><span class="line">//  线程</span><br><span class="line">//</span><br><span class="line">//  Created by zhouqionglin on 2019/8/12.</span><br><span class="line">//  Copyright © 2019 周穹霖. All rights reserved.</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void myprint(void)&#123;</span><br><span class="line">    cout&lt;&lt;&quot;我的线程myprint()开始执行了&quot;&lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    cout&lt;&lt;&quot;我的线程myprint()结束了&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">class TA&#123;</span><br><span class="line">public:</span><br><span class="line">    int a;</span><br><span class="line">    TA(int a_a):a(a_a)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;拷贝构造函数被执行&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;;</span><br><span class="line">    TA(const TA&amp; b):a(b.a)&#123;&#125;;</span><br><span class="line">    ~TA()&#123;</span><br><span class="line">        cout&lt;&lt;&quot;析构函数执行&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    void operator()()&#123;</span><br><span class="line">        cout&lt;&lt;&quot;我的线程operator()开始执行了&quot;&lt;&lt;endl;</span><br><span class="line">        cout&lt;&lt;&quot;我的线程operator()结束了&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    //1.用可调用对象创建线程</span><br><span class="line">    TA ta(7);</span><br><span class="line">    thread mytobj2(ta);</span><br><span class="line">    mytobj2.join();</span><br><span class="line">    //主线程结束ta这个对象就不在了,thread mytobj2(ta)实际上是拷贝复制一个对象,执行对象的拷贝构造函数</span><br><span class="line">    //注意使用detach时要注意不要将主线程的变量的指针或引用交给子线程</span><br><span class="line">    </span><br><span class="line">    //2.用lambda表达式创建线程</span><br><span class="line">    auto mylamthread=[]&#123;</span><br><span class="line">        cout&lt;&lt;&quot;我的线程开始执行了&quot;&lt;&lt;endl;</span><br><span class="line">        cout&lt;&lt;&quot;我的线程结束了&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;;</span><br><span class="line">    thread mytobj3(mylamthread);</span><br><span class="line">    mytobj3.join();</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    //3.用函数创建线程</span><br><span class="line">    thread mytobj(myprint);//创建线程,线程执行起点myprint()</span><br><span class="line">    //mytobj.join();//加入/汇合,阻塞主线程,让主线程等待子线程执行完毕,然后主线程开始执行</span><br><span class="line">    mytobj.detach();//主线程不等待子线程就结束,一旦使用detach就不能使用join会出错</span><br><span class="line">    if(mytobj.joinable())&#123;//f判断是否可以使用join</span><br><span class="line">        cout&lt;&lt;&quot;joinable == true&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        cout&lt;&lt;&quot;joinable == false&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;&quot;I love china&quot;&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/C-字符串/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1803,139 +1931,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/脚本实例/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Qionglin Zhou">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZhouSir's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/05/脚本实例/" itemprop="url">脚本实例</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T11:03:15+08:00">
-                2019-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="案例一、"><a href="#案例一、" class="headerlink" title="案例一、"></a>案例一、</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">    # read file and create INSERT statements for MySQL</span><br><span class="line">    outfile=&apos;members.sql&apos;</span><br><span class="line">    IFS=&apos;,&apos;</span><br><span class="line">    while read lname fname address city state zip</span><br><span class="line">    do</span><br><span class="line">       cat &gt;&gt; $outfile &lt;&lt; EOF</span><br><span class="line">INSERT INTO members (lname,fname,address,city,state,zip) VALUES (&apos;$lname&apos;, &apos;$fname&apos;, &apos;$address&apos;, &apos;$city&apos;, &apos;$state&apos;, &apos;$zip&apos;);</span><br><span class="line">EOF</span><br><span class="line">done &lt; $&#123;1&#125;</span><br></pre></td></tr></table></figure>
-
-<p>理解知识点:</p>
-<ol>
-<li>cat &gt; $outfile 命令用于连接文件并打印到标准输出设备上(打开outfile文件并将标准输入重定向到outfile文件中）</li>
-<li>&lt;&lt;EOF 内容 EOF:将内容作为标准输出</li>
-</ol>
-<h2 id="案例二、"><a href="#案例二、" class="headerlink" title="案例二、"></a>案例二、</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#/bin/bash</span><br><span class="line"></span><br><span class="line">count=0</span><br><span class="line">echo $PATH</span><br><span class="line">for i in $(echo $PATH | sed &apos;s/:/ /g&apos;)</span><br><span class="line">do</span><br><span class="line">    count=$[ $count + 1 ]</span><br><span class="line">    echo $count &quot;In the directory:&quot; $i</span><br><span class="line">    files=$(ls $i)</span><br><span class="line">    count2=0</span><br><span class="line">    cd $i</span><br><span class="line">    for j in $files</span><br><span class="line">        do</span><br><span class="line"></span><br><span class="line">            if [ -f &quot;$j&quot; ];then</span><br><span class="line">                #echo &quot;-------&quot; $j</span><br><span class="line">                count2=$(($count2 + 1))</span><br><span class="line">            fi</span><br><span class="line">        done</span><br><span class="line">        echo &quot;there are $count2 file in the $i&quot;</span><br><span class="line">    cd -</span><br><span class="line">done</span><br><span class="line">echo $count</span><br></pre></td></tr></table></figure>
-
-<p>统计文件个数</p>
-<h2 id="案例三、"><a href="#案例三、" class="headerlink" title="案例三、"></a>案例三、</h2><p>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>~<br>“count.sh” 23L, 392C                                                                                                                        1,1          全部</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1988,7 +1983,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1999,7 +1994,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

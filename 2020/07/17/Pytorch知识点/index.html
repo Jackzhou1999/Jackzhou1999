@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/images/pasted-161.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-160.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-159.png">
-<meta property="og:updated_time" content="2020-07-18T08:28:01.517Z">
+<meta property="og:updated_time" content="2020-07-18T09:42:19.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pytorch知识点">
 <meta name="twitter:description" content="不懂就拿小本本记下来😏">
@@ -406,7 +406,7 @@
 <li><p><code>with torch.no_grad()</code>:<br>被该语句 wrap 起来的部分将不会track 梯度   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with torch.no_grad(): </span><br><span class="line">       knowledge, t_feat, _ = t_model(x)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>torch.no_grad()</code>和<code>model.eval()</code>区别:<br>简而言之, torch.no_grad()使用后不进行梯度的追踪,model.eval()使用后仍进行梯度追踪,但是BN层和<br><a href="https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight" target="_blank" rel="noopener">https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight</a></p>
+<li><p><code>torch.no_grad()</code>和<code>model.eval()</code>区别:<br>简而言之, torch.no_grad()使用后不进行梯度的追踪,model.eval()使用后仍进行梯度追踪,但是BN层使用训练时的值而不再变化且dropout失效<br><a href="https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight" target="_blank" rel="noopener">https://blog.csdn.net/songyu0120/article/details/103884586?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight</a></p>
 </li>
 <li><p>nn.ReLU(inplace=True)中inplace的作用<br>对原值进行操作，然后将得到的值又直接复制到该值中,从上层网络Conv2d中传递下来的tensor直接进行修改，这样能够节省运算内存，不用多存储其他变量<br>参考自blog:<a href="https://www.cnblogs.com/wanghui-garcia/p/10642665.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanghui-garcia/p/10642665.html</a></p>
 </li>
@@ -480,6 +480,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/07/18/Leetcode积累/" rel="prev" title="Leetcode积累">
+                Leetcode积累 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -548,7 +552,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -559,7 +563,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
