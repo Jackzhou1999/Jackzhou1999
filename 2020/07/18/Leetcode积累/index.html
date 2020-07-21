@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="立个flag,从7月18号起开始记录力扣每日一题💪 动态规划  题目(7.18) 给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。示例 1:输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbcbcac”输出: true示例 2:输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbbac">
+<meta name="description" content="立个flag,从7月18号起开始记录力扣每日一题💪">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode积累">
 <meta property="og:url" content="http://yoursite.com/2020/07/18/Leetcode积累/index.html">
 <meta property="og:site_name" content="ZhouSir&#39;s Blog">
-<meta property="og:description" content="立个flag,从7月18号起开始记录力扣每日一题💪 动态规划  题目(7.18) 给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。示例 1:输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbcbcac”输出: true示例 2:输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbbac">
+<meta property="og:description" content="立个flag,从7月18号起开始记录力扣每日一题💪">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/pasted-164.png">
-<meta property="og:updated_time" content="2020-07-19T07:52:17.780Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-166.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-165.png">
+<meta property="og:updated_time" content="2020-07-21T11:32:44.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode积累">
-<meta name="twitter:description" content="立个flag,从7月18号起开始记录力扣每日一题💪 动态规划  题目(7.18) 给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。示例 1:输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbcbcac”输出: true示例 2:输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbbac">
+<meta name="twitter:description" content="立个flag,从7月18号起开始记录力扣每日一题💪">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-164.png">
 
 
@@ -398,6 +400,8 @@
 
       
         <p>立个flag,从7月18号起开始记录力扣每日一题💪</p>
+<a id="more"></a>
+
 <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><ol>
 <li><ul>
 <li><p>题目(7.18)</p>
@@ -406,7 +410,9 @@
 </ul>
 <ul>
 <li>状态转移方程:<br>f(i, j) = {f(i-1, j) and s1[i-1]==s3[i+j-1]}或者{f(i,j-1) and s2[j] == s3[i+j-1]}<br>其中f(i, j)为bool类型,表示s1的前i个字符和s2的前j个字符是否能构组成s3的前i+j个字符    </li>
-<li>分析<br>s3的最后一个元素要么来自于s2,要么来自于s1;若s1的前i个字符和s2的前j个字符能构组成s3的前i+j个字符,则要么s1[i-1]=s3[i+j-1], 要么s2[j-1]=s3[i+j-1],原问题化简为s1的前i-1个字符和s2的前j个字符能构组成s3的前i+j-个字符或s1的前i个字符和s2的前j-1个字符能构组成s3的前i+j-1个字符</li>
+<li>分析<br>s3的最后一个元素要么来自于s2,要么来自于s1;若s1的前i个字符和s2的前j个字符能构组成s3的前i+j个字符,则要么s1[i-1]=s3[i+j-1], 要么s2[j-1]=s3[i+j-1],原问题化简为s1的前i-1个字符和s2的前j个字符能构组成s3的前i+j-个字符或s1的前i个字符和s2的前j-1个字符能构组成s3的前i+j-1个字符<!--more-->
+
+</li>
 </ul>
 </li>
 </ol>
@@ -417,6 +423,25 @@
 </ul>
 <ul>
 <li>分析<br>f(i, j)表示在开区间(i, j)位置全部填满气球能够得到的最多硬币数,所以在开区间中插入一个元素后可将区间分为两块,设插入位置为k,则f(i, j)=max{f(i, k)+f(k, j) + nums[i] X nums[j] X num[k]}</li>
+</ul>
+</li>
+<li><ul>
+<li><p>题目(7.21)<br><img src="/images/pasted-166.png" alt="upload successful"></p>
+</li>
+<li><p>分析<br>以i为根结点,则左子树🌲节点值的取值范围为1<del>i-1, 右子树节点值取值范围为i+1</del>n,递归函数的设计思路:返回值应当是该取值范围下所有的二叉树,在函数中,先在给定范围中确定一个值作为根结点,将范围一分为二,然后应当调用两次函数分别得到左子树所有情况(a种)和右子树所有情况(b种),在进行结合得到(a x b)种情况返回  </p>
+<!--more-->
+
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="二分或双指针"><a href="#二分或双指针" class="headerlink" title="二分或双指针"></a>二分或双指针</h2><ol>
+<li><ul>
+<li>题目(7.20)<br><img src="/images/pasted-165.png" alt="upload successful"></li>
+<li>分析<br>思路,固定一个数使用二分法寻找另一个数;或使用双指针,固定头指针,向前移动尾指针,直到遇到第一个使得两数之和不大于target的数,判断是否等于,若小于则尾指针向后一步(注意⚠️越界),头指针向后一步<br>二分法模版:   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int low = i + 1, high = numbers.size() - 1;</span><br><span class="line">   while (low &lt;= high) &#123;</span><br><span class="line">       int mid = (high - low) / 2 + low;</span><br><span class="line">       if (numbers[mid] == target - numbers[i]) &#123;</span><br><span class="line">           return &#123;i + 1, mid + 1&#125;;</span><br><span class="line">       &#125; else if (numbers[mid] &gt; target - numbers[i]) &#123;</span><br><span class="line">           high = mid - 1;</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           low = mid + 1;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
 </li>
 </ol>
@@ -535,7 +560,7 @@
               <img class="site-author-image" itemprop="image" src="/uploads/avatar.gif" alt="Qionglin Zhou">
             
               <p class="site-author-name" itemprop="name">Qionglin Zhou</p>
-              <p class="site-description motion-element" itemprop="description">Let's do amazing!!!</p>
+              <p class="site-description motion-element" itemprop="description">Dream It Possible!!!</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -600,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划"><span class="nav-number">1.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归-分治"><span class="nav-number">2.</span> <span class="nav-text">递归+分治</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划"><span class="nav-number">1.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归-分治"><span class="nav-number">2.</span> <span class="nav-text">递归+分治</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分或双指针"><span class="nav-number">3.</span> <span class="nav-text">二分或双指针</span></a></li></ol></div>
             
 
           </div>

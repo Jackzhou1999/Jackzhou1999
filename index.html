@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="Let&apos;s do amazing!!!">
+<meta name="description" content="Dream It Possible!!!">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ZhouSir&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="ZhouSir&#39;s Blog">
-<meta property="og:description" content="Let&apos;s do amazing!!!">
+<meta property="og:description" content="Dream It Possible!!!">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZhouSir&#39;s Blog">
-<meta name="twitter:description" content="Let&apos;s do amazing!!!">
+<meta name="twitter:description" content="Dream It Possible!!!">
 
 
 
@@ -399,32 +399,14 @@
 
       
         
-          
-            <p>立个flag,从7月18号起开始记录力扣每日一题💪</p>
-<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><ol>
-<li><ul>
-<li><p>题目(7.18)</p>
-<p>给定三个字符串 s1, s2, s3, 验证 s3 是否是由 s1 和 s2 交错组成的。<br>示例 1:<br>输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbcbcac”<br>输出: true<br>示例 2:<br>输入: s1 = “aabcc”, s2 = “dbbca”, s3 = “aadbbbaccc”<br>输出: false  </p>
-</li>
-</ul>
-<ul>
-<li>状态转移方程:<br>f(i, j) = {f(i-1, j) and s1[i-1]==s3[i+j-1]}或者{f(i,j-1) and s2[j] == s3[i+j-1]}<br>其中f(i, j)为bool类型,表示s1的前i个字符和s2的前j个字符是否能构组成s3的前i+j个字符    </li>
-<li>分析<br>s3的最后一个元素要么来自于s2,要么来自于s1;若s1的前i个字符和s2的前j个字符能构组成s3的前i+j个字符,则要么s1[i-1]=s3[i+j-1], 要么s2[j-1]=s3[i+j-1],原问题化简为s1的前i-1个字符和s2的前j个字符能构组成s3的前i+j-个字符或s1的前i个字符和s2的前j-1个字符能构组成s3的前i+j-1个字符</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="递归-分治"><a href="#递归-分治" class="headerlink" title="递归+分治"></a>递归+分治</h2><ol>
-<li><ul>
-<li>题目(7.19)<br><img src="/images/pasted-164.png" alt="upload successful"></li>
-</ul>
-<ul>
-<li>分析<br>f(i, j)表示在开区间(i, j)位置全部填满气球能够得到的最多硬币数,所以在开区间中插入一个元素后可将区间分为两块,设插入位置为k,则f(i, j)=max{f(i, k)+f(k, j) + nums[i] X nums[j] X num[k]}</li>
-</ul>
-</li>
-</ol>
-
-          
+          <p>立个flag,从7月18号起开始记录力扣每日一题💪</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/18/Leetcode积累/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1899,7 +1881,7 @@
               <img class="site-author-image" itemprop="image" src="/uploads/avatar.gif" alt="Qionglin Zhou">
             
               <p class="site-author-name" itemprop="name">Qionglin Zhou</p>
-              <p class="site-description motion-element" itemprop="description">Let's do amazing!!!</p>
+              <p class="site-description motion-element" itemprop="description">Dream It Possible!!!</p>
           </div>
 
           <nav class="site-state motion-element">
